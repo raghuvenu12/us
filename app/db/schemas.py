@@ -22,7 +22,7 @@ class Post(BaseModel):
     text: str
     latitude: float
     longitude: float
-    media: list(Media) = []
+    #media: list(Media) = []
     created_at: datetime.datetime
 
 

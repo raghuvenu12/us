@@ -1,10 +1,9 @@
 from fastapi import APIRouter, Depends, HTTPException, status
-from app.db.models import FutureTick, StockTick, FutureOrder
 from app.config import get_settings
 import app.db.schemas as schemas
-from app.utils import client
 from datetime import datetime, timezone
 import time
+from app.db.models import User
 
 # Get application settings from the configuration module
 settings = get_settings()
@@ -20,3 +19,9 @@ __all__ = (
 @router.post("/post/create")
 async def create():
     return {"message": "Hello World"}
+
+@router.get("/post/test")
+async def create():
+    users = await User.all()
+    print(users)
+    return {"phone": users[0].phone}

@@ -6,6 +6,7 @@ from app.db import models
 class User(Model):
     phone = fields.CharField(max_length=16, null=False, )
     usr_type = fields.CharField(max_length=16, null=False, default="citizen", )
+    email = fields.CharField(max_length=256, null=True, )
     password = fields.CharField(max_length=64, null=False, )
     created_at = fields.DatetimeField(auto_now=True, )
     class Meta:

@@ -1,6 +1,5 @@
 from tortoise import Tortoise
 from app.db import orm_settings
-from app.db.models import StockTick
 from tortoise.contrib.pydantic import pydantic_model_creator
 
 
