@@ -7,5 +7,5 @@ tortoise-orm[asyncpg]
 tortoise-orm[accel]
 #firebase-admin
 httpx
-uvloop
+#uvloop
 orjson

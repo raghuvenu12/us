@@ -13,12 +13,12 @@ class User(Model):
         table = "user"
 
 class OTP(Model):
-    username = fields.CharField(max_length=64, unique=True, )
+    phone = fields.CharField(max_length=64, null=False, )
     otp = fields.IntField(max_length=6, null=False, )
     num_attempts = fields.IntField(max_length=3, null=False, )
     status = fields.CharField(max_length=16, null=False, )
     valid_till = fields.DatetimeField(null=False, )
-    created_at = fields.DatetimeField(auto_now=True, )
+    created_at = fields.DatetimeField(null=False, )
     class Meta:
         table = "otp"
 
