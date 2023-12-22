@@ -47,26 +47,38 @@
           <form class="mt-sm-4" method="post" action="/post/login/otp">
             <!-- Email -->
             {% if status=="max_attempts" %}
+            
             <div class="mb-3 input-group-lg">
-              <p>You have exceeded the attempt limit</p>
-              <input type="text" class="form-control" placeholder="Enter Phone number" name="phone">
-            </div>
+              <div class="alert alert-warning" role="alert">You have exceeded the attempt limit</div>
+              <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1">+91</span>
+              <input type="text" class="form-control" placeholder="Enter Phone number" name="phone" aria-labe="Phone number" aria-describedby="basic-addon1">
+            </div></div>
             <!-- New password -->
             {%elif status=="expired" %}
+            
             <div class="mb-3 input-group-lg">
-              <p>Your time limit has expired</p>
+              <div class="alert alert-warning" role="alert"><p>Your time limit has expired</p></div>
+              <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1">+91</span>
+              
               <input type="text" class="form-control" placeholder="Enter Phone number" name="phone">
-            </div>
+              </div></div>
             {%else%}
             <div class="mb-3 input-group-lg">
-              <input type="text" class="form-control" placeholder="Enter Phone number" name="phone">
+              
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">+91</span>
+                
+                <input type="text" class="form-control" placeholder="Enter Phone number" name="phone">
+                </div>
             </div>
             {% endif %}
 
             <!-- Remember me -->
             
             <!-- Button -->
-            <div class="d-grid"><button type="submit" class="btn btn-lg btn-primary">Get OTP</button></div>
+            <div class="d-grid"><button type="submit"  style="background-color: palevioletred;"class="btn btn-lg text-white">Get OTP</button></div>
             <!-- Copyright -->
             
           </form>

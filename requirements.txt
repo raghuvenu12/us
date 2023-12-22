@@ -9,3 +9,5 @@ tortoise-orm[accel]
 httpx
 #uvloop
 orjson
+jinja2
+twilio

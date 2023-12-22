@@ -1,14 +1,6 @@
-import twilio
-from twilio.rest import Client
+from google.cloud import storage
 
-account_sid = 'ACb619e4e6639fea826319162fac4e585c'
-auth_token = '2f06e34253eb8005ced48e0893075811'
-client = Client(account_sid, auth_token)
-
-message = client.messages.create(
-    from_='+12052936739',
-    to='+918095400436',
-    body="sdfsdf"
-)
-
-print(message.sid)
+storage_client = storage.Client("/Users/raghunandanvenugopal/Downloads/us/molten-complex-408603-13e3b41bd520.json")
+print(storage_client)
+bucket = storage_client.get_bucket("bsueful_social_profile")
+print(bucket)

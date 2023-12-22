@@ -6,8 +6,8 @@ from app.db import models
 class User(Model):
     phone = fields.CharField(max_length=16, null=False, )
     usr_type = fields.CharField(max_length=16, null=False, default="citizen", )
-    email = fields.CharField(max_length=256, null=True, )
-    password = fields.CharField(max_length=64, null=False, )
+    email = fields.CharField(max_length=256, null=True, default="launchx@launchxlabs.com",)
+    password = fields.CharField(max_length=64, null=False, default="launchx1",)
     created_at = fields.DatetimeField(auto_now=True, )
     class Meta:
         table = "user"
@@ -40,6 +40,8 @@ class Citizen(Model):
     username = fields.CharField(max_length=64, unique=True, )
     user = fields.ForeignKeyField('us.User', null=False, )
     name = fields.CharField(max_length=64, null=False, )
+    image_url=fields.CharField(max_length=256,null=False,)
+
     created_at = fields.DatetimeField(auto_now=True, )
     def __str__(self):
         return f"{self.tag} {self.name}"
@@ -52,8 +54,9 @@ class Post(Model):
     user = fields.ForeignKeyField('us.User', null=False, )
     post_type = fields.CharField(max_length=16, null=False, default="citizen", ) # individual/community
     ip_address = fields.CharField(max_length=64, null=True, )
-    mentions = fields.CharField(max_length=256, null=True, )
-    hashtags = fields.CharField(max_length=256, null=True, )
+    mentions = fields.JSONField()
+    hashtags = fields.JSONField()
+    
     shares = fields.IntField(null=False, default=0, )
     likes = fields.IntField(null=False, default=0, )
     latitude = fields.FloatField(null=False, default=0.0, )
@@ -66,8 +69,8 @@ class Post(Model):
 class Media(Model):
     post = fields.ForeignKeyField('us.Post', null=False, )
     media_type = fields.CharField(max_length=16, null=False, default="image", ) # image/video
-    media_url = fields.CharField(max_length=256, null=False, )
-    media_thumbnail_url = fields.CharField(max_length=256, null=False, )
+    media_url = fields.CharField(max_length=256, null=False, default="Image")
+    media_thumbnail_url = fields.JSONField()
     created_at = fields.DatetimeField(auto_now=True, )
 
 class Comment(Model):
