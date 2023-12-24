@@ -1,36 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<title>Social - Network, Community and Event Theme</title>
 
-	<!-- Meta Tags -->
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="author" content="Webestica.com">
-	<meta name="description" content="Bootstrap 5 based Social Media Network and Community Theme">
-
-	<!-- Dark mode -->
-	
-
-	<!-- Favicon -->
-	<link rel="shortcut icon" href="{{url_for('static',path='assets/images/favicon.icon')}}">
-
-	<!-- Google Font -->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
-
-	<!-- Plugins CSS -->
-	<link rel="stylesheet" type="text/css" href="{{url_for('static',path='assets/vendor/font-awesome/css/all.min.css')}}">
-	<link rel="stylesheet" type="text/css" href="{{url_for('static',path='assets/vendor/bootstrap-icons/bootstrap-icons.css')}}">
-
-	<!-- Theme CSS -->
-	<link rel="stylesheet" type="text/css" href="{{url_for('static',path='assets/css/style.css')}}">
-	 
-</head>
-
-<body>
+{% extends 'base.html' %}
 
 <!-- **************** MAIN CONTENT START **************** -->
+{% block content %}
 <main>
   
   <!-- Container START -->
@@ -52,7 +24,7 @@
               <div class="alert alert-warning" role="alert">You have exceeded the attempt limit</div>
               <div class="input-group mb-3">
               <span class="input-group-text" id="basic-addon1">+91</span>
-              <input type="text" class="form-control" placeholder="Enter Phone number" name="phone" aria-labe="Phone number" aria-describedby="basic-addon1">
+              <input type="text" class="form-control" placeholder="Enter Phone number" name="phone" pattern="[0-9]+" aria-label="Phone number" aria-describedby="basic-addon1">
             </div></div>
             <!-- New password -->
             {%elif status=="expired" %}
@@ -62,7 +34,7 @@
               <div class="input-group mb-3">
               <span class="input-group-text" id="basic-addon1">+91</span>
               
-              <input type="text" class="form-control" placeholder="Enter Phone number" name="phone">
+              <input type="text" class="form-control" placeholder="Enter Phone number" pattern="[0-9]+" name="phone">
               </div></div>
             {%else%}
             <div class="mb-3 input-group-lg">
@@ -70,7 +42,7 @@
               <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">+91</span>
                 
-                <input type="text" class="form-control" placeholder="Enter Phone number" name="phone">
+                <input type="text" class="form-control" placeholder="Enter Phone number" pattern="[0-9]+" name="phone">
                 </div>
             </div>
             {% endif %}
@@ -92,20 +64,11 @@
 
 </main>
 <!-- **************** MAIN CONTENT END **************** -->
- 
+ {% endblock %}
 
 <!-- =======================
 JS libraries, plugins and custom scripts -->
 
 <!-- Bootstrap JS -->
-<script src="{{url_for('static',path='assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
 
-<!-- Vendors -->
-<script src="{{url_for('static',path='assets/vendor/pswmeter/pswmeter.min.js')}}"></script>
-
-<!-- Theme Functions -->
-<script src="{{url_for('static',path='assets/js/functions.js')}}"></script>
-  
-</body>
-</html>
  

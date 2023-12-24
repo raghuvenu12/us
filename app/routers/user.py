@@ -41,15 +41,15 @@ setting = get_settings()
 
 
 templates = Jinja2Templates(
-    directory="//Users//raghunandanvenugopal//Downloads//us//app//templates//"
+    directory="app/templates"
 )
 router = APIRouter()
 os.environ[
     "GOOGLE_APPLICATION_CREDENTIALS"
-] = "/Users/raghunandanvenugopal/Desktop/demo/molten-complex-408603-13e3b41bd520.json"
+] = "molten-complex-408603-13e3b41bd520.json"
 Path = os.environ["GOOGLE_APPLICATION_CREDENTIALS"]
 storage_client = storage.Client(Path)
-print(storage_client)
+
 
 
 @router.get("/post/login", name="login")
@@ -62,21 +62,22 @@ async def login(request: Request, status: str = Query(None)):
 @router.post("/post/login/otp")
 async def otp(request: Request, phone: str = Form(...)):
     try:
-        account_sid = "ACe6eed746ebf574cded13a432021f1665"
+        '''account_sid = "ACe6eed746ebf574cded13a432021f1665"
         auth_token = "224cea1e9b2294738fb8a8ad23cc4783"
         client = Client(account_sid, auth_token)
         random_number = random.randint(1000, 9999)
         phone = "+91" + phone
         message = client.messages.create(
             from_="+13214210602", to=phone, body=random_number
-        )
+        )'''
+        phone = "+91" + phone
 
         # Add 3 minutes to the current time
-        print(datetime.now() + timedelta(minutes=3))
+       
 
         new_data = OTP(
             phone=phone,
-            otp=random_number,
+            otp="1234",
             status="New",
             valid_till=datetime.now() + timedelta(minutes=5),
             num_attempts=1,
@@ -100,69 +101,73 @@ async def otp(request: Request, phone: str = Form(...)):
 
 @router.post("/post/verify_otp/{phone}")
 async def verify(request: Request, phone: str, otp: int = Form(...)):
-    filtered_data = await OTP.filter(phone=phone).order_by("-id").limit(1).first()
-    if filtered_data.num_attempts > 3:
-        return templates.TemplateResponse("login.html", {"request": request})
-    
-    indian_timezone = pytz.timezone("Asia/Kolkata")
-    if (filtered_data.valid_till.date()) == (
-        (datetime.now(pytz.utc).astimezone(indian_timezone).date())
-    ):
-        if (filtered_data.valid_till.time()) < (
-            (datetime.now(pytz.utc).astimezone(indian_timezone).time())
+    try:
+        otp_data = await OTP.filter(phone=phone).order_by("-id").limit(1).first()
+        if otp_data.num_attempts > 3:
+            return templates.TemplateResponse("login.html", {"request": request})
+        
+        indian_timezone = pytz.timezone("Asia/Kolkata")
+        if (otp_data.valid_till.date()) == (
+            (datetime.now(pytz.utc).astimezone(indian_timezone).date())
         ):
-            filtered_data.status = "expired"
+            if (otp_data.valid_till.time()) < (
+                (datetime.now(pytz.utc).astimezone(indian_timezone).time())
+            ):
+                otp_data.status = "expired"
 
-            await filtered_data.save()
+                await otp_data.save()
+                target_url = router.url_path_for("login")
+                target_url += f"?status={otp_data.status}"
+                response = RedirectResponse(url=target_url, status_code=303)
+                return response
+
+        if otp == otp_data.otp:
+            otp_data.status = "successfull"
+
+            await otp_data.save()
+
+            # Use the name of the endpoint function
+            user_exist = await User.filter(phone=phone).exists()
+            if user_exist:
+                target_url = f"/post/test/{phone}"
+
+                response = RedirectResponse(url=target_url, status_code=303)
+                return response
+            else:
+                new_data = User(
+                    phone=phone,
+                )
+                await new_data.save()
+
+                target_url = f"/post/user_login/{phone}"
+
+                print(target_url)
+                response = RedirectResponse(url=target_url, status_code=303)
+                return response
+
+        if otp_data.num_attempts == 3:
+            n = otp_data.num_attempts
+            n += 1
+
+            otp_data.num_attempts = n
+            otp_data.status = "max_attempts"
+            await otp_data.save()
+
             target_url = router.url_path_for("login")
-            target_url += f"?status={filtered_data.status}"
+            # Use the name of the endpoint function
+            target_url += f"?status={otp_data.status}"
             response = RedirectResponse(url=target_url, status_code=303)
             return response
-
-    if otp == filtered_data.otp:
-        filtered_data.status = "successfull"
-
-        await filtered_data.save()
-
-        # Use the name of the endpoint function
-        user_exist = await User.filter(phone=phone).exists()
-        if user_exist:
-            target_url = f"/post/test/{phone}"
-
-            response = RedirectResponse(url=target_url, status_code=303)
-            return response
-        else:
-            new_data = User(
-                phone=phone,
-            )
-            await new_data.save()
-
-            target_url = f"/post/user_login/{phone}"
-
-            print(target_url)
-            response = RedirectResponse(url=target_url, status_code=303)
-            return response
-
-    if filtered_data.num_attempts == 3:
-        n = filtered_data.num_attempts
+        n = otp_data.num_attempts
         n += 1
-
-        filtered_data.num_attempts = n
-        filtered_data.status = "max_attempts"
-        await filtered_data.save()
-
-        target_url = router.url_path_for("login")
-        # Use the name of the endpoint function
-        target_url += f"?status={filtered_data.status}"
-        response = RedirectResponse(url=target_url, status_code=303)
-        return response
-    n = filtered_data.num_attempts
-    n += 1
-    filtered_data.num_attempts = n
-    await filtered_data.save()
-    return templates.TemplateResponse(
-        "otp.html", {"request": request, "phone": phone, "attempts": n}
-    )
+        otp_data.num_attempts = n
+        await otp_data.save()
+        return templates.TemplateResponse(
+            "otp.html", {"request": request, "phone": phone, "attempts": n}
+        )
+    except Exception as e:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,detail="Not found")
+    
 
 
 @router.get("/post/user_login/{phone}")
@@ -243,10 +248,10 @@ async def post(
         mentions=mentions,
         hashtags=hashtags,
         ip_address=request.client.host,
-        address="dsfs",
-        city="Sdfds",
-        state="dsfds",
-        country="sdfsd",
+        address="Bangalore",
+        city="Bangalore",
+        state="Karnataka",
+        country="India",
         user_id=user.id,
     )
     await new_data.save()
@@ -255,13 +260,15 @@ async def post(
     )
     image_url = []
     bucket = storage_client.bucket("sueful_social_profile")
+    g=1
     for file in files:
         img = await file.read()
         img = Image.open(BytesIO(img))
         img.thumbnail((200, 200))
         output = BytesIO()
         img.convert("RGB").save(output, format="JPEG")
-        destination_blob_name = f"posts/post_{post.id}.jpg"
+        destination_blob_name = f"posts/post_{post.id}_{g}.jpg"
+        g+=1
         
 
         # Upload the file to GCS
