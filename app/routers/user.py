@@ -52,7 +52,7 @@ storage_client = storage.Client(Path)
 
 
 
-@router.get("/post/login", name="login")
+@router.get("/", name="login")
 async def login(request: Request, status: str = Query(None)):
     return templates.TemplateResponse(
         "login.html", {"request": request, "status": status}

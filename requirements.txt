@@ -11,3 +11,4 @@ httpx
 orjson
 jinja2
 twilio
+python-multipart
