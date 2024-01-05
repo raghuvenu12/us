@@ -24,7 +24,7 @@
               <div class="alert alert-warning" role="alert">You have exceeded the attempt limit</div>
               <div class="input-group mb-3">
               <span class="input-group-text" id="basic-addon1">+91</span>
-              <input type="text" class="form-control" placeholder="Enter Phone number" name="phone" pattern="[0-9]+" aria-label="Phone number" aria-describedby="basic-addon1">
+              <input type="text" class="form-control" placeholder="Enter Phone number" name="phone" pattern="[0-9]+" required aria-label="Phone number" aria-describedby="basic-addon1">
             </div></div>
             <!-- New password -->
             {%elif status=="expired" %}
@@ -34,7 +34,7 @@
               <div class="input-group mb-3">
               <span class="input-group-text" id="basic-addon1">+91</span>
               
-              <input type="text" class="form-control" placeholder="Enter Phone number" pattern="[0-9]+" name="phone">
+              <input type="text" class="form-control" placeholder="Enter Phone number" pattern="[0-9]+" name="phone" required>
               </div></div>
             {%else%}
             <div class="mb-3 input-group-lg">
@@ -42,7 +42,7 @@
               <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">+91</span>
                 
-                <input type="text" class="form-control" placeholder="Enter Phone number" pattern="[0-9]+" name="phone">
+                <input type="text" class="form-control" placeholder="Enter Phone number" pattern="[0-9]+" name="phone" reuired>
                 </div>
             </div>
             {% endif %}

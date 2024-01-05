@@ -1,3 +1,6 @@
+
+
+
 from fastapi import (
     APIRouter,
     Depends,
@@ -10,6 +13,12 @@ from fastapi import (
     UploadFile,
     File,
 )
+import secrets
+from typing import Annotated
+import collections
+from fastapi.security import HTTPBasic, HTTPBasicCredentials
+import requests
+import socket
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from app.config import get_settings
@@ -30,9 +39,21 @@ import os
 from PIL import Image
 from io import BytesIO
 from app.config import Settings
+from urllib.request import urlopen
+import ipdata
+
+'''
+s=urlopen('http://checkip.dyndns.com')
+d=str(s.read())
+print(d)'''
 
 setting = get_settings()
+payload = {'key': 'CE87A75E625D2A14A870CAFC5D7022B2', 'ip': '101.0.63.227', 'format': 'json'}
+api_result = requests.get('https://api.whatismyip.com/ip.php?key=52ba3649a96c23a93aa973a3f0ab9d38')
+print(api_result.text)
 
+
+   
 
 # Create a 'now' variable representing the current date and time
 
@@ -97,6 +118,100 @@ async def otp(request: Request, phone: str = Form(...)):
 
 
 # Add similar try-except blocks to other routes and functions as needed.
+@router.get("/post/map/{phone}")
+async def map(request:Request,phone:str):
+    distinct_user_ids = await Post.all()
+    posts=await Post.all()
+    lat=[]
+    long=[]
+    s=set()
+    seen = set()
+    result = []
+    for item in distinct_user_ids:
+        if (item.latitude,item.longitude) not in seen:
+            seen.add((item.latitude,item.longitude))
+            result.append((item.latitude,item.longitude))
+    
+    
+    print(result)
+    user_id = await User.get(phone=phone)
+    citizen = await Citizen.get(user_id=user_id.id).first()
+    username = citizen.username
+    image = citizen.image_url
+    users = await User.all()
+    all_citizen = await Citizen.all()
+    
+
+    post = await Post.all().order_by("-id").limit(3)
+    usernames = []
+    images = []
+    comments = []
+    comment_post = []
+    comment_username_per_post = []
+    comment_username = []
+    comment_image_per_post = []
+    comment_image = []
+    all_post=await Post.all()
+    post_mentions=[]
+    for i in range(len(all_post)):
+        for j in range(len(all_post[i].mentions)):
+
+            post_mentions.append(all_post[i].mentions[j])
+    post_mentions=collections.Counter(post_mentions)
+
+
+    for i in range(len(post)):
+        id = post[i].user_id
+        print(id)
+        citizen = await Citizen.get(user_id=id).first()
+        usernames.append(citizen.username)
+        images.append(citizen.image_url)
+        comment = await Comment.filter(post_id=post[i].id).order_by("-id").limit(3)
+        for i in comment:
+            comment_post.append(i.text)
+            citizen_details = await Citizen.get(user_id=i.user_id).first()
+            comment_username_per_post.append(citizen_details.username)
+            comment_image_per_post.append(citizen_details.image_url)
+
+        comments.append(comment_post.copy())
+        comment_username.append(comment_username_per_post.copy())
+        comment_image.append(comment_image_per_post.copy())
+        comment_post.clear()
+        comment_username_per_post.clear()
+        comment_image_per_post.clear()
+    top_mentions=[]
+    print(top_mentions)
+    for i,j in post_mentions.items():
+        top_mentions.append(i)
+
+    media = await Media.all().order_by("-id").limit(3)
+    n = len(usernames)
+
+    return templates.TemplateResponse(
+        "map.html",
+        {
+            "top_mentions":top_mentions,
+            "image": image,
+            "request": request,
+            "user": users,
+            "citizen": all_citizen,
+            "phone": phone,
+            "media": media,
+            "username": username,
+            "post": post,
+            "media": media,
+            "usernames": usernames,
+            "images": images,
+            "n": n,
+            "comments": comments,
+            "comment_username": comment_username,
+            "comment_image": comment_image,"distinct_posts":result,"post":posts
+        },
+    )
+
+
+    
+
 
 
 @router.post("/post/verify_otp/{phone}")
@@ -192,7 +307,7 @@ async def get_user(
     id = user_id.id
     img = await file.read()
     img = Image.open(BytesIO(img))
-    img.thumbnail((200, 200))
+    img=img.resize((200, 200))
     output = BytesIO()
     img.convert("RGB").save(output, format="JPEG")
 
@@ -207,6 +322,7 @@ async def get_user(
 
     # Upload the file to GCS
     blob = bucket.blob(destination_blob_name)
+    blob.cache_control = 'no-store, no-cache, must-revalidate'
     blob.upload_from_file(BytesIO(output.getvalue()), content_type="image/jpeg")
     image_url = blob.public_url
     new_data = Citizen(
@@ -232,15 +348,23 @@ async def post(
     phone: str,
     text: str = Form(...),
     files: list[UploadFile] = File(...),
+    latitude:str=Form(...),longitude:str=Form(...)
 ):
     user= await User.get(phone=phone)
     id = user.id
     mention_pattern = r"@([A-Za-z0-9_]+)"
+    
 
     # Regular expression pattern for hashtags (e.g., #example)
     hashtag_pattern = r"#([A-Za-z0-9_]+)"
+    
+    video_file_extensions = ["mp4", "avi", "mkv"]  # Add more as needed
 
-    # Extract mentions and hashtags from the text
+# Extract mentions and hashtags from the text
+   
+    video_file_extensions = ["mp4", "avi", "mkv"]  # Add more as needed
+
+# Extract mentions and hashtags from the text
     mentions = re.findall(mention_pattern, text)
     hashtags = re.findall(hashtag_pattern, text)
     new_data = Post(
@@ -253,30 +377,67 @@ async def post(
         state="Karnataka",
         country="India",
         user_id=user.id,
+        latitude=float(latitude),
+        longitude=float(longitude),
+
     )
     await new_data.save()
     post= (
         await Post.filter(user_id=user.id).order_by("-id").limit(1).first()
     )
-    image_url = []
+
+    # Initialize the list to store image and video URLs
+    media_urls = []
     bucket = storage_client.bucket("sueful_social_profile")
+
+    # Process and upload each file (image or video)
+    v=1
     g=1
     for file in files:
-        img = await file.read()
-        img = Image.open(BytesIO(img))
-        img.thumbnail((200, 200))
-        output = BytesIO()
-        img.convert("RGB").save(output, format="JPEG")
-        destination_blob_name = f"posts/post_{post.id}_{g}.jpg"
-        g+=1
+        file_extension = file.filename.split('.')[-1].lower()
+
+        if file_extension in video_file_extensions:
+            # Handle video file
+            video_blob_name = f"posts/post_{post.id}_video_{v}.{file_extension}"
+
+            # Upload video to Blob Storage
+            blob = bucket.blob(video_blob_name)
+            blob.upload_from_file(file.file, content_type=file.content_type)
+            v+=1
+
+            media_urls.append(blob.public_url)
+        else:              
+            # Handle image file
+            img = await file.read()
+            img = Image.open(BytesIO(img))
+            img = img.resize((200, 200))
+            output = BytesIO()
+            img.convert("RGB").save(output, format="JPEG")
+            image_blob_name = f"posts/post_{post.id}_{g}.jpg"
+            g += 1
+
+            # Upload the image file to Blob Storage
+            blob = bucket.blob(image_blob_name)
+            blob.upload_from_file(BytesIO(output.getvalue()), content_type="image/jpeg")
+
+            media_urls.append(blob.public_url)
         
 
-        # Upload the file to GCS
-        blob = bucket.blob(destination_blob_name)
-        blob.upload_from_file(BytesIO(output.getvalue()), content_type="image/jpeg")
+    # Extract mentions and hashtags from the text
+  
+    
+    
 
-        image_url.append(blob.public_url)
-    new_data = Media(media_thumbnail_url=image_url, post_id=post.id)
+    ipdata.api_key = "262c735de4858cc850b8309d2de3091efbd439641ae16854e3e8fc02"   
+    
+    
+   
+    
+    
+   
+
+  
+    new_data = Media(media_thumbnail_url=media_urls, post_id=post.id)
     await new_data.save()
 
     # Create a Google Cloud Storage client
@@ -319,6 +480,15 @@ async def create(request: Request, phone: str):
     comment_username = []
     comment_image_per_post = []
     comment_image = []
+    all_post=await Post.all()
+    post_mentions=[]
+    for i in range(len(all_post)):
+        for j in range(len(all_post[i].mentions)):
+
+            post_mentions.append(all_post[i].mentions[j])
+    post_mentions=collections.Counter(post_mentions)
+
+
     for i in range(len(post)):
         id = post[i].user_id
         print(id)
@@ -338,6 +508,10 @@ async def create(request: Request, phone: str):
         comment_post.clear()
         comment_username_per_post.clear()
         comment_image_per_post.clear()
+    top_mentions=[]
+    print(top_mentions)
+    for i,j in post_mentions.items():
+        top_mentions.append(i)
 
     media = await Media.all().order_by("-id").limit(3)
     n = len(usernames)
@@ -345,6 +519,7 @@ async def create(request: Request, phone: str):
     return templates.TemplateResponse(
         "index.html",
         {
+            "top_mentions":top_mentions,
             "image": image,
             "request": request,
             "user": users,
@@ -362,3 +537,29 @@ async def create(request: Request, phone: str):
             "comment_image": comment_image,
         },
     )
+security = HTTPBasic()
+
+def get_current_username(
+    credentials: Annotated[HTTPBasicCredentials, Depends(security)]
+    ):
+    current_username_bytes = credentials.username.encode("utf8")
+    correct_username_bytes = b"stanleyjobson"
+    is_correct_username = secrets.compare_digest(
+        current_username_bytes, correct_username_bytes
+    )
+    current_password_bytes = credentials.password.encode("utf8")
+    correct_password_bytes = b"swordfish"
+    is_correct_password = secrets.compare_digest(
+        current_password_bytes, correct_password_bytes
+    )
+    if not (is_correct_username and is_correct_password):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Incorrect email or password",
+            headers={"WWW-Authenticate": "Basic"},
+        )
+    return credentials.username
+@router.get("/users/me")
+
+def read_current_user(username: Annotated[str, Depends(get_current_username)]):
+    return {"username": username}

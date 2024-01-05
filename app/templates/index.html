@@ -4,7 +4,7 @@
 
 	<!-- Meta Tags -->
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="author" content="Webestica.com">
 	<meta name="description" content="Bootstrap 5 based Social Media Network and Community Theme">
 
@@ -12,14 +12,18 @@
 	
 
 	<!-- Favicon -->
+	
+<script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<!--<script defer src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>-->
 	<link rel="shortcut icon" href="{{url_for('static',path='assets/images/favicon.ico')}}">
 
 	<!-- Google Font -->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap">
+	<!--<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap">-->
 
 	<!-- Plugins CSS -->
-	<link rel="stylesheet" type="text/css" href="{{url_for('static',path='app/templates/assets/vendor/font-awesome/css/all.min.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',path='assets/vendor/font-awesome/css/all.min.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{url_for('static',path='assets/vendor/bootstrap-icons/bootstrap-icons.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{url_for('static',path='assets/vendor/OverlayScrollbars-master/css/OverlayScrollbars.min.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{url_for('static',path='assets/vendor/tiny-slider/dist/tiny-slider.css')}}">
@@ -27,13 +31,29 @@
 	<link rel="stylesheet" type="text/css" href="{{url_for('static',path='assets/vendor/glightbox-master/dist/css/glightbox.min.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{url_for('static',path='assets/vendor/dropzone/dist/dropzone.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{url_for('static',path='assets/vendor/flatpickr/dist/flatpickr.css')}}">
-	<link rel="stylesheet" type="text/css" href="{{url_for('static',path='assets/vendor/flatpickr/dist/flatpickr.css')}}assets/vendor/plyr/plyr.css">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',path='assets/vendor/plyr/plyr.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{url_for('static',path='assets/vendor/zuck.js/dist/zuck.min.css')}}">
 
-	<!-- Theme CSS -->
 	<link rel="stylesheet" type="text/css" href="{{url_for('static',path='assets/css/style.css')}}">
+	<style>
+	.btn-pink {
+    background-color: white;
+    border:  solid #CF2C79;
+    color: #CF2C79;
+    transition: background-color 0.3s, color 0.3s;
+}
 
-<style></style><style></style><style></style><style></style></head>
+.btn-pink:hover {
+    background-color: #CF2C79; /* Darker pink color */
+    border:  solid #CF2C79; /* Darker pink color */
+    color: white;
+}
+
+
+
+</style>
+
+</head>
 <body><div hidden="" id="sprite-plyr"><!--?xml version="1.0" encoding="UTF-8"?--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><symbol id="plyr-airplay" viewBox="0 0 18 18"><path d="M16 1H2a1 1 0 00-1 1v10a1 1 0 001 1h3v-2H3V3h12v8h-2v2h3a1 1 0 001-1V2a1 1 0 00-1-1z"></path><path d="M4 17h10l-5-6z"></path></symbol><symbol id="plyr-captions-off" viewBox="0 0 18 18"><path d="M1 1c-.6 0-1 .4-1 1v11c0 .6.4 1 1 1h4.6l2.7 2.7c.2.2.4.3.7.3.3 0 .5-.1.7-.3l2.7-2.7H17c.6 0 1-.4 1-1V2c0-.6-.4-1-1-1H1zm4.52 10.15c1.99 0 3.01-1.32 3.28-2.41l-1.29-.39c-.19.66-.78 1.45-1.99 1.45-1.14 0-2.2-.83-2.2-2.34 0-1.61 1.12-2.37 2.18-2.37 1.23 0 1.78.75 1.95 1.43l1.3-.41C8.47 4.96 7.46 3.76 5.5 3.76c-1.9 0-3.61 1.44-3.61 3.7 0 2.26 1.65 3.69 3.63 3.69zm7.57 0c1.99 0 3.01-1.32 3.28-2.41l-1.29-.39c-.19.66-.78 1.45-1.99 1.45-1.14 0-2.2-.83-2.2-2.34 0-1.61 1.12-2.37 2.18-2.37 1.23 0 1.78.75 1.95 1.43l1.3-.41c-.28-1.15-1.29-2.35-3.25-2.35-1.9 0-3.61 1.44-3.61 3.7 0 2.26 1.65 3.69 3.63 3.69z" fill-rule="evenodd" fill-opacity=".5"></path></symbol><symbol id="plyr-captions-on" viewBox="0 0 18 18"><path d="M1 1c-.6 0-1 .4-1 1v11c0 .6.4 1 1 1h4.6l2.7 2.7c.2.2.4.3.7.3.3 0 .5-.1.7-.3l2.7-2.7H17c.6 0 1-.4 1-1V2c0-.6-.4-1-1-1H1zm4.52 10.15c1.99 0 3.01-1.32 3.28-2.41l-1.29-.39c-.19.66-.78 1.45-1.99 1.45-1.14 0-2.2-.83-2.2-2.34 0-1.61 1.12-2.37 2.18-2.37 1.23 0 1.78.75 1.95 1.43l1.3-.41C8.47 4.96 7.46 3.76 5.5 3.76c-1.9 0-3.61 1.44-3.61 3.7 0 2.26 1.65 3.69 3.63 3.69zm7.57 0c1.99 0 3.01-1.32 3.28-2.41l-1.29-.39c-.19.66-.78 1.45-1.99 1.45-1.14 0-2.2-.83-2.2-2.34 0-1.61 1.12-2.37 2.18-2.37 1.23 0 1.78.75 1.95 1.43l1.3-.41c-.28-1.15-1.29-2.35-3.25-2.35-1.9 0-3.61 1.44-3.61 3.7 0 2.26 1.65 3.69 3.63 3.69z" fill-rule="evenodd"></path></symbol><symbol id="plyr-download" viewBox="0 0 18 18"><path d="M9 13c.3 0 .5-.1.7-.3L15.4 7 14 5.6l-4 4V1H8v8.6l-4-4L2.6 7l5.7 5.7c.2.2.4.3.7.3zm-7 2h14v2H2z"></path></symbol><symbol id="plyr-enter-fullscreen" viewBox="0 0 18 18"><path d="M10 3h3.6l-4 4L11 8.4l4-4V8h2V1h-7zM7 9.6l-4 4V10H1v7h7v-2H4.4l4-4z"></path></symbol><symbol id="plyr-exit-fullscreen" viewBox="0 0 18 18"><path d="M1 12h3.6l-4 4L2 17.4l4-4V17h2v-7H1zM16 .6l-4 4V1h-2v7h7V6h-3.6l4-4z"></path></symbol><symbol id="plyr-fast-forward" viewBox="0 0 18 18"><path d="M7.875 7.171L0 1v16l7.875-6.171V17L18 9 7.875 1z"></path></symbol><symbol id="plyr-logo-vimeo" viewBox="0 0 18 18"><path d="M17 5.3c-.1 1.6-1.2 3.7-3.3 6.4-2.2 2.8-4 4.2-5.5 4.2-.9 0-1.7-.9-2.4-2.6C5 10.9 4.4 6 3 6c-.1 0-.5.3-1.2.8l-.8-1c.8-.7 3.5-3.4 4.7-3.5 1.2-.1 2 .7 2.3 2.5.3 2 .8 6.1 1.8 6.1.9 0 2.5-3.4 2.6-4 .1-.9-.3-1.9-2.3-1.1.8-2.6 2.3-3.8 4.5-3.8 1.7.1 2.5 1.2 2.4 3.3z"></path></symbol><symbol id="plyr-logo-youtube" viewBox="0 0 18 18"><path d="M16.8 5.8c-.2-1.3-.8-2.2-2.2-2.4C12.4 3 9 3 9 3s-3.4 0-5.6.4C2 3.6 1.3 4.5 1.2 5.8 1 7.1 1 9 1 9s0 1.9.2 3.2c.2 1.3.8 2.2 2.2 2.4C5.6 15 9 15 9 15s3.4 0 5.6-.4c1.4-.3 2-1.1 2.2-2.4.2-1.3.2-3.2.2-3.2s0-1.9-.2-3.2zM7 12V6l5 3-5 3z"></path></symbol><symbol id="plyr-muted" viewBox="0 0 18 18"><path d="M12.4 12.5l2.1-2.1 2.1 2.1 1.4-1.4L15.9 9 18 6.9l-1.4-1.4-2.1 2.1-2.1-2.1L11 6.9 13.1 9 11 11.1zM3.786 6.008H.714C.286 6.008 0 6.31 0 6.76v4.512c0 .452.286.752.714.752h3.072l4.071 3.858c.5.3 1.143 0 1.143-.602V2.752c0-.601-.643-.977-1.143-.601L3.786 6.008z"></path></symbol><symbol id="plyr-pause" viewBox="0 0 18 18"><path d="M6 1H3c-.6 0-1 .4-1 1v14c0 .6.4 1 1 1h3c.6 0 1-.4 1-1V2c0-.6-.4-1-1-1zm6 0c-.6 0-1 .4-1 1v14c0 .6.4 1 1 1h3c.6 0 1-.4 1-1V2c0-.6-.4-1-1-1h-3z"></path></symbol><symbol id="plyr-pip" viewBox="0 0 18 18"><path d="M13.293 3.293L7.022 9.564l1.414 1.414 6.271-6.271L17 7V1h-6z"></path><path d="M13 15H3V5h5V3H2a1 1 0 00-1 1v12a1 1 0 001 1h12a1 1 0 001-1v-6h-2v5z"></path></symbol><symbol id="plyr-play" viewBox="0 0 18 18"><path d="M15.562 8.1L3.87.225c-.818-.562-1.87 0-1.87.9v15.75c0 .9 1.052 1.462 1.87.9L15.563 9.9c.584-.45.584-1.35 0-1.8z"></path></symbol><symbol id="plyr-restart" viewBox="0 0 18 18"><path d="M9.7 1.2l.7 6.4 2.1-2.1c1.9 1.9 1.9 5.1 0 7-.9 1-2.2 1.5-3.5 1.5-1.3 0-2.6-.5-3.5-1.5-1.9-1.9-1.9-5.1 0-7 .6-.6 1.4-1.1 2.3-1.3l-.6-1.9C6 2.6 4.9 3.2 4 4.1 1.3 6.8 1.3 11.2 4 14c1.3 1.3 3.1 2 4.9 2 1.9 0 3.6-.7 4.9-2 2.7-2.7 2.7-7.1 0-9.9L16 1.9l-6.3-.7z"></path></symbol><symbol id="plyr-rewind" viewBox="0 0 18 18"><path d="M10.125 1L0 9l10.125 8v-6.171L18 17V1l-7.875 6.171z"></path></symbol><symbol id="plyr-settings" viewBox="0 0 18 18"><path d="M16.135 7.784a2 2 0 01-1.23-2.969c.322-.536.225-.998-.094-1.316l-.31-.31c-.318-.318-.78-.415-1.316-.094a2 2 0 01-2.969-1.23C10.065 1.258 9.669 1 9.219 1h-.438c-.45 0-.845.258-.997.865a2 2 0 01-2.969 1.23c-.536-.322-.999-.225-1.317.093l-.31.31c-.318.318-.415.781-.093 1.317a2 2 0 01-1.23 2.969C1.26 7.935 1 8.33 1 8.781v.438c0 .45.258.845.865.997a2 2 0 011.23 2.969c-.322.536-.225.998.094 1.316l.31.31c.319.319.782.415 1.316.094a2 2 0 012.969 1.23c.151.607.547.865.997.865h.438c.45 0 .845-.258.997-.865a2 2 0 012.969-1.23c.535.321.997.225 1.316-.094l.31-.31c.318-.318.415-.781.094-1.316a2 2 0 011.23-2.969c.607-.151.865-.547.865-.997v-.438c0-.451-.26-.846-.865-.997zM9 12a3 3 0 110-6 3 3 0 010 6z"></path></symbol><symbol id="plyr-volume" viewBox="0 0 18 18"><path d="M15.6 3.3c-.4-.4-1-.4-1.4 0-.4.4-.4 1 0 1.4C15.4 5.9 16 7.4 16 9c0 1.6-.6 3.1-1.8 4.3-.4.4-.4 1 0 1.4.2.2.5.3.7.3.3 0 .5-.1.7-.3C17.1 13.2 18 11.2 18 9s-.9-4.2-2.4-5.7z"></path><path d="M11.282 5.282a.909.909 0 000 1.316c.735.735.995 1.458.995 2.402 0 .936-.425 1.917-.995 2.487a.909.909 0 000 1.316c.145.145.636.262 1.018.156a.725.725 0 00.298-.156C13.773 11.733 14.13 10.16 14.13 9c0-.17-.002-.34-.011-.51-.053-.992-.319-2.005-1.522-3.208a.909.909 0 00-1.316 0zm-7.496.726H.714C.286 6.008 0 6.31 0 6.76v4.512c0 .452.286.752.714.752h3.072l4.071 3.858c.5.3 1.143 0 1.143-.602V2.752c0-.601-.643-.977-1.143-.601L3.786 6.008z"></path></symbol></svg></div>
 
 <!-- =======================
@@ -339,84 +359,113 @@ Header END -->
 	<div class="row" ></div>
 	
 	<!-- Container START -->
-	<div class="container mt-5">
-		<div class="row g-0">
+	<div class="container-fluid mt-4">
+		<div class="row " >
 
 			<!-- Sidenav START -->
-			<div class="col-lg-3">
+			<div class="col-3 d-md-block d-none m-n1" >
+			
 
-				<!-- Advanced filter responsive toggler START -->
-				<div class="d-flex align-items-center d-lg-none">
+
+				<!--				<div class="d-flex align-items-center d-lg-none">
 					<button class="border-0 bg-transparent" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSideNavbar" aria-controls="offcanvasSideNavbar">
 						<span class="btn btn-primary"><i class="fa-solid fa-sliders-h"></i></span>
-						<span class="h6 mb-0 fw-bold d-lg-none ms-2">My profile</span>
+						<span cl ass="h6 mb-0 fw-bold d-lg-none ms-2">My profile</span>
 					</button>
-				</div>
-				<!-- Advanced filter responsive toggler END -->
+				</div>-->
 				
-				<!-- Navbar START-->
-				<nav class="navbar navbar-expand-lg mx-0"> 
-					<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasSideNavbar">
-						<!-- Offcanvas header -->
+				
+				
+				<nav class="navbar navbar-expand "> 
+					<div class="offcanvas offcanvas-start"  id="offcanvasSideNavbar">
+						<!--
 						<div class="offcanvas-header">
 							<button type="button" class="btn-close text-reset ms-auto" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-						</div>
+						</div>-->
 
 						<!-- Offcanvas body -->
+						
 						<div class="offcanvas-body d-block px-2 px-lg-0">
 							<!-- Card START -->
 							<div class="card overflow-hidden">
 								<!-- Cover image -->
-                                <div class="text-center mt-4"><p class="fw-bold fs-4" style="color: palevioletred;">Useful Social</p></div>
+                                <div class="text-center mt-4"><p class="fw-bold fs-4" style="color: #CF2C79;">Useful Social</p></div>
 								
 									<!-- Card body START -->
 									<div class="card-body pt-0">
-										<div class="text-center">
-										  <!-- Avatar -->
+										<!--<div class="text-center">
+										  
 										<div class="avatar avatar-lg  ">
-											<a href="#!"><img class="embed-responsive-item img-fluid" src={{image}} style="height: fit-content; width:fit-content" alt=""></a>
+											<a href="#!"><img class="embed-responsive-item img-fluid" src={{image}}  alt=""></a>
 										</div>
-										<!-- Info -->
+										
+										<div class="m-2">
 										<h5 class="m-3"> <a href="#!">{{username}}</a> </h5>
+										</div>
 										
 										
 
-										<!-- User stat START -->
-									
-										<!-- User stat END -->
-									</div>
+										
+										
+									</div>-->
 
 									<!-- Divider -->
-									<hr>
+									
 
 									<!-- Side Nav START -->
-									<ul class="nav nav-link-secondary flex-column fw-bold gap-2">
+									<ul class="nav nav-link-secondary flex-column fw-bold gap-2 min-vh-100">
 										<li class="nav-item">
-											<a class="nav-link" href="my-profile.html"> <img class="me-2 h-20px fa-fw" src="{{url_for('static',path='assets/images/icon/home-outline-filled.svg')}}" alt=""><span>Home</span></a>
+											<a class="nav-link" href="/post/test/{{phone}}">
+												<img class="me-2 h-20px w-20px fa-fw img-fluid" src="{{url_for('static',path='assets/images/Group.png')}}" alt="">
+												<span class="text">Home</span>
+											</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link" href="my-profile-connections.html"> <img class="me-2 h-20px fa-fw" src="{{url_for('static',path='assets/images/icon/search-outline-filled.svg')}}" alt=""><span>Search</span></a>
+											<a class="nav-link" href="my-profile-connections.html">
+												<img class="me-2 h-20px w-20px fa-fw img-fluid" src="{{url_for('static',path='assets/images/Vector.jpg')}}" alt="">
+												<span>Search</span>
+											</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link" href="blog.html"> <img class="me-2 h-20px fa-fw" src="{{url_for('static',path='assets/images/icon/earth-outline-filled.svg')}}" alt=""><span>Map</span></a>
+											<a class="nav-link" href="/post/map/{{phone}}">
+												<img class="me-2 h-20px w-20px fa-fw img-fluid" src="{{url_for('static',path='assets/images/location_on.png')}}" alt="">
+												<span>Map</span>
+											</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link" href="events.html"> <img class="me-2 h-20px fa-fw" src="{{url_for('static',path='assets/images/icon/calendar-outline-filled.svg')}}" alt=""><span>Post</span></a>
+											<a class="nav-link" href="events.html">
+												<img class="me-2 h-20px w-20px fa-fw img-fluid" src="{{url_for('static',path='assets/images/campaign.png')}}" alt="">
+												<span>Post</span>
+											</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link" href="groups.html"> <img class="me-2 h-20px fa-fw" src="{{url_for('static',path='assets/images/icon/chat-outline-filled.svg')}}" alt=""><span>Community</span></a>
+											<a class="nav-link" href="groups.html">
+												<img class="me-2 h-20px w-20px fa-fw img-fluid" src="{{url_for('static',path='assets/images/forum.png')}}" alt="">
+												<span>Community</span>
+											</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link" href="notifications.html"> <img class="me-2 h-20px fa-fw" src="{{url_for('static',path='assets/images/icon/notification-outlined-filled.svg')}}" alt=""><span>Profile</span></a>
+											<a class="nav-link" href="groups.html">
+												<img class="me-2 h-20px w-20px fa-fw img-fluid" src="{{image}}" alt="">
+												<span class="text-center">{{username}}</span>
+											</a>
 										</li>
-										<li class="nav-item">
-											<a class="nav-link" href="settings.html"> <img class="me-2 h-20px fa-fw" src="{{url_for('static',path='assets/images/icon/cog-outline-filled.svg')}}" alt=""><span>Settings </span></a>
-										</li>
+
 									</ul>
+
+									
 									<!-- Side Nav END -->
 								</div>
+								
+								
 								<!-- Card body END -->
 								<!-- Card footer -->
+								<div class="container my-5">
+									<div class="rounded-pill border text-center bg-transparent mx-auto mt-2" style="width: 232px; height:30px;">
+									  <p>Whitefield</p>
+									  
+									</div>
+								  </div>
 								<div class="card-footer text-center py-2">
 									<a class="btn btn-link btn-sm" style="color: palevioletred;" src="my-profile.html">View Profile </a>
 								</div>
@@ -424,87 +473,308 @@ Header END -->
 							<!-- Card END -->
 
 							<!-- Helper link START -->
-							<ul class="nav small mt-4 justify-content-center lh-1">
-								<li class="nav-item">
-									<a class="nav-link" href="my-profile-about.html">About</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="settings.html">Settings</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" target="_blank" href="https://support.webestica.com/login">Support </a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" target="_blank" href="docs/index.html">Docs </a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="help.html">Help</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="privacy-and-terms.html">Privacy &amp; terms</a>
-								</li>
-							</ul>
+							
 							<!-- Helper link END -->
 							<!-- Copyright -->
-							<p class="small text-center mt-1">©2023 <a class="text-reset" target="_blank" href="https://www.webestica.com/"> Webestica </a></p>
+							
 						</div>
 					</div>
 				</nav>
 				<!-- Navbar END-->
 			</div>
 			<!-- Sidenav END -->
+		
+			
+			
 
+			
+			
+			
+			<nav class="navbar navbar-expand fixed-bottom bg-body-tertiary d-md-none text-center" style="background-color: white;">
+				<div class="container-fluid d-flex ">
+					<ul class="navbar-nav">
+						<li class="nav-item">
+							<a class="nav-link" href="/post/test/{{phone}}">
+								<img class="me-2 h-20px w-20px fa-fw img-fluid" src="{{url_for('static',path='assets/images/Group.png')}}" alt="">
+								<span class="text">Home</span>
+							</a>
+						</li>
+					
+						<li class="nav-item">
+							<a class="nav-link" href="/post/map/{{phone}}">
+								<img class="me-2 h-20px w-20px fa-fw img-fluid" src="{{url_for('static',path='assets/images/location_on.png')}}" alt="">
+								<span>Map</span>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="events.html">
+								<img class="me-2 h-20px w-20px fa-fw img-fluid" src="{{url_for('static',path='assets/images/campaign.png')}}" alt="">
+								<span>Post</span>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="groups.html">
+								<img class="me-2 h-20px w-20px fa-fw img-fluid" src="{{url_for('static',path='assets/images/forum.png')}}" alt="">
+								<span>Community</span>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="groups.html">
+								<img class="me-2 h-20px w-20px fa-fw img-fluid" src="{{image}}" alt="">
+								<span class="text-center">{{username}}</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+			
+				<!--<nav class="navbar navbar-expand-lg fixed-bottom bg-body-tertiary">
+					<div class="container-fluid">
+					  <a class="navbar-brand" href="#">Navbar</a>
+					  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					  </button>
+					  <div class="collapse navbar-collapse" id="navbarNav">
+						<ul class="navbar-nav">
+						  <li class="nav-item">
+							<a class="nav-link active" aria-current="page" href="#">Home</a>
+						  </li>
+						  <li class="nav-item">
+							<a class="nav-link" href="#">Features</a>
+						  </li>
+						  <li class="nav-item">
+							<a class="nav-link" href="#">Pricing</a>
+						  </li>
+						  <li class="nav-item">
+							<a class="nav-link disabled" aria-disabled="true">Disabled</a>
+						  </li>
+						</ul>
+					  </div>
+					</div>
+				  </nav>-->
+				  
+
+	<nav class="navbar fixed-top bg-body-tertiary  d-md-none bg-light" style="background-color:white; height: 20px; ">
+	<div class="container-fluid">
+		<div class="d-flex">
+	  <a class="navbar-brand" style="color:#CF2C79">Useful Social</a>
+	  <form class="d-flex align-items-center" role="search">
+		<input class="form-control me-2 align-items-center" type="search" placeholder="Search" aria-label="Search" style="height: 20px;">
+		<button class="btn " type="submit">Search</button>
+	  </form>
+		</div>
+	</div>
+  </nav>
+
+			  
 			<!-- Main content START -->
-			<div class="col-6 ">
+			<div class=" col-md-6 vh-100">
 
 				<!-- Story START -->
         
         <!-- Story END -->
+		
 
 				<!-- Share feed START -->
-				<div class="card card-body flex">
-					<div class="d-flex flex-fill">
-						<!-- Avatar -->
-						
-						
-						
-						<!-- Post input -->
-						<form class="w-100" method="post" action="/post/posts/{{ phone }}" enctype="multipart/form-data">
-							<div class="row">
-								<div class="col-1">
-							<div class="d-flex align-items-start avatar-xs mt-1 flex-fill">
-							
-								<img class="embed-responsive-item img-fluid rounded" style="width: 30px; height: 30px;" src="{{ image }}" alt="User image">
-							
-						</div>
-						</div>
-						<div class="col-11">
-							<div class="mb-3">
-								<input type="text" class="form-control" placeholder="Share your thoughts" name="text">
-							</div>
-							</div>
-							</div>
-						
+				<div class=" text-center text-dark" style="background-color: white;;"><img src="{{url_for('static',path='assets/images/campaign 2.png')}}"> <div class="w-100"> Leverage the power of Social to get started 		</div><div class="flex-grow-1">
+					<button type="button " class="btn  flex-fill text-dark my-2" data-bs-toggle="modal" data-bs-target="#postModal" style="background-color: #CF2C79;">Share your thoughts</button>
+				</div></div>
+			
 				
-							<!-- Custom-styled button to trigger file input -->
+					<!-- Gray background div -->
+					<div class="card custom-card">
+						<!-- Gray background div -->
+						<div class="container my-2">
+							<!-- Image -->
 							
-								
-								<div class="row text-center">
-									<div class="col-auto">
-									<input class="form-control" type="file" id="formFileMultiple" name="files" multiple placeholder="Upload images ">
-									</div>
-									<div class="col-auto">
-									<button type="submit"  style="background-color:palevioletred" class="btn text-white">Submit</button>
-									</div>
+							
+							<div class="d-flex align-items-center rounded-pill" style="background-color:  #F1F4F9;;">
+								<div >
+									<img src="{{image}}" alt="Card Image" class="img-fluid ms-2 " style="width: 30px; height: 30px; background-color: #D3D3D3;">
+									<!-- Button -->
 								</div>
-							
-						</form>
+								<div class="flex-grow-1">
+							<button type="button" class="btn bg-transparent ms-2 flex-fill w-100" data-bs-toggle="modal" data-bs-target="#postModal">Share your thoughts</button>
+						</div></div>
 					</div>
-					<!-- Share feed toolbar START -->
 					
-					<!-- Share feed toolbar END -->
-				</div>
+					</div>
+					
 				
+				  <!-- Modal -->
+				  <div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="postModalLabel" aria-hidden="true">
+					<div class="modal-dialog ">
+					  <div class="modal-content">
+						<div class="modal-header">
+						  <h5 class="modal-title" id="postModalLabel">What is your experience?</h5>
+						  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
+						  <!-- Form inside the modal -->
+						  <form method="post" action="/post/posts/{{ phone }}" enctype="multipart/form-data" id="locationForm">
+							<div class="p-3 d-flex align-items-center" >
+								<!-- Image -->
+								
+								<div style="background-color: #D3D3D3;">
+								<img src="{{image}}" alt="Card Image" class="img-fluid rounded  " style="width: 30px; height: 30px; background-color: #D3D3D3;">
+								<!-- Button -->
+							</div>
+								<div class="flex-grow-1 ms-2" style="color: #CF2C79;" >
+									{{username}}
+								
+							</div>
+							</div>
+								
+							 
+							  
+								<div class="mb-5">
+								  <input type="textarea" class="form-control" placeholder="Share your thoughts" required name="text">
+								</div>
+								<input type="hidden" id="latitude" name="latitude">
+								<input type="hidden" id="longitude" name="longitude">
+							  
+							<br>
+							<hr>
+				  
+							<!-- Custom-styled button to trigger file input -->
+							<div class="d-flex align-items-center">
+							  <div >
+								<input class="form-control d-none" type="file" id="formFileMultiple" name="files" accept="image/*,video/*" multiple required>
+
+								<label class="input-group-text" for="formFileMultiple">
+									<i class="fas fa-file-image"></i> <!-- Font Awesome file image icon -->
+								</label>
+							  </div>
+							  <div class="ms-auto">
+								<button type="button" style="background-color:#CF2C79" class="btn text-white" data-bs-dismiss="modal">Close</button>
+								<button type="button" onclick="getUserLocationAndSubmit()" style="background-color:palevioletred" class="btn text-white rounded">Post</button>
+							  </div>
+							
+							 
+							</div>
+						  </form>
+						</div>
+					  </div>
+					</div>
+				  </div>
+				<script>
+					function getUserLocationAndSubmit() {
+            // Check if the Geolocation API is supported
+            if ('geolocation' in navigator) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const latitude = position.coords.latitude;
+                        const longitude = position.coords.longitude;
+
+                        // Set hidden fields with the obtained location
+                        document.getElementById('latitude').value = latitude;
+                        document.getElementById('longitude').value = longitude;
+
+                        // Submit the form
+                        document.getElementById('locationForm').submit();
+                    },
+                    (error) => {
+                        console.error('Error getting user location:', error.message);
+                    }
+                );
+            } else {
+                console.error('Geolocation is not supported by this browser.');
+            }
+        }
+    
+				</script>
+				
+				<div class="col-12  d-block d-md-none ">
+					<div style="height: 100px;" class="overflow-x-scroll">
+					
+				
+					
+						<!-- Card follow START -->
+						
+						<!-- Card follow START -->
+	
+						<!-- Card News START -->
+						
+							<div class="card">
+								<!-- Card header START -->
+								<div class="card-header pb-0 border-0">
+									<h5 class="card-title mb-0">Trending news in Whitefield</h5>
+								</div>
+								<!-- Card header END -->
+								<!-- Card body START -->
+								<div class="card-body">
+									<!-- News item -->
+									<div class="mb-3">
+										<h6 class="mb-0"><a href="blog-details.html">23</a></h6>
+										<small>2hr</small>
+									</div>
+									<!-- News item -->
+									<div class="mb-3">
+										<h6 class="mb-0"><a href="blog-details.html">45</a></h6>
+										<small>3hr</small>
+									</div>
+									<!-- News item -->
+									<div class="mb-3">
+										<h6 class="mb-0"><a href="blog-details.html">45</a></h6>
+										<small>4hr</small>
+									</div>
+									<!-- News item -->
+									<div class="mb-3">
+										<h6 class="mb-0"><a href="blog-details.html">12</a></h6>
+										<small>6hr</small>
+									</div>
+									<!-- Load more comments -->
+									<a href="#!" role="button" class="btn btn-link btn-link-loader btn-sm text-secondary d-flex align-items-center" data-bs-toggle="button" aria-pressed="true">
+										<div class="spinner-dots me-2">
+											<span class="spinner-dot"></span>
+											<span class="spinner-dot"></span>
+											<span class="spinner-dot"></span>
+										</div>
+										View all latest news
+									</a>
+								</div>
+								<!-- Card body END -->
+							
+						</div>
+						<!-- Card News END -->
+					</div>
+					</div>
+					
+					<div class="col-12  d-block d-md-none">
+						<div style="height: 100px;" class="overflow-x-scroll">
+						<!-- Card follow START -->
+						
+						<!-- Card follow START -->
+	
+						<!-- Card News START -->
+						
+							<div class="card">
+								<!-- Card header START -->
+								<div class="card-header pb-0 border-0">
+									<h5 class="card-title mb-0">Top Mentions in Whitefield</h5>
+								</div>
+								<!-- Card header END -->
+								<!-- Card body START -->
+								<div class="card-body">
+									<!-- News item -->
+									
+									{% for i in range(top_mentions|length) %}
+								<div class="mb-3">
+									<h6 class="mb-0"><a href="blog-details.html">@{{top_mentions[i]}}</a></h6>
+									
+								</div>
+								{% endfor %}
+									<!-- News item -->
+									
+									
+								</div>
+								<!-- Card body END -->
+							
+						</div>
+						<!-- Card News END -->
+					</div>
+					
+					</div>
 				
 				<!-- Share feed END -->
 
@@ -517,12 +787,12 @@ Header END -->
 			<div class="d-flex align-items-center text-wrap">
 				<!-- Avatar -->
 				<div class="avatar me-2">
-					<img class="avatar-img rounded" src="{{ images[i] }}" alt="{{ usernames[i] }} Avatar">
+					<img class="avatar-img img-fuid" style="height:40px; width: 40px;" src="{{ images[i] }}" alt="{{ usernames[i] }} Avatar">
 				</div>
 				<!-- Info -->
 				<div class="flex-grow-1">
 					<div class="nav nav-divider">
-						<h6 class="nav-item card-title mb-0 px-2 py-2">{{ usernames[i] }}</h6>
+						<h6 class="nav-item card-title mb-0 " style="color: #CF2C79;">{{ usernames[i] }}</h6>
 					</div>
 				</div>
 			</div>
@@ -542,103 +812,176 @@ Header END -->
     </div>
     <!-- Card header END -->
     <!-- Card body START -->
-    <div class="card-body text-wrap">
-        <div class="card text-wrap">
-            <!-- Card body -->
+    <div class="card-body text-wrap border-0">
+		<div class="card text-wrap border-0">
+			<!-- Card body -->
 			<div class="card-body">
+				<div class="flex-column">
 				<!-- Post text -->
+				<div>
 				<p class="mb-3 fw-medium">{{ post[i].text }}</p>
-			
-				<!-- Mentions -->
-				{% for mention in post[i].mentions %}
-				<small class="text">{{ mention }}</small>
-
-				{% endfor %}
-				
-			
+			</div>
+	
 				<!-- Hashtags -->
+			<div>
 				{% for hashtag in post[i].hashtags %}
-				<small class="text">#{{ hashtag }}</small>
+					<p class="fs-5" style="color: #CF2C79;">#{{ hashtag }}</p>
 				{% endfor %}
-			
-				<!-- Line break -->
-				
-			
+			</div>
+	
 				<!-- Media thumbnails -->
-				<div class="d-flex flex-wrap">
+				<div>
+				<div class="d-flex flex-wrap mb-3 justify-content-evenly align-items-center" >
+					
 					{% for j in range(media[i].media_thumbnail_url|length) %}
-					<img class="img-thumbnail mr-2" style="width: 40px; height: 40px;" src="{{ media[i].media_thumbnail_url[j] }}" alt="Media Thumbnail">
+					
+					{% set list1 = (media[i].media_thumbnail_url[j][::-1].split('.')) %}
+					{% if list1[0][::-1]=='jpg' %} 
+
+
+					<div>
+						<img class="img-fluid mr-2"  src="{{ media[i].media_thumbnail_url[j] }}" alt="Media Thumbnail">
+					</div>
+						{% endif %}{% if list1[0][::-1]=='mp4' %} 
+
+
+					<div>
+						<video  autoplay muted width="40" height="160" controls>
+							<source src="{{  media[i].media_thumbnail_url[j] }}" type="video/mp4">
+							Your browser does not support the video tag.
+						</video>
+					</div>
+						{% endif %}
 					{% endfor %}
 				</div>
 			</div>
+	
+				<!-- Mentions -->
+			{% if (post[i].mentions|length)>0 %}
+				<div class="my-3">
 			
-        </div>
-        <!-- Likes, Comments, and Share section -->
-        <ul class="nav nav-stack py-3 small">
-            <!-- Likes -->
-            <li class="nav-item">
-                <a class="nav-link " href="#!" data-bs-container="body" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-custom-class="tooltip-text-start" data-bs-title="List of likes..."> <i class="bi bi-hand-thumbs-up-fill pe-1"></i>Liked (34)</a>
-            </li>
-            <!-- Comments -->
-            <li class="nav-item">
-                <a class="nav-link" href="#!"> <i class="bi bi-chat-fill pe-1"></i>Comments 12</a>
-            </li>
-            <!-- Share action dropdown -->
-            <li class="nav-item dropdown ms-sm-auto">
-                <a class="nav-link mb-0" href="#" id="cardShareAction" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="bi bi-reply-fill flip-horizontal ps-1"></i>Share 23
-                </a>
-                <!-- Card share action dropdown menu -->
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="cardShareAction">
-                    <!-- Add your dropdown items here -->
-                </ul>
-            </li>
-        </ul>
-        <!-- Add comment -->
-        <div class="d-flex mb-3">
-            <!-- Avatar -->
-            <div class="avatar avatar-xs me-2">
-                <a href="#!"> <img class="avatar-img rounded-circle" src="{{ image }}" alt=""> </a>
-            </div>
-            <!-- Comment box -->
-            <form class="nav nav-item w-100 position-relative align-items-center" method="post" action="/post/{{ post[i].id }}/comment/{{ phone }}">
-                <input type="text" class="form-control mb-3" placeholder="Share your thoughts" name="comment">
-                <button class="nav-link bg-transparent position-absolute top-0 end-0  border-0 align-items-center" type="submit">
-                    <i class="bi bi-send-fill"></i>
-                </button>
-            </form>
-        </div>
-        <!-- Comment section -->
-        {% for j in range(comments[i]|length) %}
-        <div class="d-flex flex-row position-relative mb-2 mt-2 me-2 text-wrap align-items-center">
-            <div class="avatar avatar-xs m-2">
-                <a href="#!"><img class="avatar-img rounded-circle" src="{{ comment_image[i][j] }}" alt=""></a>
-            </div>
-            <div class="d-inline-block bg-light rounded-start-top-0 p-3 rounded">
-                <div class="d-flex justify-content-between">
-                    <h6 class="mb-1"> <a href="#!"> {{ comment_username[i][j] }} </a></h6>
-                    
-                </div>
-				<div class="flex-fill " style="max-width: 450px;">
-                <p class="small mb-0">{{ comments[i][j] }}</p>
+
+					<span class="fw-semibold d-block w-100">Mentions(@)</span>
+					<div class="d-flex d-inline-block flex-wrap mx-2" style="background-color: rgba(244, 247, 252, 0.80); ">
+						{% for mention in post[i].mentions %}
+						
+								<div class="mx-2">{{ mention }}</div>
+							
+						{% endfor %}
+					</div>
+					
+				
+				</div>
+				{% endif %}
+				</div>
+				
+	
+				<!-- Report button -->
+				<button type="button" class="btn btn-pink">I also want to report the same issue</button>
 			</div>
-            </div>
-        </div>
-        {% endfor %}
-        <!-- Load more replies -->
-        <a href="#!" role="button" class="btn btn-link btn-link-loader btn-sm text-secondary d-flex align-items-center mb-3 ms-5" data-bs-toggle="button" aria-pressed="true">
-            <div class="spinner-dots me-2">
-                <span class="spinner-dot"></span>
-                <span class="spinner-dot"></span>
-                <span class="spinner-dot"></span>
-            </div>
-            Load more replies
-        </a>
-    </div>
-    <!-- Card body END -->
-    <!-- Card footer START -->
-    <!-- Card footer END -->
-</div>
+	
+			<!-- Counts container -->
+			
+					<div class="d-flex justify-content-center">
+				
+
+					<!-- Handshake Section -->
+					<div class="mx-sm-2 mx-md-3 mx-lg-4">
+						<button class="btn bg-transparent d-flex" onclick="handleButtonClick('handshake')">
+							<img src="{{url_for('static', path='assets/images/handshake.png')}}" class="img-fluid mb-2" alt="Handshake">
+							<p class="mb-0">50</p>
+						</button>
+					</div>
+			
+					<!-- Comment Section -->
+					<div class="mx-sm-2 mx-md-3 mx-lg-5">
+						<button class="btn bg-transparent d-flex" data-bs-toggle="collapse" data-bs-target="#collapseExample_{{i}}" aria-expanded="false" aria-controls="collapseExample" >
+							<img src="{{url_for('static', path='assets/images/comment.png')}}" class="img-fluid mb-2" alt="Comment">
+							<p class="mb-0">50</p>
+						</button>
+					</div>
+			
+					<!-- Share Section -->
+					<div class="mx-sm-2 mx-md-3 mx-lg-5">
+						<button class="btn bg-transparent d-flex" onclick="handleButtonClick('share')">
+							
+							<img src="{{url_for('static', path='assets/images/share.png')}}" class="img-fluid mb-2" alt="Share">
+							
+							<p class="mb-0">40</p>
+						
+						
+						</button>
+					</div>
+			
+					<!-- Monitoring Section -->
+					<div class="mx-sm-2 mx-md-3 mx-lg-5" >
+						<button class="btn bg-transparent d-flex" onclick="handleButtonClick('monitoring')">
+							<img src="{{url_for('static', path='assets/images/monitoring.png')}}" class="img-fluid mb-2" alt="Monitoring">
+							<p class="mb-0">23</p>
+						</button>
+					</div>
+			
+					</div>
+		</div>
+	</div>
+	
+		
+        <!-- Likes, Comments, and Share section -->
+		<div id="collapseExample_{{i}}">
+		
+       
+       
+       
+		<ul class="nav nav-tabs" id="myTab" role="tablist">
+			<div class="d-flex">
+			<li class="nav-item" role="presentation">
+			  <button class="nav-link " id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane_{{i}}" type="button" role="tab" aria-controls="home-tab-pane" >Service Provide Comments</button>
+			</li>
+			<li class="nav-item" role="presentation">
+			  <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane_{{i}}" type="button" role="tab" aria-controls="profile-tab-pane" >Public Comments</button>
+			</li>
+		</div>
+			
+		  </ul>
+		  <div class="tab-content" id="myTabContent">
+			<div class="tab-pane  " id="home-tab-pane_{{i}}" role="tabpanel" aria-labelledby="home-tab" tabindex="0"></div>
+			<div class="tab-pane " id="profile-tab-pane_{{i}}" role="tabpanel" aria-labelledby="profile-tab" tabindex="0"><div class="d-flex mb-3 mx-2 collapse " id="comments">
+            
+				<div class="avatar avatar-xs me-2">
+					<a href="#!"> <img class="avatar-img rounded-circle" src="{{ image }}" alt=""> </a>
+				</div>
+			   
+				<form class="nav nav-item w-100 position-relative align-items-center" method="post" action="/post/{{ post[i].id }}/comment/{{ phone }}">
+					<input type="text" class="form-control mb-3" placeholder="Share your thoughts" name="comment">
+					<button class="nav-link bg-transparent position-absolute top-0 end-0  border-0 align-items-center" type="submit">
+						<i class="bi bi-send-fill"></i>
+					</button>
+				</form>
+			</div>        {% for j in range(comments[i]|length) %}
+			<div class="d-flex flex-row position-relative mb-2 mt-2 me-2 text-wrap align-items-center">
+				<div class="avatar avatar-xs m-2">
+					<a href="#!"><img class="avatar-img rounded-circle" src="{{ comment_image[i][j] }}" alt=""></a>
+				</div>
+				<div class="d-inline-block bg-light rounded-start-top-0 p-3 rounded">
+					<div class="d-flex justify-content-between">
+						<h6 class="mb-1"> <a href="#!"> {{ comment_username[i][j] }} </a></h6>
+						
+					</div>
+					<div class="flex-fill " style="max-width: 450px;">
+					<p class="small mb-0">{{ comments[i][j] }}</p>
+				</div>
+				</div>
+			</div>
+			
+			{% endfor %}</div>
+			
+		  </div>
+      
+ 
+		</div>
+      
+        
+ </div> 
 {% endfor %}
 </div>
 
@@ -653,15 +996,16 @@ Header END -->
 			<!-- Main content END -->
 
 			<!-- Right sidebar START -->
-			<div class="col-3">
+			
+			<div class="col-3 d-none d-md-block vh-100">
 				<div class="row ">
 					<!-- Card follow START -->
 					
 					<!-- Card follow START -->
 
 					<!-- Card News START -->
-					<div class="col-sm-6 col-lg-12">
-						<div class="card">
+					
+						<div class="card 100-vh">
 							<!-- Card header START -->
 							<div class="card-header pb-0 border-0">
 								<h5 class="card-title mb-0">Trending news in Whitefield</h5>
@@ -671,22 +1015,23 @@ Header END -->
 							<div class="card-body">
 								<!-- News item -->
 								<div class="mb-3">
-									<h6 class="mb-0"><a href="blog-details.html">23</a></h6>
+									<h6 class="mb-0"><a href="blog-details.html">#Traffic isssues in varthur</a></h6>
 									<small>2hr</small>
 								</div>
-								<!-- News item -->
+								<hr>
 								<div class="mb-3">
-									<h6 class="mb-0"><a href="blog-details.html">45</a></h6>
+									<h6 class="mb-0"><a href="blog-details.html">#Traffic issues in Varthur</a></h6>
 									<small>3hr</small>
 								</div>
-								<!-- News item -->
+								<hr>
 								<div class="mb-3">
-									<h6 class="mb-0"><a href="blog-details.html">45</a></h6>
+									<h6 class="mb-0"><a href="blog-details.html">#Traffic issues in Varthur</a></h6>
 									<small>4hr</small>
 								</div>
+								<hr>
 								<!-- News item -->
 								<div class="mb-3">
-									<h6 class="mb-0"><a href="blog-details.html">12</a></h6>
+									<h6 class="mb-0"><a href="blog-details.html">#Traffic issues in Varthur</a></h6>
 									<small>6hr</small>
 								</div>
 								<!-- Load more comments -->
@@ -700,17 +1045,17 @@ Header END -->
 								</a>
 							</div>
 							<!-- Card body END -->
-						</div>
+						
 					</div>
 					<!-- Card News END -->
 				</div>
-				<div class="row ">
+				<div class="row min-vh-100">
 					<!-- Card follow START -->
 					
 					<!-- Card follow START -->
 
 					<!-- Card News START -->
-					<div class="col-sm-6 col-lg-12">
+					
 						<div class="card">
 							<!-- Card header START -->
 							<div class="card-header pb-0 border-0">
@@ -720,37 +1065,19 @@ Header END -->
 							<!-- Card body START -->
 							<div class="card-body">
 								<!-- News item -->
+								{% for i in range(top_mentions|length) %}
 								<div class="mb-3">
-									<h6 class="mb-0"><a href="blog-details.html">@Varthur Police Station</a></h6>
+									<h6 class="mb-0"><a href="blog-details.html">@{{top_mentions[i]}}</a></h6>
 									
 								</div>
+								{% endfor %}
 								<!-- News item -->
-								<div class="mb-3">
-									<h6 class="mb-0"><a href="blog-details.html">@Samsung</a></h6>
-									
-								</div>
-								<!-- News item -->
-								<div class="mb-3">
-									<h6 class="mb-0"><a href="blog-details.html">@Marathahalli Police Station</a></h6>
-									
-								</div>
-								<!-- News item -->
-								<div class="mb-3">
-									<h6 class="mb-0"><a href="blog-details.html">@BBMP</a></h6>
-									
-								</div>
+								
 								<!-- Load more comments -->
-								<a href="#!" role="button" class="btn btn-link btn-link-loader btn-sm text-secondary d-flex align-items-center" data-bs-toggle="button" aria-pressed="true">
-									<div class="spinner-dots me-2">
-										<span class="spinner-dot"></span>
-										<span class="spinner-dot"></span>
-										<span class="spinner-dot"></span>
-									</div>
-									View all latest news
-								</a>
+								
 							</div>
 							<!-- Card body END -->
-						</div>
+						
 					</div>
 					<!-- Card News END -->
 				</div>
@@ -760,866 +1087,36 @@ Header END -->
 		 <!-- Row END -->
 	</div>
 	<!-- Container END -->
-	</div>
-
+	
+</div>
 </main>
 <!-- **************** MAIN CONTENT END **************** -->
 
 <!-- Main Chat START -->
-<div class="d-none d-lg-block">
-	<!-- Button -->
-	<a class="icon-md btn btn-primary position-fixed end-0 bottom-0 me-5 mb-5" data-bs-toggle="offcanvas" href="#offcanvasChat" role="button" aria-controls="offcanvasChat">
-		<i class="bi bi-chat-left-text-fill"></i>
-	</a>
-	<!-- Chat sidebar START -->
-	<div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasChat">
-		<!-- Offcanvas header -->
-		<div class="offcanvas-header d-flex justify-content-between">
-			<h5 class="offcanvas-title">Messaging</h5>
-			<div class="d-flex">
-				<!-- New chat box open button -->
-				<a href="#" class="btn btn-secondary-soft-hover py-1 px-2">
-					<i class="bi bi-pencil-square"></i>
-				</a>
-				<!-- Chat action START -->
-				<div class="dropdown">
-					<a href="#" class="btn btn-secondary-soft-hover py-1 px-2" id="chatAction" data-bs-toggle="dropdown" aria-expanded="false">
-						<i class="bi bi-three-dots"></i>
-					</a>
-					<!-- Chat action menu -->
-					<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="chatAction">
-						<li><a class="dropdown-item" href="#"> <i class="bi bi-check-square fa-fw pe-2"></i>Mark all as read</a></li>
-						<li><a class="dropdown-item" href="#"> <i class="bi bi-gear fa-fw pe-2"></i>Chat setting </a></li>
-						<li><a class="dropdown-item" href="#"> <i class="bi bi-bell fa-fw pe-2"></i>Disable notifications</a></li>
-						<li><a class="dropdown-item" href="#"> <i class="bi bi-volume-up-fill fa-fw pe-2"></i>Message sounds</a></li>
-						<li><a class="dropdown-item" href="#"> <i class="bi bi-slash-circle fa-fw pe-2"></i>Block setting</a></li>
-						<li><hr class="dropdown-divider"></li>
-						<li><a class="dropdown-item" href="#"> <i class="bi bi-people fa-fw pe-2"></i>Create a group chat</a></li>
-					</ul>
-				</div>
-				<!-- Chat action END -->
-				
-				<!-- Close  -->
-				<a href="#" class="btn btn-secondary-soft-hover py-1 px-2" data-bs-dismiss="offcanvas" aria-label="Close">
-					<i class="fa-solid fa-xmark"></i>
-				</a>
 
-			</div>
-		</div>
-		<!-- Offcanvas body START -->
-		<div class="offcanvas-body pt-0 custom-scrollbar os-host os-theme-dark os-host-overflow os-host-overflow-y os-host-resize-disabled os-host-scrollbar-horizontal-hidden os-host-transition os-host-foreign"><div class="os-resize-observer-host observed"><div class="os-resize-observer" style="left: 0px; right: auto;"></div><div class="os-resize-observer"></div></div><div class="os-size-auto-observer observed" style="height: calc(100% + 1px); float: left;"><div class="os-resize-observer"></div></div><div class="os-content-glue" style="margin: 0px -24px -16px;"></div><div class="os-size-auto-observer observed" style="height: calc(100% + 1px); float: left;"><div class="os-resize-observer"></div></div><div class="os-content-glue" style="margin: 0px -24px -16px;"></div><div class="os-padding"><div class="os-viewport os-viewport-native-scrollbars-invisible" style="overflow-y: scroll;"><div class="os-content" style="padding: 0px 24px 16px; height: 100%; width: 100%;">
-			<!-- Search contact START -->
-			<form class="rounded position-relative">
-				<input class="form-control ps-5 bg-light" type="search" placeholder="Search..." aria-label="Search">
-				<button class="btn bg-transparent px-3 py-0 position-absolute top-50 start-0 translate-middle-y" type="submit"><i class="bi bi-search fs-5"> </i></button>
-			</form>
-			<!-- Search contact END -->
-			<ul class="list-unstyled">
-
-				<!-- Contact item -->
-				<li class="mt-3 hstack gap-3 align-items-center position-relative toast-btn" data-target="chatToast">
-					<!-- Avatar -->
-					<div class="avatar status-online">
-						<img class="avatar-img rounded-circle" src="assets/images/avatar/01.jpg" alt="">
-					</div>
-					<!-- Info -->
-					<div class="overflow-hidden">
-						<a class="h6 mb-0 stretched-link" href="#!">Frances Guerrero </a>
-						<div class="small text-secondary text-truncate">Frances sent a photo.</div>
-					</div>
-					<!-- Chat time -->
-					<div class="small ms-auto text-nowrap"> Just now </div>
-				</li>
-
-				<!-- Contact item -->
-				<li class="mt-3 hstack gap-3 align-items-center position-relative toast-btn" data-target="chatToast2">
-					<!-- Avatar -->
-					<div class="avatar status-online">
-						<img class="avatar-img rounded-circle" src="assets/images/avatar/02.jpg" alt="">
-					</div>
-					<!-- Info -->
-					<div class="overflow-hidden">
-						<a class="h6 mb-0 stretched-link" href="#!">Lori Ferguson </a>
-						<div class="small text-secondary text-truncate">You missed a call form Carolyn🤙</div>
-					</div>
-					<!-- Chat time -->
-					<div class="small ms-auto text-nowrap"> 1min </div>
-				</li>
-
-				<!-- Contact item -->
-				<li class="mt-3 hstack gap-3 align-items-center position-relative">
-					<!-- Avatar -->
-					<div class="avatar status-offline">
-						<img class="avatar-img rounded-circle" src="assets/images/avatar/placeholder.jpg" alt="">
-					</div>
-					<!-- Info -->
-					<div class="overflow-hidden">
-						<a class="h6 mb-0 stretched-link" href="#!">Samuel Bishop </a>
-						<div class="small text-secondary text-truncate">Day sweetness why cordially 😊</div>
-					</div>
-					<!-- Chat time -->
-					<div class="small ms-auto text-nowrap"> 2min </div>
-				</li>
-
-				<!-- Contact item -->
-				<li class="mt-3 hstack gap-3 align-items-center position-relative">
-					<!-- Avatar -->
-					<div class="avatar">
-						<img class="avatar-img rounded-circle" src="assets/images/avatar/04.jpg" alt="">
-					</div>
-					<!-- Info -->
-					<div class="overflow-hidden">
-						<a class="h6 mb-0 stretched-link" href="#!">Dennis Barrett </a>
-						<div class="small text-secondary text-truncate">Happy birthday🎂</div>
-					</div>
-					<!-- Chat time -->
-					<div class="small ms-auto text-nowrap"> 10min </div>
-				</li>
-
-				<!-- Contact item -->
-				<li class="mt-3 hstack gap-3 align-items-center position-relative">
-					<!-- Avatar -->
-					<div class="avatar avatar-story status-online">
-						<img class="avatar-img rounded-circle" src="assets/images/avatar/05.jpg" alt="">
-					</div>
-					<!-- Info -->
-					<div class="overflow-hidden">
-						<a class="h6 mb-0 stretched-link" href="#!">Judy Nguyen </a>
-						<div class="small text-secondary text-truncate">Thank you!</div>
-					</div>
-					<!-- Chat time -->
-					<div class="small ms-auto text-nowrap"> 2hrs </div>
-				</li>
-
-				<!-- Contact item -->
-				<li class="mt-3 hstack gap-3 align-items-center position-relative">
-					<!-- Avatar -->
-					<div class="avatar status-online">
-						<img class="avatar-img rounded-circle" src="assets/images/avatar/06.jpg" alt="">
-					</div>
-					<!-- Info -->
-					<div class="overflow-hidden">
-						<a class="h6 mb-0 stretched-link" href="#!">Carolyn Ortiz </a>
-						<div class="small text-secondary text-truncate">Greetings from Webestica.</div>
-					</div>
-					<!-- Chat time -->
-					<div class="small ms-auto text-nowrap"> 1 day </div>
-				</li>
-
-				<!-- Contact item -->
-				<li class="mt-3 hstack gap-3 align-items-center position-relative">
-					<!-- Avatar -->
-					<div class="flex-shrink-0 avatar">
-						<ul class="avatar-group avatar-group-four">
-							<li class="avatar avatar-xxs">
-								<img class="avatar-img rounded-circle" src="assets/images/avatar/06.jpg" alt="avatar">
-							</li>
-							<li class="avatar avatar-xxs">
-								<img class="avatar-img rounded-circle" src="assets/images/avatar/07.jpg" alt="avatar">
-							</li>
-							<li class="avatar avatar-xxs">
-								<img class="avatar-img rounded-circle" src="assets/images/avatar/08.jpg" alt="avatar">
-							</li>
-							<li class="avatar avatar-xxs">
-								<img class="avatar-img rounded-circle" src="assets/images/avatar/09.jpg" alt="avatar">
-							</li>
-						</ul>
-					</div>
-					<!-- Info -->
-					<div class="overflow-hidden">
-						<a class="h6 mb-0 stretched-link text-truncate d-inline-block" href="#!">Frances, Lori, Amanda, Lawson </a>
-						<div class="small text-secondary text-truncate">Btw are you looking for job change?</div>
-					</div>
-					<!-- Chat time -->
-					<div class="small ms-auto text-nowrap"> 4 day </div>
-				</li>
-
-				<!-- Contact item -->
-				<li class="mt-3 hstack gap-3 align-items-center position-relative">
-					<!-- Avatar -->
-					<div class="avatar status-offline">
-						<img class="avatar-img rounded-circle" src="assets/images/avatar/08.jpg" alt="">
-					</div>
-					<!-- Info -->
-					<div class="overflow-hidden">
-						<a class="h6 mb-0 stretched-link" href="#!">Bryan Knight </a>
-						<div class="small text-secondary text-truncate">if you are available to discuss🙄</div>
-					</div>
-					<!-- Chat time -->
-					<div class="small ms-auto text-nowrap"> 6 day </div>
-				</li>
-
-				<!-- Contact item -->
-				<li class="mt-3 hstack gap-3 align-items-center position-relative">
-					<!-- Avatar -->
-					<div class="avatar">
-						<img class="avatar-img rounded-circle" src="assets/images/avatar/09.jpg" alt="">
-					</div>
-					<!-- Info -->
-					<div class="overflow-hidden">
-						<a class="h6 mb-0 stretched-link" href="#!">Louis Crawford </a>
-						<div class="small text-secondary text-truncate">🙌Congrats on your work anniversary!</div>
-					</div>
-					<!-- Chat time -->
-					<div class="small ms-auto text-nowrap"> 1 day </div>
-				</li>
-
-				<!-- Contact item -->
-				<li class="mt-3 hstack gap-3 align-items-center position-relative">
-					<!-- Avatar -->
-					<div class="avatar status-online">
-						<img class="avatar-img rounded-circle" src="assets/images/avatar/10.jpg" alt="">
-					</div>
-					<!-- Info -->
-					<div class="overflow-hidden">
-						<a class="h6 mb-0 stretched-link" href="#!">Jacqueline Miller </a>
-						<div class="small text-secondary text-truncate">No sorry, Thanks.</div>
-					</div>
-					<!-- Chat time -->
-					<div class="small ms-auto text-nowrap"> 15, dec </div>
-				</li>
-
-				<!-- Contact item -->
-				<li class="mt-3 hstack gap-3 align-items-center position-relative">
-					<!-- Avatar -->
-					<div class="avatar">
-						<img class="avatar-img rounded-circle" src="assets/images/avatar/11.jpg" alt="">
-					</div>
-					<!-- Info -->
-					<div class="overflow-hidden">
-						<a class="h6 mb-0 stretched-link" href="#!">Amanda Reed </a>
-						<div class="small text-secondary text-truncate">Interested can share CV at.</div>
-					</div>
-					<!-- Chat time -->
-					<div class="small ms-auto text-nowrap"> 18, dec </div>
-				</li>
-
-				<!-- Contact item -->
-				<li class="mt-3 hstack gap-3 align-items-center position-relative">
-					<!-- Avatar -->
-					<div class="avatar status-online">
-						<img class="avatar-img rounded-circle" src="assets/images/avatar/12.jpg" alt="">
-					</div>
-					<!-- Info -->
-					<div class="overflow-hidden">
-						<a class="h6 mb-0 stretched-link" href="#!">Larry Lawson </a>
-						<div class="small text-secondary text-truncate">Hope you're doing well and Safe.</div>
-					</div>
-					<!-- Chat time -->
-					<div class="small ms-auto text-nowrap"> 20, dec </div>
-				</li>
-				<!-- Button -->
-				<li class="mt-3 d-grid">
-					<a class="btn btn-primary-soft" href="messaging.html"> See all in messaging </a>
-				</li>
-
-			</ul>
-		</div></div></div><div class="os-scrollbar os-scrollbar-horizontal os-scrollbar-unusable os-scrollbar-auto-hidden"><div class="os-scrollbar-track os-scrollbar-track-off"><div class="os-scrollbar-handle" style="width: 100%; transform: translate(0px, 0px);"></div></div></div><div class="os-scrollbar os-scrollbar-vertical os-scrollbar-auto-hidden"><div class="os-scrollbar-track os-scrollbar-track-off"><div class="os-scrollbar-handle" style="height: 78.125%; transform: translate(0px, 0px);"></div></div></div><div class="os-scrollbar-corner"></div></div>
-		<!-- Offcanvas body END -->
-	</div>
-	<!-- Chat sidebar END -->
-
-	<!-- Chat END -->
-
-	<!-- Chat START -->
-	<div aria-live="polite" aria-atomic="true" class="position-relative">
-		<div class="toast-container toast-chat d-flex gap-3 align-items-end">
-
-			<!-- Chat toast START -->
-			<div id="chatToast" class="toast mb-0 bg-mode" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
-				<div class="toast-header bg-mode">
-					<!-- Top avatar and status START -->
-					<div class="d-flex justify-content-between align-items-center w-100">
-						<div class="d-flex">
-							<div class="flex-shrink-0 avatar me-2">
-								<img class="avatar-img rounded-circle" src="assets/images/avatar/01.jpg" alt="">
-							</div>
-							<div class="flex-grow-1">
-								<h6 class="mb-0 mt-1">Frances Guerrero</h6>
-								<div class="small text-secondary"><i class="fa-solid fa-circle text-success me-1"></i>Online</div>
-							</div>
-						</div>
-						<div class="d-flex">
-						<!-- Call button -->
-						<div class="dropdown">
-							<a class="btn btn-secondary-soft-hover py-1 px-2" href="#" id="chatcoversationDropdown" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i></a>               
-							<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="chatcoversationDropdown">
-								<li><a class="dropdown-item" href="#"><i class="bi bi-camera-video me-2 fw-icon"></i>Video call</a></li>
-								<li><a class="dropdown-item" href="#"><i class="bi bi-telephone me-2 fw-icon"></i>Audio call</a></li>
-								<li><a class="dropdown-item" href="#"><i class="bi bi-trash me-2 fw-icon"></i>Delete </a></li>
-								<li><a class="dropdown-item" href="#"><i class="bi bi-chat-square-text me-2 fw-icon"></i>Mark as unread</a></li>
-								<li><a class="dropdown-item" href="#"><i class="bi bi-volume-up me-2 fw-icon"></i>Muted</a></li>
-								<li><a class="dropdown-item" href="#"><i class="bi bi-archive me-2 fw-icon"></i>Archive</a></li>
-								<li class="dropdown-divider"></li>
-								<li><a class="dropdown-item" href="#"><i class="bi bi-flag me-2 fw-icon"></i>Report</a></li>
-							</ul>
-						</div>
-						<!-- Card action END -->
-						<a class="btn btn-secondary-soft-hover py-1 px-2" data-bs-toggle="collapse" href="#collapseChat" aria-expanded="false" aria-controls="collapseChat"><i class="bi bi-dash-lg"></i></a>        
-						<button class="btn btn-secondary-soft-hover py-1 px-2" data-bs-dismiss="toast" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
-					</div>
-				</div>
-				<!-- Top avatar and status END -->
-					
-				</div>
-				<div class="toast-body collapse show" id="collapseChat">
-					<!-- Chat conversation START -->
-					<div class="chat-conversation-content custom-scrollbar h-200px os-host os-theme-dark os-host-resize-disabled os-host-scrollbar-horizontal-hidden os-host-scrollbar-vertical-hidden os-host-transition os-host-foreign"><div class="os-resize-observer-host observed"><div class="os-resize-observer" style="left: 0px; right: auto;"></div><div class="os-resize-observer"></div></div><div class="os-size-auto-observer observed" style="height: calc(100% + 1px); float: left;"><div class="os-resize-observer"></div></div><div class="os-content-glue" style="margin: 0px;"></div><div class="os-size-auto-observer observed" style="height: calc(100% + 1px); float: left;"><div class="os-resize-observer"></div></div><div class="os-content-glue" style="margin: 0px;"></div><div class="os-padding"><div class="os-viewport os-viewport-native-scrollbars-invisible" style="overflow: visible;"><div class="os-content" style="padding: 0px; height: 100%; width: 100%;">
-						<!-- Chat time -->
-						<div class="text-center small my-2">Jul 16, 2022, 06:15 am</div>
-						<!-- Chat message left -->
-						<div class="d-flex mb-1">
-							<div class="flex-shrink-0 avatar avatar-xs me-2">
-								<img class="avatar-img rounded-circle" src="assets/images/avatar/01.jpg" alt="">
-							</div>
-							<div class="flex-grow-1">
-								<div class="w-100">
-									<div class="d-flex flex-column align-items-start">
-										<div class="bg-light text-secondary p-2 px-3 rounded-2">Applauded no discovery😊</div>
-										<div class="small my-2">6:15 AM</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- Chat message right -->
-						<div class="d-flex justify-content-end text-end mb-1">
-							<div class="w-100">
-								<div class="d-flex flex-column align-items-end">
-									<div class="bg-primary text-white p-2 px-3 rounded-2">With pleasure</div>
-								</div>
-							</div>
-						</div>
-						<!-- Chat message left -->
-						<div class="d-flex mb-1">
-							<div class="flex-shrink-0 avatar avatar-xs me-2">
-								<img class="avatar-img rounded-circle" src="assets/images/avatar/01.jpg" alt="">
-							</div>
-							<div class="flex-grow-1">
-								<div class="w-100">
-									<div class="d-flex flex-column align-items-start">
-										<div class="bg-light text-secondary p-2 px-3 rounded-2">Please find the attached</div>
-										<!-- Files START -->
-										<!-- Files END -->
-										<div class="small my-2">12:16 PM</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- Chat message left -->
-						<div class="d-flex mb-1">
-							<div class="flex-shrink-0 avatar avatar-xs me-2">
-								<img class="avatar-img rounded-circle" src="assets/images/avatar/01.jpg" alt="">
-							</div>
-							<div class="flex-grow-1">
-								<div class="w-100">
-									<div class="d-flex flex-column align-items-start">
-										<div class="bg-light text-secondary p-2 px-3 rounded-2">How promotion excellent curiosity😮</div>
-										<div class="small my-2">3:22 PM</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- Chat message right -->
-						<div class="d-flex justify-content-end text-end mb-1">
-							<div class="w-100">
-								<div class="d-flex flex-column align-items-end">
-									<div class="bg-primary text-white p-2 px-3 rounded-2">And sir dare view.</div>
-									<!-- Images -->
-									<div class="d-flex my-2">
-										<div class="small text-secondary">5:35 PM</div>
-										<div class="small ms-2"><i class="fa-solid fa-check"></i></div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- Chat time -->
-						<div class="text-center small my-2">2 New Messages</div>
-						<!-- Chat Typing -->
-						<div class="d-flex mb-1">
-							<div class="flex-shrink-0 avatar avatar-xs me-2">
-								<img class="avatar-img rounded-circle" src="assets/images/avatar/01.jpg" alt="">
-							</div>
-							<div class="flex-grow-1">
-								<div class="w-100">
-									<div class="d-flex flex-column align-items-start">
-										<div class="bg-light text-secondary p-3 rounded-2">
-											<div class="typing d-flex align-items-center">
-												<div class="dot"></div>
-												<div class="dot"></div>
-												<div class="dot"></div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div></div></div><div class="os-scrollbar os-scrollbar-horizontal os-scrollbar-unusable os-scrollbar-auto-hidden"><div class="os-scrollbar-track os-scrollbar-track-off"><div class="os-scrollbar-handle" style="transform: translate(0px, 0px);"></div></div></div><div class="os-scrollbar os-scrollbar-vertical os-scrollbar-unusable os-scrollbar-auto-hidden"><div class="os-scrollbar-track os-scrollbar-track-off"><div class="os-scrollbar-handle" style="transform: translate(0px, 0px);"></div></div></div><div class="os-scrollbar-corner"></div></div>
-					<!-- Chat conversation END -->
-					<!-- Chat bottom START -->
-					<div class="mt-2">
-						<!-- Chat textarea -->
-						<textarea class="form-control mb-sm-0 mb-3" placeholder="Type a message" rows="1"></textarea>
-						<!-- Button -->
-						<div class="d-sm-flex align-items-end mt-2">
-							<button class="btn btn-sm btn-danger-soft me-2"><i class="fa-solid fa-face-smile fs-6"></i></button>
-							<button class="btn btn-sm btn-secondary-soft me-2"><i class="fa-solid fa-paperclip fs-6"></i></button>
-							<button class="btn btn-sm btn-success-soft me-2"> Gif </button>
-							<button class="btn btn-sm btn-primary ms-auto"> Send </button>
-						</div>
-					</div>
-					<!-- Chat bottom START -->
-				</div>
-			</div>
-			<!-- Chat toast END -->
-
-			<!-- Chat toast 2 START -->
-			<div id="chatToast2" class="toast mb-0 bg-mode" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
-				<div class="toast-header bg-mode">
-					<!-- Top avatar and status START -->
-					<div class="d-flex justify-content-between align-items-center w-100">
-						<div class="d-flex">
-							<div class="flex-shrink-0 avatar me-2">
-								<img class="avatar-img rounded-circle" src="assets/images/avatar/02.jpg" alt="">
-							</div>
-							<div class="flex-grow-1">
-								<h6 class="mb-0 mt-1">Lori Ferguson</h6>
-								<div class="small text-secondary"><i class="fa-solid fa-circle text-success me-1"></i>Online</div>
-							</div>
-						</div>
-						<div class="d-flex">
-						<!-- Call button -->
-						<div class="dropdown">
-							<a class="btn btn-secondary-soft-hover py-1 px-2" href="#" id="chatcoversationDropdown2" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false"><i class="bi bi-three-dots-vertical"></i></a>               
-							<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="chatcoversationDropdown2">
-								<li><a class="dropdown-item" href="#"><i class="bi bi-camera-video me-2 fw-icon"></i>Video call</a></li>
-								<li><a class="dropdown-item" href="#"><i class="bi bi-telephone me-2 fw-icon"></i>Audio call</a></li>
-								<li><a class="dropdown-item" href="#"><i class="bi bi-trash me-2 fw-icon"></i>Delete </a></li>
-								<li><a class="dropdown-item" href="#"><i class="bi bi-chat-square-text me-2 fw-icon"></i>Mark as unread</a></li>
-								<li><a class="dropdown-item" href="#"><i class="bi bi-volume-up me-2 fw-icon"></i>Muted</a></li>
-								<li><a class="dropdown-item" href="#"><i class="bi bi-archive me-2 fw-icon"></i>Archive</a></li>
-								<li class="dropdown-divider"></li>
-								<li><a class="dropdown-item" href="#"><i class="bi bi-flag me-2 fw-icon"></i>Report</a></li>
-							</ul>
-						</div>
-						<!-- Card action END -->
-						<a class="btn btn-secondary-soft-hover py-1 px-2" data-bs-toggle="collapse" href="#collapseChat2" role="button" aria-expanded="false" aria-controls="collapseChat2"><i class="bi bi-dash-lg"></i></a>        
-						<button class="btn btn-secondary-soft-hover py-1 px-2" data-bs-dismiss="toast" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
-					</div>
-				</div>
-				<!-- Top avatar and status END -->
-					
-				</div>
-				<div class="toast-body collapse show" id="collapseChat2">
-					<!-- Chat conversation START -->
-					<div class="chat-conversation-content custom-scrollbar h-200px os-host os-theme-dark os-host-resize-disabled os-host-scrollbar-horizontal-hidden os-host-scrollbar-vertical-hidden os-host-transition os-host-foreign"><div class="os-resize-observer-host observed"><div class="os-resize-observer" style="left: 0px; right: auto;"></div><div class="os-resize-observer"></div></div><div class="os-size-auto-observer observed" style="height: calc(100% + 1px); float: left;"><div class="os-resize-observer"></div></div><div class="os-content-glue" style="margin: 0px;"></div><div class="os-size-auto-observer observed" style="height: calc(100% + 1px); float: left;"><div class="os-resize-observer"></div></div><div class="os-content-glue" style="margin: 0px;"></div><div class="os-padding"><div class="os-viewport os-viewport-native-scrollbars-invisible" style="overflow: visible;"><div class="os-content" style="padding: 0px; height: 100%; width: 100%;">
-						<!-- Chat time -->
-						<div class="text-center small my-2">Jul 16, 2022, 06:15 am</div>
-						<!-- Chat message left -->
-						<div class="d-flex mb-1">
-							<div class="flex-shrink-0 avatar avatar-xs me-2">
-								<img class="avatar-img rounded-circle" src="assets/images/avatar/02.jpg" alt="">
-							</div>
-							<div class="flex-grow-1">
-								<div class="w-100">
-									<div class="d-flex flex-column align-items-start">
-										<div class="bg-light text-secondary p-2 px-3 rounded-2">Applauded no discovery😊</div>
-										<div class="small my-2">6:15 AM</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- Chat message right -->
-						<div class="d-flex justify-content-end text-end mb-1">
-							<div class="w-100">
-								<div class="d-flex flex-column align-items-end">
-									<div class="bg-primary text-white p-2 px-3 rounded-2">With pleasure</div>
-								</div>
-							</div>
-						</div>
-						<!-- Chat message left -->
-						<div class="d-flex mb-1">
-							<div class="flex-shrink-0 avatar avatar-xs me-2">
-								<img class="avatar-img rounded-circle" src="assets/images/avatar/02.jpg" alt="">
-							</div>
-							<div class="flex-grow-1">
-								<div class="w-100">
-									<div class="d-flex flex-column align-items-start">
-										<div class="bg-light text-secondary p-2 px-3 rounded-2">Please find the attached</div>
-										<!-- Files START -->
-										<!-- Files END -->
-										<div class="small my-2">12:16 PM</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- Chat message left -->
-						<div class="d-flex mb-1">
-							<div class="flex-shrink-0 avatar avatar-xs me-2">
-								<img class="avatar-img rounded-circle" src="assets/images/avatar/02.jpg" alt="">
-							</div>
-							<div class="flex-grow-1">
-								<div class="w-100">
-									<div class="d-flex flex-column align-items-start">
-										<div class="bg-light text-secondary p-2 px-3 rounded-2">How promotion excellent curiosity😮</div>
-										<div class="small my-2">3:22 PM</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- Chat message right -->
-						<div class="d-flex justify-content-end text-end mb-1">
-							<div class="w-100">
-								<div class="d-flex flex-column align-items-end">
-									<div class="bg-primary text-white p-2 px-3 rounded-2">And sir dare view.</div>
-									<!-- Images -->
-									<div class="d-flex my-2">
-										<div class="small text-secondary">5:35 PM</div>
-										<div class="small ms-2"><i class="fa-solid fa-check"></i></div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- Chat time -->
-						<div class="text-center small my-2">2 New Messages</div>
-						<!-- Chat Typing -->
-						<div class="d-flex mb-1">
-							<div class="flex-shrink-0 avatar avatar-xs me-2">
-								<img class="avatar-img rounded-circle" src="assets/images/avatar/02.jpg" alt="">
-							</div>
-							<div class="flex-grow-1">
-								<div class="w-100">
-									<div class="d-flex flex-column align-items-start">
-										<div class="bg-light text-secondary p-3 rounded-2">
-											<div class="typing d-flex align-items-center">
-												<div class="dot"></div>
-												<div class="dot"></div>
-												<div class="dot"></div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div></div></div><div class="os-scrollbar os-scrollbar-horizontal os-scrollbar-unusable os-scrollbar-auto-hidden"><div class="os-scrollbar-track os-scrollbar-track-off"><div class="os-scrollbar-handle" style="transform: translate(0px, 0px);"></div></div></div><div class="os-scrollbar os-scrollbar-vertical os-scrollbar-unusable os-scrollbar-auto-hidden"><div class="os-scrollbar-track os-scrollbar-track-off"><div class="os-scrollbar-handle" style="transform: translate(0px, 0px);"></div></div></div><div class="os-scrollbar-corner"></div></div>
-					<!-- Chat conversation END -->
-					<!-- Chat bottom START -->
-					<div class="mt-2">
-						<!-- Chat textarea -->
-						<textarea class="form-control mb-sm-0 mb-3" placeholder="Type a message" rows="1"></textarea>
-						<!-- Button -->
-						<div class="d-sm-flex align-items-end mt-2">
-							<button class="btn btn-sm btn-danger-soft me-2"><i class="fa-solid fa-face-smile fs-6"></i></button>
-							<button class="btn btn-sm btn-secondary-soft me-2"><i class="fa-solid fa-paperclip fs-6"></i></button>
-							<button class="btn btn-sm btn-success-soft me-2"> Gif </button>
-							<button class="btn btn-sm btn-primary ms-auto"> Send </button>
-						</div>
-					</div>
-					<!-- Chat bottom START -->
-				</div>
-			</div>
-			<!-- Chat toast 2 END -->
-
-		</div>
-	</div>
-	<!-- Chat END -->
-
-</div>
- <!-- Main Chat END -->
-
-<!-- Modal create Feed START -->
-<div class="modal fade" id="modalCreateFeed" tabindex="-1" aria-labelledby="modalLabelCreateFeed" aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-		<div class="modal-content">
-			<!-- Modal feed header START -->
-			<div class="modal-header">
-				<h5 class="modal-title" id="modalLabelCreateFeed">Create post</h5>
-				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-			</div>
-			<!-- Modal feed header END -->
-
-			<!-- Modal feed body START -->
-			<div class="modal-body">
-				 <!-- Add Feed -->
-				 <div class="d-flex mb-3">
-					<!-- Avatar -->
-					<div class="avatar avatar-xs me-2">
-						<img class="avatar-img rounded-circle" src="assets/images/avatar/03.jpg" alt="">
-					</div>
-					<!-- Feed box  -->
-					<form class="w-100" method="/post/posts/{{phone}}" action="post">
-						<input type="text" class="form-control" placeholder="Share your thoughts" name="text">
-						
-					</form>
-				</div>
-				<!-- Feed rect START -->
-				<div class="hstack gap-2">
-					<a class="icon-md bg-success bg-opacity-10 text-success rounded-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Photo" data-bs-original-title="Photo"> <i class="bi bi-image-fill"></i> </a>
-					<a class="icon-md bg-info bg-opacity-10 text-info rounded-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Video" data-bs-original-title="Video"> <i class="bi bi-camera-reels-fill"></i> </a>
-					<a class="icon-md bg-danger bg-opacity-10 text-danger rounded-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Events" data-bs-original-title="Events"> <i class="bi bi-calendar2-event-fill"></i> </a>
-					<a class="icon-md bg-warning bg-opacity-10 text-warning rounded-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Feeling/Activity" data-bs-original-title="Feeling/Activity"> <i class="bi bi-emoji-smile-fill"></i> </a>
-					<a class="icon-md bg-light text-secondary rounded-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Check in" data-bs-original-title="Check in"> <i class="bi bi-geo-alt-fill"></i> </a>
-					<a class="icon-md bg-primary bg-opacity-10 text-primary rounded-circle" href="#" data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Tag people on top" data-bs-original-title="Tag people on top"> <i class="bi bi-tag-fill"></i> </a>
-				</div>
-				<!-- Feed rect END -->
-			</div>
-			<!-- Modal feed body END -->
-
-			<!-- Modal feed footer -->
-			<div class="modal-footer row justify-content-between">
-				<!-- Select -->
-				<div class="col-lg-3">
-					<div class="choices" data-type="select-one" tabindex="0" role="listbox" aria-haspopup="true" aria-expanded="false"><div class="choices__inner"><select class="form-select js-choice choice-select-text-none choices__input" data-position="top" data-search-enabled="false" hidden="" tabindex="-1" data-choice="active"><option value="PB" data-custom-properties="[object Object]">Public</option></select><div class="choices__list choices__list--single"><div class="choices__item choices__item--selectable" data-item="" data-id="1" data-value="PB" data-custom-properties="[object Object]" aria-selected="true">Public</div></div></div><div class="choices__list choices__list--dropdown" aria-expanded="false"><div class="choices__list" role="listbox"><div id="choices--0qkc-item-choice-1" class="choices__item choices__item--choice choices__item--selectable is-highlighted" role="option" data-choice="" data-id="1" data-value="PV" data-select-text="Press to select" data-choice-selectable="" aria-selected="true">Custom</div><div id="choices--0qkc-item-choice-2" class="choices__item choices__item--choice choices__item--selectable" role="option" data-choice="" data-id="2" data-value="PV" data-select-text="Press to select" data-choice-selectable="">Friends</div><div id="choices--0qkc-item-choice-3" class="choices__item choices__item--choice choices__item--selectable" role="option" data-choice="" data-id="3" data-value="PV" data-select-text="Press to select" data-choice-selectable="">Only me</div><div id="choices--0qkc-item-choice-4" class="choices__item choices__item--choice is-selected choices__item--selectable" role="option" data-choice="" data-id="4" data-value="PB" data-select-text="Press to select" data-choice-selectable="">Public</div></div></div></div>
-				<!-- Button -->
-				</div>
-				<div class="col-lg-8 text-sm-end">
-					<button type="button" class="btn btn-danger-soft me-2"> <i class="bi bi-camera-video-fill pe-1"></i> Live video</button>
-					<button type="button" class="btn btn-success-soft">Post</button>
-				</div>
-			</div>
-			<!-- Modal feed footer -->
-
-		</div>
-	</div>
-</div>
-<!-- Modal create feed END -->
-
-<!-- Modal create Feed photo START -->
-<div class="modal fade" id="feedActionPhoto" tabindex="-1" aria-labelledby="feedActionPhotoLabel" aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered">
-		<div class="modal-content">
-			<!-- Modal feed header START -->
-			<div class="modal-header">
-				<h5 class="modal-title" id="feedActionPhotoLabel">Add post photo</h5>
-				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-			</div>
-			<!-- Modal feed header END -->
-
-				<!-- Modal feed body START -->
-				<div class="modal-body">
-				<!-- Add Feed -->
-				<div class="d-flex mb-3">
-					<!-- Avatar -->
-					<div class="avatar avatar-xs me-2">
-						<img class="avatar-img rounded-circle" src="assets/images/avatar/03.jpg" alt="">
-					</div>
-					<!-- Feed box  -->
-					<form class="w-100">
-						<textarea class="form-control pe-4 fs-3 lh-1 border-0" rows="2" placeholder="Share your thoughts..."></textarea>
-					</form>
-				</div>
-
-				<!-- Dropzone photo START -->
-				<div>
-					<label class="form-label">Upload attachment</label>
-					<div class="dropzone dropzone-default card shadow-none dz-clickable" data-dropzone="{&quot;maxFiles&quot;:2}">
-						<div class="dz-message">
-							<i class="bi bi-images display-3"></i>
-							<p>Drag here or click to upload photo.</p>
-						</div>
-					</div>
-				</div>
-				<!-- Dropzone photo END -->
-
-				</div>
-				<!-- Modal feed body END -->
-
-				<!-- Modal feed footer -->
-				<div class="modal-footer ">
-					<!-- Button -->
-						<button type="button" class="btn btn-danger-soft me-2" data-bs-dismiss="modal">Cancel</button>
-						<button type="button" class="btn btn-success-soft">Post</button>
-				</div>
-				<!-- Modal feed footer -->
-		</div>
-	</div>
-</div>
-<!-- Modal create Feed photo END -->
-
-<!-- Modal create Feed video START -->
-<div class="modal fade" id="feedActionVideo" tabindex="-1" aria-labelledby="feedActionVideoLabel" aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered">
-		<div class="modal-content">
-		 <!-- Modal feed header START -->
-		 <div class="modal-header">
-			<h5 class="modal-title" id="feedActionVideoLabel">Add post video</h5>
-			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-		</div>
-		<!-- Modal feed header END -->
-
-			<!-- Modal feed body START -->
-			<div class="modal-body">
-			 <!-- Add Feed -->
-			 <div class="d-flex mb-3">
-				<!-- Avatar -->
-				<div class="avatar avatar-xs me-2">
-					<img class="avatar-img rounded-circle" src="assets/images/avatar/03.jpg" alt="">
-				</div>
-				<!-- Feed box  -->
-				<form class="w-100">
-					<textarea class="form-control pe-4 fs-3 lh-1 border-0" rows="2" placeholder="Share your thoughts..."></textarea>
-				</form>
-			</div>
-
-			<!-- Dropzone photo START -->
-			<div>
-				<label class="form-label">Upload attachment</label>
-				<div class="dropzone dropzone-default card shadow-none dz-clickable" data-dropzone="{&quot;maxFiles&quot;:2}">
-					<div class="dz-message">
-						<i class="bi bi-camera-reels display-3"></i>
-								<p>Drag here or click to upload video.</p>
-					</div>
-				</div>
-			</div>
-			<!-- Dropzone photo END -->
-
-		</div>
-			<!-- Modal feed body END -->
-
-			<!-- Modal feed footer -->
-			<div class="modal-footer">
-				<!-- Button -->
-				<button type="button" class="btn btn-danger-soft me-2"><i class="bi bi-camera-video-fill pe-1"></i> Live video</button>
-				<button type="button" class="btn btn-success-soft">Post</button>
-			</div>
-			<!-- Modal feed footer -->
-		</div>
-	</div>
-</div>
 <!-- Modal create Feed video END -->
 
 <!-- Modal create events START -->
-<div class="modal fade" id="modalCreateEvents" tabindex="-1" aria-labelledby="modalLabelCreateAlbum" aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered">
-		<div class="modal-content">
-			<!-- Modal feed header START -->
-			<div class="modal-header">
-				<h5 class="modal-title" id="modalLabelCreateAlbum">Create event</h5>
-				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-			</div>
-			<!-- Modal feed header END -->
-			<!-- Modal feed body START -->
-			<div class="modal-body">
-				<!-- Form START -->
-				<form class="row g-4">
-					<!-- Title -->
-					<div class="col-12">
-						<label class="form-label">Title</label>
-						<input type="email" class="form-control" placeholder="Event name here">
-					</div>
-					<!-- Description -->
-					<div class="col-12">
-						<label class="form-label">Description</label>
-						<textarea class="form-control" rows="2" placeholder="Ex: topics, schedule, etc."></textarea>
-					</div>
-					<!-- Date -->
-					<div class="col-sm-4">
-						<label class="form-label">Date</label>
-						<input type="text" class="form-control flatpickr flatpickr-input" placeholder="Select date" readonly="readonly">
-					</div>
-					<!-- Time -->
-					<div class="col-sm-4">
-						<label class="form-label">Time</label>
-						<input type="text" class="form-control flatpickr flatpickr-input" data-enabletime="true" data-nocalendar="true" placeholder="Select time" readonly="readonly">
-					</div>
-					<!-- Duration -->
-					<div class="col-sm-4">
-						<label class="form-label">Duration</label>
-						<input type="email" class="form-control" placeholder="1hr 23m">
-					</div>
-					<!-- Location -->
-					<div class="col-12">
-						<label class="form-label">Location</label>
-						<input type="email" class="form-control" placeholder="Logansport, IN 46947">
-					</div>
-					<!-- Add guests -->
-					<div class="col-12">
-						<label class="form-label">Add guests</label>
-						<input type="email" class="form-control" placeholder="Guest email">
-					</div>
-					<!-- Avatar group START -->
-					<div class="col-12 mt-3">
-						<ul class="avatar-group list-unstyled align-items-center mb-0">
-							<li class="avatar avatar-xs">
-								<img class="avatar-img rounded-circle" src="assets/images/avatar/01.jpg" alt="avatar">
-							</li>
-							<li class="avatar avatar-xs">
-								<img class="avatar-img rounded-circle" src="assets/images/avatar/02.jpg" alt="avatar">
-							</li>
-							<li class="avatar avatar-xs">
-								<img class="avatar-img rounded-circle" src="assets/images/avatar/03.jpg" alt="avatar">
-							</li>
-							<li class="avatar avatar-xs">
-								<img class="avatar-img rounded-circle" src="assets/images/avatar/04.jpg" alt="avatar">
-							</li>
-							<li class="avatar avatar-xs">
-								<img class="avatar-img rounded-circle" src="assets/images/avatar/05.jpg" alt="avatar">
-							</li>
-							<li class="avatar avatar-xs">
-								<img class="avatar-img rounded-circle" src="assets/images/avatar/06.jpg" alt="avatar">
-							</li>
-							<li class="avatar avatar-xs">
-								<img class="avatar-img rounded-circle" src="{{url_for('static',path='assets/images/avatar/07.jpg')}}" alt="avatar">
-							</li>
-							<li class="ms-3">
-								<small> +50 </small>
-							</li>
-						</ul>
-					</div>
-					<!-- Upload Photos or Videos -->
-					<!-- Dropzone photo START -->
-					<div>
-						<label class="form-label">Upload attachment</label>
-						<div class="dropzone dropzone-default card shadow-none dz-clickable" data-dropzone="{&quot;maxFiles&quot;:2}">
-							<div class="dz-message">
-								<i class="bi bi-file-earmark-text display-3"></i>
-								<p>Drop presentation and document here or click to upload.</p>
-							</div>
-						</div>
-					</div>
-					<!-- Dropzone photo END -->
-				</form>
-				<!-- Form END -->
-			</div>
-			<!-- Modal feed body END -->
-			<!-- Modal footer -->
-			<!-- Button -->
-			<div class="modal-footer">
-				<button type="button" class="btn btn-danger-soft me-2" data-bs-dismiss="modal"> Cancel</button>
-				<button type="button" class="btn btn-success-soft">Create now</button>
-			</div>
-		</div>
-	</div>
-</div>
+
 <!-- Modal create events END -->
 
 <!-- =======================
 JS libraries, plugins and custom scripts -->
 
 <!-- Bootstrap JS -->
-<script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-
-<!-- Vendors -->
-<script src="assets/vendor/tiny-slider/dist/tiny-slider.js"></script>
-<script src="assets/vendor/OverlayScrollbars-master/js/OverlayScrollbars.min.js"></script>
-<script src="assets/vendor/choices.js/public/assets/scripts/choices.min.js"></script>
-<script src="assets/vendor/glightbox-master/dist/js/glightbox.min.js"></script>
-<script src="assets/vendor/flatpickr/dist/flatpickr.min.js"></script>
-<script src="assets/vendor/plyr/plyr.js"></script>
-<script src="assets/vendor/dropzone/dist/min/dropzone.min.js"></script>
-<script src="assets/vendor/zuck.js/dist/zuck.min.js"></script>
-<script src="assets/js/zuck-stories.js"></script><div id="zuck-modal" class="with-cube with-effects" tabindex="1" style="display: none;"><div id="zuck-modal-content"></div></div><div id="zuck-modal" class="with-cube with-effects" tabindex="1" style="display: none;"><div id="zuck-modal-content"></div></div>
-
-<!-- Theme Functions -->
-<script src="assets/js/functions.js"></script><input type="file" multiple="multiple" class="dz-hidden-input" tabindex="-1" style="visibility: hidden; position: absolute; top: 0px; left: 0px; height: 0px; width: 0px;"><input type="file" multiple="multiple" class="dz-hidden-input" tabindex="-1" style="visibility: hidden; position: absolute; top: 0px; left: 0px; height: 0px; width: 0px;"><input type="file" multiple="multiple" class="dz-hidden-input" tabindex="-1" style="visibility: hidden; position: absolute; top: 0px; left: 0px; height: 0px; width: 0px;"><div class="flatpickr-calendar animate" tabindex="-1"><div class="flatpickr-months"><span class="flatpickr-prev-month"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 17 17"><g></g><path d="M5.207 8.471l7.146 7.147-0.707 0.707-7.853-7.854 7.854-7.853 0.707 0.707-7.147 7.146z"></path></svg></span><div class="flatpickr-month"><div class="flatpickr-current-month"><select class="flatpickr-monthDropdown-months" aria-label="Month" tabindex="-1"><option class="flatpickr-monthDropdown-month" value="0" tabindex="-1">January</option><option class="flatpickr-monthDropdown-month" value="1" tabindex="-1">February</option><option class="flatpickr-monthDropdown-month" value="2" tabindex="-1">March</option><option class="flatpickr-monthDropdown-month" value="3" tabindex="-1">April</option><option class="flatpickr-monthDropdown-month" value="4" tabindex="-1">May</option><option class="flatpickr-monthDropdown-month" value="5" tabindex="-1">June</option><option class="flatpickr-monthDropdown-month" value="6" tabindex="-1">July</option><option class="flatpickr-monthDropdown-month" value="7" tabindex="-1">August</option><option class="flatpickr-monthDropdown-month" value="8" tabindex="-1">September</option><option class="flatpickr-monthDropdown-month" value="9" tabindex="-1">October</option><option class="flatpickr-monthDropdown-month" value="10" tabindex="-1">November</option><option class="flatpickr-monthDropdown-month" value="11" tabindex="-1">December</option></select><div class="numInputWrapper"><input class="numInput cur-year" type="number" tabindex="-1" aria-label="Year"><span class="arrowUp"></span><span class="arrowDown"></span></div></div></div><span class="flatpickr-next-month"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 17 17"><g></g><path d="M13.207 8.472l-7.854 7.854-0.707-0.707 7.146-7.146-7.146-7.148 0.707-0.707 7.854 7.854z"></path></svg></span></div><div class="flatpickr-innerContainer"><div class="flatpickr-rContainer"><div class="flatpickr-weekdays"><div class="flatpickr-weekdaycontainer">
-      <span class="flatpickr-weekday">
-        Sun</span><span class="flatpickr-weekday">Mon</span><span class="flatpickr-weekday">Tue</span><span class="flatpickr-weekday">Wed</span><span class="flatpickr-weekday">Thu</span><span class="flatpickr-weekday">Fri</span><span class="flatpickr-weekday">Sat
-      </span>
-      </div></div><div class="flatpickr-days" tabindex="-1"><div class="dayContainer"><span class="flatpickr-day prevMonthDay" aria-label="November 26, 2023" tabindex="-1">26</span><span class="flatpickr-day prevMonthDay" aria-label="November 27, 2023" tabindex="-1">27</span><span class="flatpickr-day prevMonthDay" aria-label="November 28, 2023" tabindex="-1">28</span><span class="flatpickr-day prevMonthDay" aria-label="November 29, 2023" tabindex="-1">29</span><span class="flatpickr-day prevMonthDay" aria-label="November 30, 2023" tabindex="-1">30</span><span class="flatpickr-day " aria-label="December 1, 2023" tabindex="-1">1</span><span class="flatpickr-day " aria-label="December 2, 2023" tabindex="-1">2</span><span class="flatpickr-day " aria-label="December 3, 2023" tabindex="-1">3</span><span class="flatpickr-day " aria-label="December 4, 2023" tabindex="-1">4</span><span class="flatpickr-day " aria-label="December 5, 2023" tabindex="-1">5</span><span class="flatpickr-day " aria-label="December 6, 2023" tabindex="-1">6</span><span class="flatpickr-day " aria-label="December 7, 2023" tabindex="-1">7</span><span class="flatpickr-day " aria-label="December 8, 2023" tabindex="-1">8</span><span class="flatpickr-day " aria-label="December 9, 2023" tabindex="-1">9</span><span class="flatpickr-day " aria-label="December 10, 2023" tabindex="-1">10</span><span class="flatpickr-day " aria-label="December 11, 2023" tabindex="-1">11</span><span class="flatpickr-day today" aria-label="December 12, 2023" aria-current="date" tabindex="-1">12</span><span class="flatpickr-day " aria-label="December 13, 2023" tabindex="-1">13</span><span class="flatpickr-day " aria-label="December 14, 2023" tabindex="-1">14</span><span class="flatpickr-day " aria-label="December 15, 2023" tabindex="-1">15</span><span class="flatpickr-day " aria-label="December 16, 2023" tabindex="-1">16</span><span class="flatpickr-day " aria-label="December 17, 2023" tabindex="-1">17</span><span class="flatpickr-day " aria-label="December 18, 2023" tabindex="-1">18</span><span class="flatpickr-day " aria-label="December 19, 2023" tabindex="-1">19</span><span class="flatpickr-day " aria-label="December 20, 2023" tabindex="-1">20</span><span class="flatpickr-day " aria-label="December 21, 2023" tabindex="-1">21</span><span class="flatpickr-day " aria-label="December 22, 2023" tabindex="-1">22</span><span class="flatpickr-day " aria-label="December 23, 2023" tabindex="-1">23</span><span class="flatpickr-day " aria-label="December 24, 2023" tabindex="-1">24</span><span class="flatpickr-day " aria-label="December 25, 2023" tabindex="-1">25</span><span class="flatpickr-day " aria-label="December 26, 2023" tabindex="-1">26</span><span class="flatpickr-day " aria-label="December 27, 2023" tabindex="-1">27</span><span class="flatpickr-day " aria-label="December 28, 2023" tabindex="-1">28</span><span class="flatpickr-day " aria-label="December 29, 2023" tabindex="-1">29</span><span class="flatpickr-day " aria-label="December 30, 2023" tabindex="-1">30</span><span class="flatpickr-day " aria-label="December 31, 2023" tabindex="-1">31</span><span class="flatpickr-day nextMonthDay" aria-label="January 1, 2024" tabindex="-1">1</span><span class="flatpickr-day nextMonthDay" aria-label="January 2, 2024" tabindex="-1">2</span><span class="flatpickr-day nextMonthDay" aria-label="January 3, 2024" tabindex="-1">3</span><span class="flatpickr-day nextMonthDay" aria-label="January 4, 2024" tabindex="-1">4</span><span class="flatpickr-day nextMonthDay" aria-label="January 5, 2024" tabindex="-1">5</span><span class="flatpickr-day nextMonthDay" aria-label="January 6, 2024" tabindex="-1">6</span></div></div></div></div></div><div class="flatpickr-calendar hasTime noCalendar animate" tabindex="-1"><div class="flatpickr-time" tabindex="-1"><div class="numInputWrapper"><input class="numInput flatpickr-hour" type="number" aria-label="Hour" tabindex="-1" step="1" min="1" max="12" maxlength="2"><span class="arrowUp"></span><span class="arrowDown"></span></div><span class="flatpickr-time-separator">:</span><div class="numInputWrapper"><input class="numInput flatpickr-minute" type="number" aria-label="Minute" tabindex="-1" step="5" min="0" max="59" maxlength="2"><span class="arrowUp"></span><span class="arrowDown"></span></div><span class="flatpickr-am-pm" title="Click to toggle" tabindex="-1">PM</span></div></div><input type="file" multiple="multiple" class="dz-hidden-input" tabindex="-1" style="visibility: hidden; position: absolute; top: 0px; left: 0px; height: 0px; width: 0px;"><input type="file" multiple="multiple" class="dz-hidden-input" tabindex="-1" style="visibility: hidden; position: absolute; top: 0px; left: 0px; height: 0px; width: 0px;"><input type="file" multiple="multiple" class="dz-hidden-input" tabindex="-1" style="visibility: hidden; position: absolute; top: 0px; left: 0px; height: 0px; width: 0px;"><div class="flatpickr-calendar animate" tabindex="-1"><div class="flatpickr-months"><span class="flatpickr-prev-month"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 17 17"><g></g><path d="M5.207 8.471l7.146 7.147-0.707 0.707-7.853-7.854 7.854-7.853 0.707 0.707-7.147 7.146z"></path></svg></span><div class="flatpickr-month"><div class="flatpickr-current-month"><select class="flatpickr-monthDropdown-months" aria-label="Month" tabindex="-1"><option class="flatpickr-monthDropdown-month" value="0" tabindex="-1">January</option><option class="flatpickr-monthDropdown-month" value="1" tabindex="-1">February</option><option class="flatpickr-monthDropdown-month" value="2" tabindex="-1">March</option><option class="flatpickr-monthDropdown-month" value="3" tabindex="-1">April</option><option class="flatpickr-monthDropdown-month" value="4" tabindex="-1">May</option><option class="flatpickr-monthDropdown-month" value="5" tabindex="-1">June</option><option class="flatpickr-monthDropdown-month" value="6" tabindex="-1">July</option><option class="flatpickr-monthDropdown-month" value="7" tabindex="-1">August</option><option class="flatpickr-monthDropdown-month" value="8" tabindex="-1">September</option><option class="flatpickr-monthDropdown-month" value="9" tabindex="-1">October</option><option class="flatpickr-monthDropdown-month" value="10" tabindex="-1">November</option><option class="flatpickr-monthDropdown-month" value="11" tabindex="-1">December</option></select><div class="numInputWrapper"><input class="numInput cur-year" type="number" tabindex="-1" aria-label="Year"><span class="arrowUp"></span><span class="arrowDown"></span></div></div></div><span class="flatpickr-next-month"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 17 17"><g></g><path d="M13.207 8.472l-7.854 7.854-0.707-0.707 7.146-7.146-7.146-7.148 0.707-0.707 7.854 7.854z"></path></svg></span></div><div class="flatpickr-innerContainer"><div class="flatpickr-rContainer"><div class="flatpickr-weekdays"><div class="flatpickr-weekdaycontainer">
-      <span class="flatpickr-weekday">
-        Sun</span><span class="flatpickr-weekday">Mon</span><span class="flatpickr-weekday">Tue</span><span class="flatpickr-weekday">Wed</span><span class="flatpickr-weekday">Thu</span><span class="flatpickr-weekday">Fri</span><span class="flatpickr-weekday">Sat
-      </span>
-      </div></div><div class="flatpickr-days" tabindex="-1"><div class="dayContainer"><span class="flatpickr-day prevMonthDay" aria-label="November 26, 2023" tabindex="-1">26</span><span class="flatpickr-day prevMonthDay" aria-label="November 27, 2023" tabindex="-1">27</span><span class="flatpickr-day prevMonthDay" aria-label="November 28, 2023" tabindex="-1">28</span><span class="flatpickr-day prevMonthDay" aria-label="November 29, 2023" tabindex="-1">29</span><span class="flatpickr-day prevMonthDay" aria-label="November 30, 2023" tabindex="-1">30</span><span class="flatpickr-day " aria-label="December 1, 2023" tabindex="-1">1</span><span class="flatpickr-day " aria-label="December 2, 2023" tabindex="-1">2</span><span class="flatpickr-day " aria-label="December 3, 2023" tabindex="-1">3</span><span class="flatpickr-day " aria-label="December 4, 2023" tabindex="-1">4</span><span class="flatpickr-day " aria-label="December 5, 2023" tabindex="-1">5</span><span class="flatpickr-day " aria-label="December 6, 2023" tabindex="-1">6</span><span class="flatpickr-day " aria-label="December 7, 2023" tabindex="-1">7</span><span class="flatpickr-day " aria-label="December 8, 2023" tabindex="-1">8</span><span class="flatpickr-day " aria-label="December 9, 2023" tabindex="-1">9</span><span class="flatpickr-day " aria-label="December 10, 2023" tabindex="-1">10</span><span class="flatpickr-day " aria-label="December 11, 2023" tabindex="-1">11</span><span class="flatpickr-day today" aria-label="December 12, 2023" aria-current="date" tabindex="-1">12</span><span class="flatpickr-day " aria-label="December 13, 2023" tabindex="-1">13</span><span class="flatpickr-day " aria-label="December 14, 2023" tabindex="-1">14</span><span class="flatpickr-day " aria-label="December 15, 2023" tabindex="-1">15</span><span class="flatpickr-day " aria-label="December 16, 2023" tabindex="-1">16</span><span class="flatpickr-day " aria-label="December 17, 2023" tabindex="-1">17</span><span class="flatpickr-day " aria-label="December 18, 2023" tabindex="-1">18</span><span class="flatpickr-day " aria-label="December 19, 2023" tabindex="-1">19</span><span class="flatpickr-day " aria-label="December 20, 2023" tabindex="-1">20</span><span class="flatpickr-day " aria-label="December 21, 2023" tabindex="-1">21</span><span class="flatpickr-day " aria-label="December 22, 2023" tabindex="-1">22</span><span class="flatpickr-day " aria-label="December 23, 2023" tabindex="-1">23</span><span class="flatpickr-day " aria-label="December 24, 2023" tabindex="-1">24</span><span class="flatpickr-day " aria-label="December 25, 2023" tabindex="-1">25</span><span class="flatpickr-day " aria-label="December 26, 2023" tabindex="-1">26</span><span class="flatpickr-day " aria-label="December 27, 2023" tabindex="-1">27</span><span class="flatpickr-day " aria-label="December 28, 2023" tabindex="-1">28</span><span class="flatpickr-day " aria-label="December 29, 2023" tabindex="-1">29</span><span class="flatpickr-day " aria-label="December 30, 2023" tabindex="-1">30</span><span class="flatpickr-day " aria-label="December 31, 2023" tabindex="-1">31</span><span class="flatpickr-day nextMonthDay" aria-label="January 1, 2024" tabindex="-1">1</span><span class="flatpickr-day nextMonthDay" aria-label="January 2, 2024" tabindex="-1">2</span><span class="flatpickr-day nextMonthDay" aria-label="January 3, 2024" tabindex="-1">3</span><span class="flatpickr-day nextMonthDay" aria-label="January 4, 2024" tabindex="-1">4</span><span class="flatpickr-day nextMonthDay" aria-label="January 5, 2024" tabindex="-1">5</span><span class="flatpickr-day nextMonthDay" aria-label="January 6, 2024" tabindex="-1">6</span></div></div></div></div></div><div class="flatpickr-calendar hasTime noCalendar animate" tabindex="-1"><div class="flatpickr-time" tabindex="-1"><div class="numInputWrapper"><input class="numInput flatpickr-hour" type="number" aria-label="Hour" tabindex="-1" step="1" min="1" max="12" maxlength="2"><span class="arrowUp"></span><span class="arrowDown"></span></div><span class="flatpickr-time-separator">:</span><div class="numInputWrapper"><input class="numInput flatpickr-minute" type="number" aria-label="Minute" tabindex="-1" step="5" min="0" max="59" maxlength="2"><span class="arrowUp"></span><span class="arrowDown"></span></div><span class="flatpickr-am-pm" title="Click to toggle" tabindex="-1">PM</span></div></div>
 
 
 
-</body></html>
+<!--<script src="{{url_for('static',path='assets/vendor/tiny-slider/dist/tiny-slider.js')}}"></script>
+<script src="{{url_for('static',path='assets/vendor/OverlayScrollbars-master/js/OverlayScrollbars.min.js')}}"></script>
+<script src="{{url_for('static',path='assets/vendor/choices.js/public/assets/scripts/choices.min.js')}}"></script>
+<script src="{{url_for('static',path='assets/vendor/glightbox-master/dist/js/glightbox.min.js')}}"></script>
+<script src="{{url_for('static',path='assets/vendor/flatpickr/dist/flatpickr.min.js')}}"></script>
+<script src="{{url_for('static',path='assets/vendor/plyr/plyr.js')}}"></script>
+<script src="{{url_for('static',path='assets/vendor/dropzone/dist/min/dropzone.min.js')}}"></script>
+<script src="{{url_for('static',path='assets/vendor/zuck.js/dist/zuck.min.js')}}"></script>
+<script src="{{url_for('static',path='assets/js/zuck-stories.js')}}"></script><div id="zuck-modal" class="with-cube with-effects" tabindex="1" style="display: none;"><div id="zuck-modal-content"></div></div><div id="zuck-modal" class="with-cube with-effects" tabindex="1" style="display: none;"><div id="zuck-modal-content"></div></div>-->
+
+<!--<script src="assets/js/functions.js"></script>-->
+</body>
+</html>
