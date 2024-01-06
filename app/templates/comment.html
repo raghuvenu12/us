@@ -210,48 +210,79 @@
         </div>
       </nav>
       <nav class="navbar navbar-expand fixed-bottom bg-body-tertiary d-md-none text-center" style="background-color: white;">
-        <div class="container-fluid d-flex ">
-            <ul class="navbar-nav d-flex">
-                <div>
+        <div class="container-fluid d-flex">
+            
+            <ul class="navbar-nav">
                 <li class="nav-item">
+                    <div class="flex-column">
                     <a class="nav-link" href="/post/test">
+                        
+                            <div >
                         <img class="me-2 h-20px w-20px fa-fw img-fluid" src="{{url_for('static',path='assets/images/Group.png')}}" alt="">
+                    </div><div>
                         <span class="text">Home</span>
+                    </div>
+                    
                     </a>
-                </li>
-            </div>
-            <div>
-                <li class="nav-item">
-                    <a class="nav-link" href="/post/map">
-                        <img class="me-2 h-20px w-20px fa-fw img-fluid" src="{{url_for('static',path='assets/images/location_on.png')}}" alt="">
-                        <span>Map</span>
-                    </a>
-                </li>
-            </div>
-            <div>
-                <li class="nav-item">
-                    <a class="nav-link" href="events.html">
-                        <img class="me-2 h-20px w-20px fa-fw img-fluid" src="{{url_for('static',path='assets/images/campaign.png')}}" alt="">
-                        <span>Post</span>
-                    </a>
-                </li>
                 </div>
-                <div>
-                <li class="nav-item">
-                    <a class="nav-link" href="groups.html">
-                        <img class="me-2 h-20px w-20px fa-fw img-fluid" src="{{url_for('static',path='assets/images/forum.png')}}" alt="">
-                        <span>Community</span>
-                    </a>
                 </li>
-                </div>
-                <div>
+               
                 <li class="nav-item">
-                    <a class="nav-link" href="groups.html">
-                        <img class="me-2 h-20px w-20px fa-fw img-fluid" src="{{image}}" alt="">
-                        <span class="text-center">{{username}}</span>
-                    </a>
+                    <div class="flex-column">
+                        <a class="nav-link" href="/post/map">
+                            
+                                <div >
+                            <img class="me-2 h-20px w-20px fa-fw img-fluid" src="{{url_for('static',path='assets/images/location_on.png')}}" alt="">
+                        </div><div>
+                            <span class="text">Map</span>
+                        </div>
+                        
+                        </a>
+                    </div>
+                   
                 </li>
-                </div>
+                <li class="nav-item">
+                    <div class="flex-column text-center">
+                        <a class="nav-link" href="">
+                            
+                                <div >
+                            <img class="me-2 h-20px w-20px fa-fw img-fluid" src="{{url_for('static',path='assets/images/campaign.png')}}" alt="">
+                        </div><div>
+                            <span class="text">Post</span>
+                        </div>
+                        
+                        </a>
+                    </div>
+                   
+                </li>
+                <li class="nav-item">
+                    <div class="flex-column text-center">
+                        <a class="nav-link" href="">
+                            
+                                <div >
+                            <img class="me-2 h-20px w-20px fa-fw img-fluid" src="{{url_for('static',path='assets/images/forum.png')}}" alt="">
+                        </div><div>
+                            <span class="text">Community</span>
+                        </div>
+                        
+                        </a>
+                    </div>
+                  
+                </li>
+                <li class="nav-item">
+                    <div class="flex-column text-center">
+                        <a class="nav-link" href="">
+                            
+                                <div >
+                            <img class="me-2 h-20px w-20px fa-fw img-fluid" src="{{image}}" alt="">
+                        </div><div>
+                            <span class="text">{{username}}</span>
+                        </div>
+                        
+                        </a>
+                    </div>
+                    
+                </li>
             </ul>
         </div>
     </nav>
@@ -259,145 +290,7 @@
     <div class="container-fluid col-md-6 vh-100">
   
 
-    <!-- Fixed Bottom Navbar -->
-    
-   
-    <!--
-    <nav class="navbar navbar-expand-lg fixed-bottom bg-body-tertiary">
-        <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="nav justify-content-center">
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#">Active</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                </li>
-              </ul>
-           
-               <ul class="navbar-nav justify-content-center">
-                    <li class="nav-item mx-2">
-                        <a class="nav-link" href="/post/test/{{phone}}"><img class="h-20px fa-fw img-fuid" src="{{url_for('static',path='assets/images/icon/home-outline-filled.svg')}}" alt=""><span>Home</span></a>
-                    </li>
-                    <li class="nav-item mx-2">
-                        <a class="nav-link" href="my-profile-connections.html"> <img class="h-20px fa-fw img-fuid" src="{{url_for('static',path='assets/images/icon/search-outline-filled.svg')}}" alt=""><span>Search</span></a>
-                    </li>
-                    <li class="nav-item mx-2">
-                        <a class="nav-link" href="/post/map/{{phone}}"> <img class=" h-20px fa-fw img-fluid" src="{{url_for('static',path='assets/images/icon/earth-outline-filled.svg')}}" alt=""><span>Map</span></a>
-                    </li>
-                    <li class="nav-item mx-2">
-                        <a class="nav-link" href="events.html"> <img class=" h-20px fa-fw img-fluid" src="{{url_for('static',path='assets/images/icon/calendar-outline-filled.svg')}}" alt=""><span>Post</span></a>
-                    </li>
-                    <li class="nav-item mx-2">
-                        <a class="nav-link" href="groups.html"> <img class="h-20px fa-fw img-fluid" src="{{url_for('static',path='assets/images/icon/chat-outline-filled.svg')}}" alt=""><span>Community</span></a>
-                    </li>
-                    <li class="nav-item mx-2">
-                        <a class="nav-link" href="notifications.html"> <img class=" h-20px fa-fw img-fluid" src="{{url_for('static',path='assets/images/icon/notification-outlined-filled.svg')}}" alt=""><span>Profile</span></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>-->
-
-    <!-- Your other content -->
-
-    <!-- Your scripts -->
-
-
-    
-    <div id="map"></div>
-    <div class="bg-light" style="background-color: white;">
-    
-    {% for i in range(post|length) %}
-   
-    {% if i==0 %}
-    <div class="text-center " style="background-color: white;">
-    All posts</div>{% endif %}
-
-    
-            <div class="card text-wrap border-0">
-                <!-- Card body -->
-                <div class="card-body">
-                    <div class="d-flex  flex-wrap">
-                    <!-- Post text -->
-                    <div >
-                        <p class="h4">{{i+1}}</p>
-                    </div>
-                    <div class="ms-2">
-                    <p class="mb-3 fw-medium">{{ post[i].text }}</p>
-                    </div>
-                    </div>
-
-                
-                    <!-- Mentions -->
-                    {% for mention in post[i].mentions %}
-                    <small class="text-primary">{{ mention }}</small>
-    
-                    {% endfor %}
-                    
-                
-                    <!-- Hashtags -->
-                    {% for hashtag in post[i].hashtags %}
-                    <small class="text-primary">#{{ hashtag }}</small>
-                    {% endfor %}
-                
-                </div>
-                    
-                </div>
-            
-         
-            {% endfor %}
-    </div>
-           
-            
-         
-           
-            
-    
-    <script>
-      
-
-function initMap() {
-   
-                        var d= JSON.parse('{{distinct_posts | tojson | safe}}');
-                        
-var options={zoom:8,center:{lat:0,lng:0}}
-var map=new google.maps.Map(document.getElementById('map'),options);
-
-for(let i=0;i<d.length;i++){
-    console.log(d[i][0],d[i][1])
-uluru={lat:d[i][0],lng:d[i][1]}
-addMarker(uluru)
-}
-
-   function addMarker(props){
-    var marker=new google.maps.Marker({
-    position:props,
-    map:map
-});
-   }
-
-            
-    
-
-
-}
-
-
-
-
-
-</script>
-
+    hgfgh
 </div>
 <div class="col-3 d-none d-md-block vh-100">
     <div class="row ">

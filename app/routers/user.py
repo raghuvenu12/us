@@ -1,6 +1,3 @@
-
-
-
 from fastapi import (
     APIRouter,
     Depends,
@@ -11,19 +8,23 @@ from fastapi import (
     Form,
     Query,
     UploadFile,
+    Response,
     File,
 )
 import secrets
 from typing import Annotated
+from fastapi_login import LoginManager
 import collections
 from fastapi.security import HTTPBasic, HTTPBasicCredentials
 import requests
 import socket
+
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from app.config import get_settings
 from fastapi.responses import RedirectResponse
 import re
+from app.utils.crypto import create_hash
 import app.db.schemas as schemas
 from datetime import datetime, timezone
 import time
@@ -53,6 +54,15 @@ api_result = requests.get('https://api.whatismyip.com/ip.php?key=52ba3649a96c23a
 print(api_result.text)
 
 
+SECRET = "9c44d829edc3d3096e940dcf62a9c09fdd30a084ebe535dc"
+
+manager = LoginManager(
+    SECRET, '/post/verify_otp',
+    use_cookie=True,use_header=False,
+    default_expiry=timedelta(hours=5768)
+)
+
+
    
 
 # Create a 'now' variable representing the current date and time
@@ -71,10 +81,34 @@ os.environ[
 Path = os.environ["GOOGLE_APPLICATION_CREDENTIALS"]
 storage_client = storage.Client(Path)
 
+@manager.user_loader()
+async def query_user(phone: str):
+    return phone
 
 
-@router.get("/", name="login")
+@router.get('/')
+def protected_route(request:Request):
+    cookies=(request.cookies)
+    if cookies.get("access-token") is None:
+        target_url = f"/post"
+
+        print(target_url)
+        resp = RedirectResponse(url=target_url, status_code=307)
+        return resp
+    else:
+        target_url = f"/post/test"
+        response = RedirectResponse(url=target_url, status_code=303)
+        return response
+
+
+
+    
+
+
+
+@router.get("/post", name="login")
 async def login(request: Request, status: str = Query(None)):
+    
     return templates.TemplateResponse(
         "login.html", {"request": request, "status": status}
     )
@@ -95,6 +129,7 @@ async def otp(request: Request, phone: str = Form(...)):
 
         # Add 3 minutes to the current time
        
+        
 
         new_data = OTP(
             phone=phone,
@@ -105,12 +140,12 @@ async def otp(request: Request, phone: str = Form(...)):
             created_at=datetime.now(),
         )
         await new_data.save()
-
+        otp=await OTP.all().order_by('-id').limit(1).first()
+        print(otp.id)
         return templates.TemplateResponse(
             "otp.html",
-            {"request": request, "phone": phone, "status": status, "attempts": 1},
+            {"request": request, "id":otp.id, "status": status, "attempts": 1},
         )
-
     except Exception as e:
         # Handle other exceptions
         print(f"Unexpected Exception: {e}")
@@ -118,8 +153,8 @@ async def otp(request: Request, phone: str = Form(...)):
 
 
 # Add similar try-except blocks to other routes and functions as needed.
-@router.get("/post/map/{phone}")
-async def map(request:Request,phone:str):
+@router.get("/post/map")
+async def map(request:Request,phone:str=Depends(manager)):
     distinct_user_ids = await Post.all()
     posts=await Post.all()
     lat=[]
@@ -214,10 +249,12 @@ async def map(request:Request,phone:str):
 
 
 
-@router.post("/post/verify_otp/{phone}")
-async def verify(request: Request, phone: str, otp: int = Form(...)):
+@router.post("/post/verify_otp/{id}")
+async def verify(response:Response,request: Request, id:int,otp: int = Form(...)):
+    
     try:
-        otp_data = await OTP.filter(phone=phone).order_by("-id").limit(1).first()
+        otp_data = await OTP.get(id=id)
+        
         if otp_data.num_attempts > 3:
             return templates.TemplateResponse("login.html", {"request": request})
         
@@ -236,29 +273,56 @@ async def verify(request: Request, phone: str, otp: int = Form(...)):
                 response = RedirectResponse(url=target_url, status_code=303)
                 return response
 
+        
         if otp == otp_data.otp:
             otp_data.status = "successfull"
 
             await otp_data.save()
+            token = manager.create_access_token(
+            data=dict(sub=otp_data.phone)
+                    )
+            
+            print(query_user( otp_data.phone))
 
             # Use the name of the endpoint function
-            user_exist = await User.filter(phone=phone).exists()
+            user_exist = await User.filter(phone=otp_data.phone).exists()
             if user_exist:
-                target_url = f"/post/test/{phone}"
+                target_url = f"/post/test"
 
                 response = RedirectResponse(url=target_url, status_code=303)
+                manager.set_cookie(response, token)
                 return response
             else:
                 new_data = User(
-                    phone=phone,
+                    phone=otp_data.phone,
                 )
                 await new_data.save()
 
-                target_url = f"/post/user_login/{phone}"
+                target_url = f"/post/user_login"
 
                 print(target_url)
-                response = RedirectResponse(url=target_url, status_code=303)
-                return response
+                resp = RedirectResponse(url=target_url, status_code=303)
+                manager.set_cookie(resp, token)
+                return resp
+                
+
+            
+            
+           
+            
+           
+            
+    
+
+            # Use the name of the endpoint function
+           
+            
+           
+
+            target_url = f"/post/user_login"
+
+           
+            
 
         if otp_data.num_attempts == 3:
             n = otp_data.num_attempts
@@ -278,29 +342,33 @@ async def verify(request: Request, phone: str, otp: int = Form(...)):
         otp_data.num_attempts = n
         await otp_data.save()
         return templates.TemplateResponse(
-            "otp.html", {"request": request, "phone": phone, "attempts": n}
+            "otp.html", {"request": request, "id":id,"attempts": n}
         )
     except Exception as e:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,detail="Not found")
     
 
 
-@router.get("/post/user_login/{phone}")
-async def user_login(request: Request, phone: str):
-    print(phone)
+@router.get("/post/user_login")
+async def user_login(request: Request):
+    
     return templates.TemplateResponse(
-        "user_login.html", {"request": request, "phone": phone}
+        "user_login.html", {"request": request}
     )
+@router.get("/post/comment")
+async def comment(request:Request) :
+    return templates.TemplateResponse("comment.html",{"request":request})
 
-
-@router.post("/post/user/{phone}")
+@router.post("/post/user")
 async def get_user(
     request: Request,
-    phone: str,
+   phone :str=Depends(manager),
     name: str = Form(...),
     username: str = Form(...),
     file: UploadFile = File(...),
+    
 ):
+    
     
     user_id = await User.get(phone=phone)
    
@@ -337,20 +405,22 @@ async def get_user(
             "create" ,
         ) 
     target_url+=f"/{phone}" """
-    target_url = f"/post/test/{phone}"
+    target_url = f"/post/test"
     response = RedirectResponse(url=target_url, status_code=303)
     return response
 
 
-@router.post("/post/posts/{phone}")
+@router.post("/post/posts")
 async def post(
     request: Request,
-    phone: str,
+    phone :str=Depends(manager),
     text: str = Form(...),
     files: list[UploadFile] = File(...),
     latitude:str=Form(...),longitude:str=Form(...)
 ):
+    
     user= await User.get(phone=phone)
+    print(user.id)
     id = user.id
     mention_pattern = r"@([A-Za-z0-9_]+)"
     
@@ -363,7 +433,8 @@ async def post(
 # Extract mentions and hashtags from the text
    
     video_file_extensions = ["mp4", "avi", "mkv"]  # Add more as needed
-
+    citizen=await Citizen.get(user_id=user.id)
+    print(citizen.id)
 # Extract mentions and hashtags from the text
     mentions = re.findall(mention_pattern, text)
     hashtags = re.findall(hashtag_pattern, text)
@@ -379,6 +450,8 @@ async def post(
         user_id=user.id,
         latitude=float(latitude),
         longitude=float(longitude),
+       
+
 
     )
     await new_data.save()
@@ -437,31 +510,32 @@ async def post(
    
 
   
-    new_data = Media(media_thumbnail_url=media_urls, post_id=post.id)
+    new_data = Media(media_thumbnail_url=media_urls, post_id=post.id,Citizen_id=citizen.id)
     await new_data.save()
 
     # Create a Google Cloud Storage client
 
     # Define the destination blob name (file name in the bucket)
-    target_url = f"/post/test/{phone}"
+    target_url = f"/post/test"
     response = RedirectResponse(url=target_url, status_code=303)
     return response
 
 
-@router.post("/post/{id}/comment/{phone}")
-async def comment(request: Request, phone: str, id: int, comment: str = Form(...)):
+@router.post("/post/{id}/comment")
+async def comment(request: Request, id: int, phone: str=Depends(manager),comment: str = Form(...)):
     user_id = await User.get(phone=phone)
     new_data = Comment(
         text=comment, ip_address=request.client.host, post_id=id, user_id=user_id.id
     )
     await new_data.save()
-    target_url = f"/post/test/{phone}"
+    target_url = f"/post/test"
     response = RedirectResponse(url=target_url, status_code=303)
     return response
 
 
-@router.get("/post/test/{phone}")
-async def create(request: Request, phone: str):
+@router.get("/post/test")
+async def create(request: Request,phone:str=Depends(manager)):
+   
     print(phone)
     user_id = await User.get(phone=phone)
     citizen = await Citizen.get(user_id=user_id.id).first()
@@ -469,8 +543,26 @@ async def create(request: Request, phone: str):
     image = citizen.image_url
     users = await User.all()
     all_citizen = await Citizen.all()
+   
+    media_with_post = await Media.all().order_by('-id').limit(3).prefetch_related(
+        'post','Citizen'
+    )
+    print(media_with_post[0])
+    #print(media_with_post[0].Citizen.username)
+
+ 
+   
+    
+    
+    
     
 
+    # Option 2: Iterate over the queryset and print each user
+    
+    
+    
+    
+    
     post = await Post.all().order_by("-id").limit(3)
     usernames = []
     images = []
@@ -491,6 +583,7 @@ async def create(request: Request, phone: str):
 
     for i in range(len(post)):
         id = post[i].user_id
+        
         print(id)
         citizen = await Citizen.get(user_id=id).first()
         usernames.append(citizen.username)
@@ -537,29 +630,3 @@ async def create(request: Request, phone: str):
             "comment_image": comment_image,
         },
     )
-security = HTTPBasic()
-
-def get_current_username(
-    credentials: Annotated[HTTPBasicCredentials, Depends(security)]
-    ):
-    current_username_bytes = credentials.username.encode("utf8")
-    correct_username_bytes = b"stanleyjobson"
-    is_correct_username = secrets.compare_digest(
-        current_username_bytes, correct_username_bytes
-    )
-    current_password_bytes = credentials.password.encode("utf8")
-    correct_password_bytes = b"swordfish"
-    is_correct_password = secrets.compare_digest(
-        current_password_bytes, correct_password_bytes
-    )
-    if not (is_correct_username and is_correct_password):
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Incorrect email or password",
-            headers={"WWW-Authenticate": "Basic"},
-        )
-    return credentials.username
-@router.get("/users/me")
-
-def read_current_user(username: Annotated[str, Depends(get_current_username)]):
-    return {"username": username}

@@ -415,7 +415,7 @@ Header END -->
 									<!-- Side Nav START -->
 									<ul class="nav nav-link-secondary flex-column fw-bold gap-2 min-vh-100">
 										<li class="nav-item">
-											<a class="nav-link" href="/post/test/{{phone}}">
+											<a class="nav-link" href="/post/test">
 												<img class="me-2 h-20px w-20px fa-fw img-fluid" src="{{url_for('static',path='assets/images/Group.png')}}" alt="">
 												<span class="text">Home</span>
 											</a>
@@ -427,7 +427,7 @@ Header END -->
 											</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link" href="/post/map/{{phone}}">
+											<a class="nav-link" href="/post/map">
 												<img class="me-2 h-20px w-20px fa-fw img-fluid" src="{{url_for('static',path='assets/images/location_on.png')}}" alt="">
 												<span>Map</span>
 											</a>
@@ -492,38 +492,47 @@ Header END -->
 			
 			<nav class="navbar navbar-expand fixed-bottom bg-body-tertiary d-md-none text-center" style="background-color: white;">
 				<div class="container-fluid d-flex ">
-					<ul class="navbar-nav">
+					<ul class="navbar-nav d-flex">
+						<div>
 						<li class="nav-item">
-							<a class="nav-link" href="/post/test/{{phone}}">
+							<a class="nav-link" href="/post/test">
 								<img class="me-2 h-20px w-20px fa-fw img-fluid" src="{{url_for('static',path='assets/images/Group.png')}}" alt="">
 								<span class="text">Home</span>
 							</a>
 						</li>
-					
+					</div>
+					<div>
 						<li class="nav-item">
-							<a class="nav-link" href="/post/map/{{phone}}">
+							<a class="nav-link" href="/post/map">
 								<img class="me-2 h-20px w-20px fa-fw img-fluid" src="{{url_for('static',path='assets/images/location_on.png')}}" alt="">
 								<span>Map</span>
 							</a>
 						</li>
+					</div>
+					<div>
 						<li class="nav-item">
 							<a class="nav-link" href="events.html">
 								<img class="me-2 h-20px w-20px fa-fw img-fluid" src="{{url_for('static',path='assets/images/campaign.png')}}" alt="">
 								<span>Post</span>
 							</a>
 						</li>
+						</div>
+						<div>
 						<li class="nav-item">
 							<a class="nav-link" href="groups.html">
 								<img class="me-2 h-20px w-20px fa-fw img-fluid" src="{{url_for('static',path='assets/images/forum.png')}}" alt="">
 								<span>Community</span>
 							</a>
 						</li>
+						</div>
+						<div>
 						<li class="nav-item">
 							<a class="nav-link" href="groups.html">
 								<img class="me-2 h-20px w-20px fa-fw img-fluid" src="{{image}}" alt="">
 								<span class="text-center">{{username}}</span>
 							</a>
 						</li>
+						</div>
 					</ul>
 				</div>
 			</nav>
@@ -611,7 +620,7 @@ Header END -->
 						</div>
 						<div class="modal-body">
 						  <!-- Form inside the modal -->
-						  <form method="post" action="/post/posts/{{ phone }}" enctype="multipart/form-data" id="locationForm">
+						  <form method="post" action="/post/posts" enctype="multipart/form-data" id="locationForm">
 							<div class="p-3 d-flex align-items-center" >
 								<!-- Image -->
 								
@@ -639,15 +648,14 @@ Header END -->
 							<!-- Custom-styled button to trigger file input -->
 							<div class="d-flex align-items-center">
 							  <div >
-								<input class="form-control d-none" type="file" id="formFileMultiple" name="files" accept="image/*,video/*" multiple required>
-
-								<label class="input-group-text" for="formFileMultiple">
-									<i class="fas fa-file-image"></i> <!-- Font Awesome file image icon -->
+								<input class="form-control visually-hidden" type="file" id="formFileMultiple" name="files" accept="image/*,video/*" multiple required>
+								<label class="input-group-text" for="formFileMultiple" required>
+									<i class="fas fa-file-image" required></i> <!-- Font Awesome file image icon -->
 								</label>
 							  </div>
 							  <div class="ms-auto">
 								<button type="button" style="background-color:#CF2C79" class="btn text-white" data-bs-dismiss="modal">Close</button>
-								<button type="button" onclick="getUserLocationAndSubmit()" style="background-color:palevioletred" class="btn text-white rounded">Post</button>
+								<button type="button" onclick="getUserLocationAndSubmit()" style="background-color:#CF2C79" class="btn text-white rounded">Post</button>
 							  </div>
 							
 							 
@@ -895,10 +903,12 @@ Header END -->
 			
 					<!-- Comment Section -->
 					<div class="mx-sm-2 mx-md-3 mx-lg-5">
+						<a href="/post/comment/">
 						<button class="btn bg-transparent d-flex" data-bs-toggle="collapse" data-bs-target="#collapseExample_{{i}}" aria-expanded="false" aria-controls="collapseExample" >
 							<img src="{{url_for('static', path='assets/images/comment.png')}}" class="img-fluid mb-2" alt="Comment">
 							<p class="mb-0">50</p>
 						</button>
+					</a>
 					</div>
 			
 					<!-- Share Section -->
@@ -951,7 +961,7 @@ Header END -->
 					<a href="#!"> <img class="avatar-img rounded-circle" src="{{ image }}" alt=""> </a>
 				</div>
 			   
-				<form class="nav nav-item w-100 position-relative align-items-center" method="post" action="/post/{{ post[i].id }}/comment/{{ phone }}">
+				<form class="nav nav-item w-100 position-relative align-items-center" method="post" action="/post/{{ post[i].id }}/comment">
 					<input type="text" class="form-control mb-3" placeholder="Share your thoughts" name="comment">
 					<button class="nav-link bg-transparent position-absolute top-0 end-0  border-0 align-items-center" type="submit">
 						<i class="bi bi-send-fill"></i>

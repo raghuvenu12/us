@@ -1,3 +1,7 @@
+
+
+
+
 from fastapi import (
     APIRouter,
     Depends,
@@ -8,23 +12,19 @@ from fastapi import (
     Form,
     Query,
     UploadFile,
-    Response,
     File,
 )
 import secrets
 from typing import Annotated
-from fastapi_login import LoginManager
 import collections
 from fastapi.security import HTTPBasic, HTTPBasicCredentials
 import requests
 import socket
-
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from app.config import get_settings
 from fastapi.responses import RedirectResponse
 import re
-from app.utils.crypto import create_hash
 import app.db.schemas as schemas
 from datetime import datetime, timezone
 import time
@@ -54,15 +54,6 @@ api_result = requests.get('https://api.whatismyip.com/ip.php?key=52ba3649a96c23a
 print(api_result.text)
 
 
-SECRET = "cb4882b96dc1163a1c134ab88530e21ef6c8713b8d7a6dce"
-
-manager = LoginManager(
-    SECRET, '/login',
-    use_cookie=True,use_header=False,
-    default_expiry=timedelta(hours=12)
-)
-
-
    
 
 # Create a 'now' variable representing the current date and time
@@ -81,14 +72,6 @@ os.environ[
 Path = os.environ["GOOGLE_APPLICATION_CREDENTIALS"]
 storage_client = storage.Client(Path)
 
-@router.post('/login')
-def login(response: Response):
-    
-    token = manager.create_access_token(
-        data=dict(sub="rAGHU")
-    )
-    manager.set_cookie(response, token)
-    return response
 
 
 @router.get("/", name="login")
@@ -113,12 +96,6 @@ async def otp(request: Request, phone: str = Form(...)):
 
         # Add 3 minutes to the current time
        
-        password=create_hash("1234")
-        new_data = User(
-            phone=phone,
-            password=password,
-        )
-        await new_data.save()
 
         new_data = OTP(
             phone=phone,
@@ -129,12 +106,12 @@ async def otp(request: Request, phone: str = Form(...)):
             created_at=datetime.now(),
         )
         await new_data.save()
-        otp=await OTP.all().order_by('-id').limit(1).first()
-        print(otp.id)
+
         return templates.TemplateResponse(
             "otp.html",
-            {"request": request, "id":otp.id, "status": status, "attempts": 1},
+            {"request": request, "phone": phone, "status": status, "attempts": 1},
         )
+
     except Exception as e:
         # Handle other exceptions
         print(f"Unexpected Exception: {e}")
@@ -238,11 +215,10 @@ async def map(request:Request,phone:str):
 
 
 
-@router.post("/post/verify_otp/{id}")
-async def verify(response:Response,request: Request, id:int, otp: int = Form(...)):
-    
+@router.post("/post/verify_otp/{phone}")
+async def verify(request: Request, phone: str, otp: int = Form(...)):
     try:
-        otp_data = await OTP.get(id=id)
+        otp_data = await OTP.filter(phone=phone).order_by("-id").limit(1).first()
         if otp_data.num_attempts > 3:
             return templates.TemplateResponse("login.html", {"request": request})
         
@@ -265,21 +241,25 @@ async def verify(response:Response,request: Request, id:int, otp: int = Form(...
             otp_data.status = "successfull"
 
             await otp_data.save()
-            user=await User.get(id=otp_data.id)
-           
-            response.set_cookie("cookie_name", samesite="Lax", secure=False)
-    
 
             # Use the name of the endpoint function
-           
-            
-           
+            user_exist = await User.filter(phone=phone).exists()
+            if user_exist:
+                target_url = f"/post/test/{phone}"
 
-            target_url = f"/post/user_login"
+                response = RedirectResponse(url=target_url, status_code=303)
+                return response
+            else:
+                new_data = User(
+                    phone=phone,
+                )
+                await new_data.save()
 
-            print(target_url)
-            response = RedirectResponse(url=target_url, status_code=303)
-            return response
+                target_url = f"/post/user_login/{phone}"
+
+                print(target_url)
+                response = RedirectResponse(url=target_url, status_code=303)
+                return response
 
         if otp_data.num_attempts == 3:
             n = otp_data.num_attempts
@@ -299,33 +279,31 @@ async def verify(response:Response,request: Request, id:int, otp: int = Form(...
         otp_data.num_attempts = n
         await otp_data.save()
         return templates.TemplateResponse(
-            "otp.html", {"request": request, "id": id, "attempts": n}
+            "otp.html", {"request": request, "phone": phone, "attempts": n}
         )
     except Exception as e:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,detail="Not found")
     
 
 
-@router.get("/post/user_login")
-async def user_login(request: Request):
-    
+@router.get("/post/user_login/{phone}")
+async def user_login(request: Request, phone: str):
+    print(phone)
     return templates.TemplateResponse(
-        "user_login.html", {"request": request}
+        "user_login.html", {"request": request, "phone": phone}
     )
 
 
-@router.post("/post/user")
+@router.post("/post/user/{phone}")
 async def get_user(
     request: Request,
-   
+    phone: str,
     name: str = Form(...),
     username: str = Form(...),
     file: UploadFile = File(...),
 ):
-    print(request.cookies.get('key'))
-    return request.cookies
     
-    '''user_id = await User.get(phone=phone)
+    user_id = await User.get(phone=phone)
    
     id = user_id.id
     img = await file.read()
@@ -362,7 +340,7 @@ async def get_user(
     target_url+=f"/{phone}" """
     target_url = f"/post/test/{phone}"
     response = RedirectResponse(url=target_url, status_code=303)
-    return response'''
+    return response
 
 
 @router.post("/post/posts/{phone}")

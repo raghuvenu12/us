@@ -43,8 +43,7 @@ class Citizen(Model):
     image_url=fields.CharField(max_length=256,null=False,)
 
     created_at = fields.DatetimeField(auto_now=True, )
-    def __str__(self):
-        return f"{self.tag} {self.name}"
+   
     class Meta:
         ordering = ["-created_at"]
         table = "citizen"
@@ -68,6 +67,7 @@ class Post(Model):
 
 class Media(Model):
     post = fields.ForeignKeyField('us.Post', null=False, )
+    Citizen = fields.ForeignKeyField('us.Citizen', null=False, )
     media_type = fields.CharField(max_length=16, null=False, default="image", ) # image/video
     media_url = fields.CharField(max_length=256, null=False, default="Image")
     media_thumbnail_url = fields.JSONField()
