@@ -12,12 +12,17 @@
 
 	<!-- Dark mode -->
 	
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"> </script>
-    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 <!--<script defer src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>-->
 	<link rel="shortcut icon" href="{{url_for('static',path='assets/images/favicon.ico')}}">
-    <link rel="stylesheet" type="text/css" href="{{url_for('static',path='assets/vendor/font-awesome/css/all.min.css')}}">
+
+	<!-- Google Font -->
+	<!--<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap">-->
+
+	<!-- Plugins CSS -->
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',path='assets/vendor/font-awesome/css/all.min.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{url_for('static',path='assets/vendor/bootstrap-icons/bootstrap-icons.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{url_for('static',path='assets/vendor/OverlayScrollbars-master/css/OverlayScrollbars.min.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{url_for('static',path='assets/vendor/tiny-slider/dist/tiny-slider.css')}}">
@@ -29,40 +34,18 @@
 	<link rel="stylesheet" type="text/css" href="{{url_for('static',path='assets/vendor/zuck.js/dist/zuck.min.css')}}">
 
 	<link rel="stylesheet" type="text/css" href="{{url_for('static',path='assets/css/style.css')}}">
-
 	<!-- Favicon -->
 	<!--<link rel="shortcut icon" href="{{url_for('static',path='assets/images/favicon.icon')}}">-->
 
 	<!-- Google Font -->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
-
-
-	<link rel="stylesheet" type="text/css" href="{{url_for('static',path='assets/vendor/font-awesome/css/all.min.css')}}">
-	<link rel="stylesheet" type="text/css" href="{{url_for('static',path='assets/vendor/bootstrap-icons/bootstrap-icons.css')}}">
-
 	
-	<link rel="stylesheet" type="text/css" href="{{url_for('static',path='assets/css/style.css')}}">
- 
     <style>
         #map {
             height: 400px;
             width: 100%;
         }
     
-        .navbar-brand {
-            color: pink; /* Change the color of the "Useful Social" text */
-        }
-    
-        .navbar-light .navbar-toggler-icon {
-            background-color: pink; /* Change the color of the navbar toggler icon */
-        }
-    
-        .form-control,
-        .form-control:focus {
-            border-color: pink; /* Change the outline color of the search input */
-            box-shadow: 0 0 0 0.25rem pink; /* Add a box shadow for a highlighted effect */
-        }
+       
     </style>
     
 
@@ -159,9 +142,9 @@
 											</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link" href="groups.html">
-												<img class="me-2 h-20px w-20px fa-fw img-fluid" src="{{image}}" alt="">
-												<span class="text-center">{{username}}</span>
+											<a class="nav-link" href="/post/profile">
+												<img class="me-2 h-20px w-20px fa-fw img-fluid" src="{{media_with_post[0].Citizen.image_url}}" alt="">
+												<span class="text-center">{{media_with_post[0].Citizen.username}}</span>
 											</a>
 										</li>
 
@@ -198,99 +181,275 @@
 			</div>
 
     <!-- Centered Navbar -->
-    <nav class="navbar fixed-top bg-body-tertiary  d-md-none bg-light" style="background-color:white; height: 10px; ">
-        <div class="container-fluid">
-            <div class="d-flex">
-          <a class="navbar-brand" style="color:#CF2C79">Useful Social</a>
-          <form class="d-flex align-items-center" role="search">
-            <input class="form-control me-2 align-items-center" type="search" placeholder="Search" aria-label="Search" style="height: 20px;">
-            <button class="btn " type="submit">Search</button>
-          </form>
-            </div>
-        </div>
-      </nav>
-      <nav class="navbar navbar-expand fixed-bottom bg-body-tertiary d-md-none text-center" style="background-color: white;">
-        <div class="container-fluid d-flex">
-            
-            <ul class="navbar-nav">
+    <nav class="navbar navbar-expand fixed-bottom bg-body-tertiary d-md-none text-center" style="background-color: white;">
+        <div class="container-fluid d-flex ">
+            <ul class="navbar-nav d-flex">
+                <div>
                 <li class="nav-item">
-                    <div class="flex-column">
                     <a class="nav-link" href="/post/test">
-                        
-                            <div >
                         <img class="me-2 h-20px w-20px fa-fw img-fluid" src="{{url_for('static',path='assets/images/Group.png')}}" alt="">
-                    </div><div>
                         <span class="text">Home</span>
-                    </div>
-                    
                     </a>
+                </li>
+            </div>
+            <div>
+                <li class="nav-item">
+                    <a class="nav-link" href="/post/map">
+                        <img class="me-2 h-20px w-20px fa-fw img-fluid" src="{{url_for('static',path='assets/images/location_on.png')}}" alt="">
+                        <span>Map</span>
+                    </a>
+                </li>
+            </div>
+            <div>
+                <li class="nav-item">
+                    <a class="nav-link" href="events.html">
+                        <img class="me-2 h-20px w-20px fa-fw img-fluid" src="{{url_for('static',path='assets/images/campaign.png')}}" alt="">
+                        <span>Post</span>
+                    </a>
+                </li>
                 </div>
-                </li>
-               
+                <div>
                 <li class="nav-item">
-                    <div class="flex-column">
-                        <a class="nav-link" href="/post/map">
-                            
-                                <div >
-                            <img class="me-2 h-20px w-20px fa-fw img-fluid" src="{{url_for('static',path='assets/images/location_on.png')}}" alt="">
-                        </div><div>
-                            <span class="text">Map</span>
-                        </div>
-                        
-                        </a>
-                    </div>
-                   
+                    <a class="nav-link" href="groups.html">
+                        <img class="me-2 h-20px w-20px fa-fw img-fluid" src="{{url_for('static',path='assets/images/forum.png')}}" alt="">
+                        <span>Community</span>
+                    </a>
                 </li>
+                </div>
+                <div>
                 <li class="nav-item">
-                    <div class="flex-column text-center">
-                        <a class="nav-link" href="">
-                            
-                                <div >
-                            <img class="me-2 h-20px w-20px fa-fw img-fluid" src="{{url_for('static',path='assets/images/campaign.png')}}" alt="">
-                        </div><div>
-                            <span class="text">Post</span>
-                        </div>
-                        
-                        </a>
-                    </div>
-                   
+                    <a class="nav-link" href="/post/profile">
+                        <img class="me-2 h-20px w-20px fa-fw img-fluid" src="{{media_with_post[0].Citizen.image_url}}" alt="">
+                        <span class="text-center">{{media_with_post[0].Citizen.username}}</span>
+                    </a>
                 </li>
-                <li class="nav-item">
-                    <div class="flex-column text-center">
-                        <a class="nav-link" href="">
-                            
-                                <div >
-                            <img class="me-2 h-20px w-20px fa-fw img-fluid" src="{{url_for('static',path='assets/images/forum.png')}}" alt="">
-                        </div><div>
-                            <span class="text">Community</span>
-                        </div>
-                        
-                        </a>
-                    </div>
-                  
-                </li>
-                <li class="nav-item">
-                    <div class="flex-column text-center">
-                        <a class="nav-link" href="">
-                            
-                                <div >
-                            <img class="me-2 h-20px w-20px fa-fw img-fluid" src="{{image}}" alt="">
-                        </div><div>
-                            <span class="text">{{username}}</span>
-                        </div>
-                        
-                        </a>
-                    </div>
-                    
-                </li>
+                </div>
             </ul>
         </div>
     </nav>
-   
+    
+        
+          
+
+<nav class="navbar fixed-top bg-body-tertiary  d-md-none bg-light" style="background-color:white; height: 20px; ">
+<div class="container-fluid">
+<div class="d-flex">
+<a class="navbar-brand" style="color:#CF2C79">Useful Social</a>
+<form class="d-flex align-items-center" role="search">
+<input class="form-control me-2 align-items-center" type="search" placeholder="Search" aria-label="Search" style="height: 20px;">
+<button class="btn " type="submit">Search</button>
+</form>
+</div>
+</div>
+</nav>
+
     <div class="container-fluid col-md-6 vh-100">
   
 
-    hgfgh
+        <div class="card text-wrap overflow-hidden ">
+            <!-- Card header START -->
+            <div class="card-header border-0 pb-0 text-wrap">
+                <div class="d-flex align-items-center justify-content-between text-wrap">
+                    <div class="d-flex align-items-center text-wrap">
+                        <!-- Avatar -->
+                        <div class="avatar me-2">
+                            <img class="avatar-img img-fuid" style="height:40px; width: 40px;" src="{{ media_with_post[0].Citizen.image_url}}" alt=" Avatar">
+                        </div>
+                        <!-- Info -->
+                        <div class="flex-grow-1">
+                            <div class="nav nav-divider">
+                                <h6 class="nav-item card-title mb-0 " style="color: #CF2C79;">{{ media_with_post[0].Citizen.username }}</h6>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Card feed action dropdown START -->
+                    <div class="dropdown">
+                        <a href="#" class="text-secondary btn btn-secondary-soft-hover py-1 px-2" id="cardFeedAction" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-three-dots"></i>
+                        </a>
+                        <!-- Card feed action dropdown menu -->
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="cardFeedAction">
+                            <!-- Add your dropdown items here -->
+                        </ul>
+                    </div>
+                    <!-- Card feed action dropdown END -->
+                </div>
+            </div>
+            <!-- Card header END -->
+            <!-- Card body START -->
+            <div class="card-body text-wrap border-0">
+                <div class="card text-wrap border-0">
+                    <!-- Card body -->
+                    <div class="card-body">
+                        <div class="flex-column">
+                        <!-- Post text -->
+                        <div>
+                        <p class="mb-3 fw-medium">{{ media_with_post[0].post.text }}</p>
+                    </div>
+            
+                        <!-- Hashtags -->
+                    <div>
+                        {% for hashtag in media_with_post[0].post.hashtags %}
+                            <p class="fs-5" style="color: #CF2C79;">#{{ hashtag }}</p>
+                        {% endfor %}
+                    </div>
+            
+                        <!-- Media thumbnails -->
+                        <div>
+                        <div class="d-flex flex-wrap mb-3 justify-content-evenly align-items-center" >
+                            
+                            {% for j in range( media_with_post[0].media_thumbnail_url|length) %}
+                            
+                            {% set list1 = (media_with_post[0].media_thumbnail_url[j][::-1].split('.')) %}
+                            {% if list1[0][::-1]=='jpg' %} 
+        
+        
+                            <div>
+                                <img class="img-fluid mr-2"  src="{{ media_with_post[0].media_thumbnail_url[j] }}" alt="Media Thumbnail">
+                            </div>
+                                {% endif %}{% if list1[0][::-1]=='mp4' %} 
+        
+        
+                            <div>
+                                <video  autoplay muted width="40" height="160" controls>
+                                    <source src="{{ media_with_post[0].media_thumbnail_url[j] }}" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+            
+                        <!-- Mentions -->
+                    {% if (media_with_post[0].post.mentions|length)>0 %}
+                        <div class="my-3">
+                    
+        
+                            <span class="fw-semibold d-block w-100">Mentions(@)</span>
+                            <div class="d-flex d-inline-block flex-wrap mx-2" style="background-color: rgba(244, 247, 252, 0.80); ">
+                                {% for mention in media_with_post[0].post.mentions %}
+                                
+                                        <div class="mx-2">{{ mention }}</div>
+                                    
+                                {% endfor %}
+                            </div>
+                            
+                        
+                        </div>
+                        {% endif %}
+                        </div>
+                        
+            
+                        <!-- Report button -->
+                        <button type="button" class="btn btn-pink">I also want to report the same issue</button>
+                    </div>
+            
+                    <!-- Counts container -->
+                    
+                            <div class="d-flex justify-content-center">
+                        
+        
+                            <!-- Handshake Section -->
+                            <div class="mx-sm-2 mx-md-3 mx-lg-4">
+                                <button class="btn bg-transparent d-flex" onclick="handleButtonClick('handshake')">
+                                    <img src="{{url_for('static', path='assets/images/handshake.png')}}" class="img-fluid mb-2" alt="Handshake">
+                                    <p class="mb-0">50</p>
+                                </button>
+                            </div>
+                    
+                            <!-- Comment Section -->
+                            <div class="mx-sm-2 mx-md-3 mx-lg-5">
+                               
+                                <button class="btn bg-transparent d-flex" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" >
+                                    <img src="{{url_for('static', path='assets/images/comment.png')}}" class="img-fluid mb-2" alt="Comment">
+                                    <p class="mb-0">50</p>
+                                
+                            
+                            </div>
+                    
+                            <!-- Share Section -->
+                            <div class="mx-sm-2 mx-md-3 mx-lg-5">
+                                <button class="btn bg-transparent d-flex" onclick="handleButtonClick('share')">
+                                    
+                                    <img src="{{url_for('static', path='assets/images/share.png')}}" class="img-fluid mb-2" alt="Share">
+                                    
+                                    <p class="mb-0">40</p>
+                                
+                                
+                                </button>
+                            </div>
+                    
+                            <!-- Monitoring Section -->
+                            <div class="mx-sm-2 mx-md-3 mx-lg-5" >
+                                <button class="btn bg-transparent d-flex" onclick="handleButtonClick('monitoring')">
+                                    <img src="{{url_for('static', path='assets/images/monitoring.png')}}" class="img-fluid mb-2" alt="Monitoring">
+                                    <p class="mb-0">23</p>
+                                </button>
+                            </div>
+                    
+                            </div>
+                </div>
+            </div>
+            
+                
+                <!-- Likes, Comments, and Share section -->
+                <div id="collapseExample">
+                
+               
+               
+               
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <div class="d-flex">
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link " id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" >Service Provide Comments</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" >Public Comments</button>
+                    </li>
+                </div>
+                    
+                  </ul>
+                  <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane  " id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0"></div>
+                    <div class="tab-pane " id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0"><div class="d-flex mb-3 mx-2 collapse " id="comments">
+                    
+                        <div class="avatar avatar-xs me-2">
+                            <a href="#!"> <img class="avatar-img rounded-circle" src="{{media_with_post[0].Citizen.image_url }}" alt=""> </a>
+                        </div>
+                       
+                        <form class="nav nav-item w-100 position-relative align-items-center" method="post" action="/post/{{ media_with_post[0].post_id }}/comment">
+                            <input type="text" class="form-control mb-3" placeholder="Share your thoughts" name="comment">
+                            <button class="nav-link bg-transparent position-absolute top-0 end-0   align-items-center" type="submit">
+                                <i class="bi bi-send-fill"></i>
+                            </button>
+                        </form>
+                    </div>        {% for j in range(comment|length) %}
+                    <div class="d-flex flex-row position-relative mb-2 mt-2 me-2 text-wrap align-items-center">
+                        <div class="avatar avatar-xs m-2">
+                            <a href="#!"><img class="avatar-img rounded-circle" src="{{ comment[j].citizen.image_url}}" alt=""></a>
+                        </div>
+                        <div class="d-inline-block bg-light rounded-start-top-0 p-3 rounded">
+                            <div class="d-flex justify-content-between">
+                                <h6 class="mb-1"> <a href="#!"> {{ comment[j].citizen.username }} </a></h6>
+                                
+                            </div>
+                            <div class="flex-fill " style="max-width: 450px;">
+                            <p class="small mb-0">{{ comment[j].text}}</p>
+                        </div>
+                        </div>
+                    </div>
+                    
+                    {% endfor %}</div>
+                    
+                  </div>
+              
+         
+                </div>
+              
+                
+         </div> 
 </div>
 <div class="col-3 d-none d-md-block vh-100">
     <div class="row ">
@@ -389,21 +548,7 @@
 
 
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-<script async
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBxm6SQWjTHDWmWIby5_-B5XTF7KuM25xk&callback=initMap">
-</script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 
-
-<!-- Vendors --><script src="{{url_for('static',path='assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
-
-<!-- Vendors -->
-<script src="{{url_for('static',path='assets/vendor/pswmeter/pswmeter.min.js')}}"></script>
-
-<!-- Theme Functions -->
-<script src="{{url_for('static',path='assets/js/functions.js')}}"></script>
 
 
 <!-- Theme Functions -->

@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light"><head>
+	<title>Social - Network, Community and Event Theme</title>
+
+	<!-- Meta Tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="author" content="Webestica.com">
+	<meta name="description" content="Bootstrap 5 based Social Media Network and Community Theme">
+
+	<!-- Dark mode -->
+	
+
+	<!-- Favicon -->
+	
+<script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<!--<script defer src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>-->
+	<link rel="shortcut icon" href="{{url_for('static',path='assets/images/favicon.ico')}}">
+
+	<!-- Google Font -->
+	<!--<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap">-->
+
+	<!-- Plugins CSS -->
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',path='assets/vendor/font-awesome/css/all.min.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',path='assets/vendor/bootstrap-icons/bootstrap-icons.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',path='assets/vendor/OverlayScrollbars-master/css/OverlayScrollbars.min.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',path='assets/vendor/tiny-slider/dist/tiny-slider.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',path='assets/vendor/choices.js/public/assets/styles/choices.min.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',path='assets/vendor/glightbox-master/dist/css/glightbox.min.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',path='assets/vendor/dropzone/dist/dropzone.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',path='assets/vendor/flatpickr/dist/flatpickr.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',path='assets/vendor/plyr/plyr.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',path='assets/vendor/zuck.js/dist/zuck.min.css')}}">
+
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',path='assets/css/style.css')}}">
+	<style>
+	.btn-pink {
+    background-color: white;
+    border:  solid #CF2C79;
+    color: #CF2C79;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-pink:hover {
+    background-color: #CF2C79; /* Darker pink color */
+    border:  solid #CF2C79; /* Darker pink color */
+    color: white;
+}
+
+
+
+</style>
+
+</head>
+<body><div hidden="" id="sprite-plyr"><!--?xml version="1.0" encoding="UTF-8"?--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><symbol id="plyr-airplay" viewBox="0 0 18 18"><path d="M16 1H2a1 1 0 00-1 1v10a1 1 0 001 1h3v-2H3V3h12v8h-2v2h3a1 1 0 001-1V2a1 1 0 00-1-1z"></path><path d="M4 17h10l-5-6z"></path></symbol><symbol id="plyr-captions-off" viewBox="0 0 18 18"><path d="M1 1c-.6 0-1 .4-1 1v11c0 .6.4 1 1 1h4.6l2.7 2.7c.2.2.4.3.7.3.3 0 .5-.1.7-.3l2.7-2.7H17c.6 0 1-.4 1-1V2c0-.6-.4-1-1-1H1zm4.52 10.15c1.99 0 3.01-1.32 3.28-2.41l-1.29-.39c-.19.66-.78 1.45-1.99 1.45-1.14 0-2.2-.83-2.2-2.34 0-1.61 1.12-2.37 2.18-2.37 1.23 0 1.78.75 1.95 1.43l1.3-.41C8.47 4.96 7.46 3.76 5.5 3.76c-1.9 0-3.61 1.44-3.61 3.7 0 2.26 1.65 3.69 3.63 3.69zm7.57 0c1.99 0 3.01-1.32 3.28-2.41l-1.29-.39c-.19.66-.78 1.45-1.99 1.45-1.14 0-2.2-.83-2.2-2.34 0-1.61 1.12-2.37 2.18-2.37 1.23 0 1.78.75 1.95 1.43l1.3-.41c-.28-1.15-1.29-2.35-3.25-2.35-1.9 0-3.61 1.44-3.61 3.7 0 2.26 1.65 3.69 3.63 3.69z" fill-rule="evenodd" fill-opacity=".5"></path></symbol><symbol id="plyr-captions-on" viewBox="0 0 18 18"><path d="M1 1c-.6 0-1 .4-1 1v11c0 .6.4 1 1 1h4.6l2.7 2.7c.2.2.4.3.7.3.3 0 .5-.1.7-.3l2.7-2.7H17c.6 0 1-.4 1-1V2c0-.6-.4-1-1-1H1zm4.52 10.15c1.99 0 3.01-1.32 3.28-2.41l-1.29-.39c-.19.66-.78 1.45-1.99 1.45-1.14 0-2.2-.83-2.2-2.34 0-1.61 1.12-2.37 2.18-2.37 1.23 0 1.78.75 1.95 1.43l1.3-.41C8.47 4.96 7.46 3.76 5.5 3.76c-1.9 0-3.61 1.44-3.61 3.7 0 2.26 1.65 3.69 3.63 3.69zm7.57 0c1.99 0 3.01-1.32 3.28-2.41l-1.29-.39c-.19.66-.78 1.45-1.99 1.45-1.14 0-2.2-.83-2.2-2.34 0-1.61 1.12-2.37 2.18-2.37 1.23 0 1.78.75 1.95 1.43l1.3-.41c-.28-1.15-1.29-2.35-3.25-2.35-1.9 0-3.61 1.44-3.61 3.7 0 2.26 1.65 3.69 3.63 3.69z" fill-rule="evenodd"></path></symbol><symbol id="plyr-download" viewBox="0 0 18 18"><path d="M9 13c.3 0 .5-.1.7-.3L15.4 7 14 5.6l-4 4V1H8v8.6l-4-4L2.6 7l5.7 5.7c.2.2.4.3.7.3zm-7 2h14v2H2z"></path></symbol><symbol id="plyr-enter-fullscreen" viewBox="0 0 18 18"><path d="M10 3h3.6l-4 4L11 8.4l4-4V8h2V1h-7zM7 9.6l-4 4V10H1v7h7v-2H4.4l4-4z"></path></symbol><symbol id="plyr-exit-fullscreen" viewBox="0 0 18 18"><path d="M1 12h3.6l-4 4L2 17.4l4-4V17h2v-7H1zM16 .6l-4 4V1h-2v7h7V6h-3.6l4-4z"></path></symbol><symbol id="plyr-fast-forward" viewBox="0 0 18 18"><path d="M7.875 7.171L0 1v16l7.875-6.171V17L18 9 7.875 1z"></path></symbol><symbol id="plyr-logo-vimeo" viewBox="0 0 18 18"><path d="M17 5.3c-.1 1.6-1.2 3.7-3.3 6.4-2.2 2.8-4 4.2-5.5 4.2-.9 0-1.7-.9-2.4-2.6C5 10.9 4.4 6 3 6c-.1 0-.5.3-1.2.8l-.8-1c.8-.7 3.5-3.4 4.7-3.5 1.2-.1 2 .7 2.3 2.5.3 2 .8 6.1 1.8 6.1.9 0 2.5-3.4 2.6-4 .1-.9-.3-1.9-2.3-1.1.8-2.6 2.3-3.8 4.5-3.8 1.7.1 2.5 1.2 2.4 3.3z"></path></symbol><symbol id="plyr-logo-youtube" viewBox="0 0 18 18"><path d="M16.8 5.8c-.2-1.3-.8-2.2-2.2-2.4C12.4 3 9 3 9 3s-3.4 0-5.6.4C2 3.6 1.3 4.5 1.2 5.8 1 7.1 1 9 1 9s0 1.9.2 3.2c.2 1.3.8 2.2 2.2 2.4C5.6 15 9 15 9 15s3.4 0 5.6-.4c1.4-.3 2-1.1 2.2-2.4.2-1.3.2-3.2.2-3.2s0-1.9-.2-3.2zM7 12V6l5 3-5 3z"></path></symbol><symbol id="plyr-muted" viewBox="0 0 18 18"><path d="M12.4 12.5l2.1-2.1 2.1 2.1 1.4-1.4L15.9 9 18 6.9l-1.4-1.4-2.1 2.1-2.1-2.1L11 6.9 13.1 9 11 11.1zM3.786 6.008H.714C.286 6.008 0 6.31 0 6.76v4.512c0 .452.286.752.714.752h3.072l4.071 3.858c.5.3 1.143 0 1.143-.602V2.752c0-.601-.643-.977-1.143-.601L3.786 6.008z"></path></symbol><symbol id="plyr-pause" viewBox="0 0 18 18"><path d="M6 1H3c-.6 0-1 .4-1 1v14c0 .6.4 1 1 1h3c.6 0 1-.4 1-1V2c0-.6-.4-1-1-1zm6 0c-.6 0-1 .4-1 1v14c0 .6.4 1 1 1h3c.6 0 1-.4 1-1V2c0-.6-.4-1-1-1h-3z"></path></symbol><symbol id="plyr-pip" viewBox="0 0 18 18"><path d="M13.293 3.293L7.022 9.564l1.414 1.414 6.271-6.271L17 7V1h-6z"></path><path d="M13 15H3V5h5V3H2a1 1 0 00-1 1v12a1 1 0 001 1h12a1 1 0 001-1v-6h-2v5z"></path></symbol><symbol id="plyr-play" viewBox="0 0 18 18"><path d="M15.562 8.1L3.87.225c-.818-.562-1.87 0-1.87.9v15.75c0 .9 1.052 1.462 1.87.9L15.563 9.9c.584-.45.584-1.35 0-1.8z"></path></symbol><symbol id="plyr-restart" viewBox="0 0 18 18"><path d="M9.7 1.2l.7 6.4 2.1-2.1c1.9 1.9 1.9 5.1 0 7-.9 1-2.2 1.5-3.5 1.5-1.3 0-2.6-.5-3.5-1.5-1.9-1.9-1.9-5.1 0-7 .6-.6 1.4-1.1 2.3-1.3l-.6-1.9C6 2.6 4.9 3.2 4 4.1 1.3 6.8 1.3 11.2 4 14c1.3 1.3 3.1 2 4.9 2 1.9 0 3.6-.7 4.9-2 2.7-2.7 2.7-7.1 0-9.9L16 1.9l-6.3-.7z"></path></symbol><symbol id="plyr-rewind" viewBox="0 0 18 18"><path d="M10.125 1L0 9l10.125 8v-6.171L18 17V1l-7.875 6.171z"></path></symbol><symbol id="plyr-settings" viewBox="0 0 18 18"><path d="M16.135 7.784a2 2 0 01-1.23-2.969c.322-.536.225-.998-.094-1.316l-.31-.31c-.318-.318-.78-.415-1.316-.094a2 2 0 01-2.969-1.23C10.065 1.258 9.669 1 9.219 1h-.438c-.45 0-.845.258-.997.865a2 2 0 01-2.969 1.23c-.536-.322-.999-.225-1.317.093l-.31.31c-.318.318-.415.781-.093 1.317a2 2 0 01-1.23 2.969C1.26 7.935 1 8.33 1 8.781v.438c0 .45.258.845.865.997a2 2 0 011.23 2.969c-.322.536-.225.998.094 1.316l.31.31c.319.319.782.415 1.316.094a2 2 0 012.969 1.23c.151.607.547.865.997.865h.438c.45 0 .845-.258.997-.865a2 2 0 012.969-1.23c.535.321.997.225 1.316-.094l.31-.31c.318-.318.415-.781.094-1.316a2 2 0 011.23-2.969c.607-.151.865-.547.865-.997v-.438c0-.451-.26-.846-.865-.997zM9 12a3 3 0 110-6 3 3 0 010 6z"></path></symbol><symbol id="plyr-volume" viewBox="0 0 18 18"><path d="M15.6 3.3c-.4-.4-1-.4-1.4 0-.4.4-.4 1 0 1.4C15.4 5.9 16 7.4 16 9c0 1.6-.6 3.1-1.8 4.3-.4.4-.4 1 0 1.4.2.2.5.3.7.3.3 0 .5-.1.7-.3C17.1 13.2 18 11.2 18 9s-.9-4.2-2.4-5.7z"></path><path d="M11.282 5.282a.909.909 0 000 1.316c.735.735.995 1.458.995 2.402 0 .936-.425 1.917-.995 2.487a.909.909 0 000 1.316c.145.145.636.262 1.018.156a.725.725 0 00.298-.156C13.773 11.733 14.13 10.16 14.13 9c0-.17-.002-.34-.011-.51-.053-.992-.319-2.005-1.522-3.208a.909.909 0 00-1.316 0zm-7.496.726H.714C.286 6.008 0 6.31 0 6.76v4.512c0 .452.286.752.714.752h3.072l4.071 3.858c.5.3 1.143 0 1.143-.602V2.752c0-.601-.643-.977-1.143-.601L3.786 6.008z"></path></symbol></svg></div>
+
+<!-- =======================
+Header START -->
+<!--<header class="navbar-light fixed-top header-static bg-mode">
+
+	
+	<nav class="navbar navbar-expand-lg">
+		<div class="container">
+			
+			<a class="navbar-brand" href="index.html">
+				<img class="light-mode-item navbar-brand-item"  style= "color:palevioletred" src="{{url_for('static',path='assets/images/logo.svg')}}" alt="logo">
+				<img class="dark-mode-item navbar-brand-item" src="{{url_for('static',path='assets/images/logo.svg')}}" alt="logo">
+			</a>
+			
+
+			
+			<button class="navbar-toggler ms-auto icon-md btn btn-light p-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-animation">
+					<span></span>
+					<span></span>
+					<span></span>
+				</span>
+			</button>
+
+			
+			<div class="collapse navbar-collapse" id="navbarCollapse">
+
+				
+				<div class="nav mt-3 mt-lg-0 flex-nowrap align-items-center px-4 px-lg-0">
+					<div class="nav-item w-100">
+						<form class="rounded position-relative">
+							<input class="form-control ps-5 bg-light" type="search" placeholder="Search..." aria-label="Search">
+							<button class="btn bg-transparent px-2 py-0 position-absolute top-50 start-0 translate-middle-y" type="submit"><i class="bi bi-search fs-5"> </i></button>
+						</form>
+					</div>
+				</div>
+				
+
+				<ul class="navbar-nav navbar-nav-scroll ms-auto">
+					
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="homeMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Demo</a>
+						
+					</li>
+					
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="pagesMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
+						<ul class="dropdown-menu" aria-labelledby="pagesMenu">
+							<li> <a class="dropdown-item" href="albums.html">Albums</a></li>
+							<li> <a class="dropdown-item" href="celebration.html">Celebration</a></li>
+							<li> <a class="dropdown-item" href="messaging.html">Messaging</a></li>
+							
+							<li class="dropdown-submenu dropend"> 
+								<a class="dropdown-item dropdown-toggle" href="#!">Profile</a>
+								<ul class="dropdown-menu" data-bs-popper="none">
+									<li> <a class="dropdown-item" href="my-profile.html">Feed</a> </li>
+									<li> <a class="dropdown-item" href="my-profile-about.html">About</a> </li>
+									<li> <a class="dropdown-item" href="my-profile-connections.html">Connections</a> </li>
+									<li> <a class="dropdown-item" href="my-profile-media.html">Media</a> </li>
+									<li> <a class="dropdown-item" href="my-profile-videos.html">Videos</a> </li>
+									<li> <a class="dropdown-item" href="my-profile-events.html">Events</a> </li>
+									<li> <a class="dropdown-item" href="my-profile-activity.html">Activity</a> </li>
+								</ul>
+							</li>
+							<li> <a class="dropdown-item" href="events.html">Events</a></li>
+							<li> <a class="dropdown-item" href="events-2.html">Events 2</a></li>
+							<li> <a class="dropdown-item" href="event-details.html">Event details</a></li>
+							<li> <a class="dropdown-item" href="event-details-2.html">Event details 2</a></li>
+							<li> <a class="dropdown-item" href="groups.html">Groups</a></li>
+							<li> <a class="dropdown-item" href="group-details.html">Group details</a></li>
+							<li> <a class="dropdown-item" href="post-videos.html">Post videos</a></li>
+							<li> <a class="dropdown-item" href="post-video-details.html">Post video details</a></li>
+							<li> <a class="dropdown-item" href="post-details.html">Post details</a></li>
+							<li> <a class="dropdown-item" href="video-details.html">Video details</a></li>
+							<li> <a class="dropdown-item" href="blog.html">Blog</a></li>
+							<li> <a class="dropdown-item" href="blog-details.html">Blog details</a></li>
+							
+							
+							<li class="dropdown-divider"></li>
+							<li class="dropdown-submenu dropend">
+								<a class="dropdown-item dropdown-toggle" href="#">Dropdown levels</a>
+								<ul class="dropdown-menu dropdown-menu-end" data-bs-popper="none">
+									<li> <a class="dropdown-item" href="#">Dropdown item</a> </li>
+									<li> <a class="dropdown-item" href="#">Dropdown item</a> </li>
+									
+									<li class="dropdown-submenu dropstart">
+										<a class="dropdown-item dropdown-toggle" href="#">Dropdown (start)</a>
+										<ul class="dropdown-menu dropdown-menu-end" data-bs-popper="none">
+											<li> <a class="dropdown-item" href="#">Dropdown item</a> </li>
+											<li> <a class="dropdown-item" href="#">Dropdown item</a> </li>
+										</ul>
+									</li>
+									<li> <a class="dropdown-item" href="#">Dropdown item</a> </li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+
+					
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="postMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account </a>
+						<ul class="dropdown-menu" aria-labelledby="postMenu">
+							<li> <a class="dropdown-item" href="create-page.html">Create a page</a></li>
+							<li> <a class="dropdown-item" href="settings.html">Settings</a> </li>
+							<li> <a class="dropdown-item" href="notifications.html">Notifications</a> </li>
+							<li> <a class="dropdown-item" href="help.html">Help center</a> </li>
+							<li> <a class="dropdown-item" href="help-details.html">Help details</a> </li>
+							
+							<li class="dropdown-submenu dropstart">
+								<a class="dropdown-item dropdown-toggle" href="#">Authentication</a>
+								<ul class="dropdown-menu dropdown-menu-end" data-bs-popper="none">
+									<li> <a class="dropdown-item" href="sign-in.html">Sign in</a> </li>
+									<li> <a class="dropdown-item" href="sign-up.html">Sing up</a> </li>
+									<li> <a class="dropdown-item" href="forgot-password.html">Forgot password</a> </li>
+									<li class="dropdown-divider"></li>
+									<li> <a class="dropdown-item" href="sign-in-advance.html">Sign in advance</a> </li>
+									<li> <a class="dropdown-item" href="sign-up-advance.html">Sing up advance</a> </li>
+									<li> <a class="dropdown-item" href="forgot-password-advance.html">Forgot password advance</a> </li>
+								</ul>
+							</li>
+							<li> <a class="dropdown-item" href="error-404.html">Error 404</a> </li>
+							<li> <a class="dropdown-item" href="offline.html">Offline</a> </li>
+							<li> <a class="dropdown-item" href="privacy-and-terms.html">Privacy &amp; terms</a> </li>
+						</ul>
+					</li>
+
+					
+					<li class="nav-item">
+						<a class="nav-link" href="my-profile-connections.html">My network</a>
+					</li>
+				</ul>
+			</div>
+			
+
+			
+			<ul class="nav flex-nowrap align-items-center ms-sm-3 list-unstyled">
+				<li class="nav-item ms-2">
+					<a class="nav-link bg-light icon-md btn btn-light p-0" href="messaging.html">
+						<i class="bi bi-chat-left-text-fill fs-6"> </i>
+					</a>
+				</li>
+				<li class="nav-item ms-2">
+					<a class="nav-link bg-light icon-md btn btn-light p-0" href="settings.html">
+						<i class="bi bi-gear-fill fs-6"> </i>
+					</a>
+				</li>
+				<li class="nav-item dropdown ms-2">
+					<a class="nav-link bg-light icon-md btn btn-light p-0" href="#" id="notifDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+						<span class="badge-notif animation-blink"></span>
+						<i class="bi bi-bell-fill fs-6"> </i>
+					</a>
+					<div class="dropdown-menu dropdown-animation dropdown-menu-end dropdown-menu-size-md p-0 shadow-lg border-0" aria-labelledby="notifDropdown">
+						<div class="card">
+							<div class="card-header d-flex justify-content-between align-items-center">
+								<h6 class="m-0">Notifications <span class="badge bg-danger bg-opacity-10 text-danger ms-2">4 new</span></h6>
+								<a class="small" href="#">Clear all</a>
+							</div>
+							<div class="card-body p-0">
+								<ul class="list-group list-group-flush list-unstyled p-2">
+									
+									<li>
+										<div class="list-group-item list-group-item-action rounded badge-unread d-flex border-0 mb-1 p-3">
+											<div class="avatar text-center d-none d-sm-inline-block">
+												<img class="avatar-img rounded-circle" src="{{url_for('static',path='assets/images/avatar/01.jpg')}}" alt="">
+											</div>
+											<div class="ms-sm-3">
+												<div class=" d-flex">
+												<p class="small mb-2"><b>Judy Nguyen</b> sent you a friend request.</p>
+												<p class="small ms-3 text-nowrap">Just now</p>
+											</div>
+											<div class="d-flex">
+												<button class="btn btn-sm py-1 btn-primary me-2">Accept </button>
+												<button class="btn btn-sm py-1 btn-danger-soft">Delete </button>
+											</div>
+										</div>
+									</div>
+									</li>
+									
+									<li>
+										<div class="list-group-item list-group-item-action rounded badge-unread d-flex border-0 mb-1 p-3 position-relative">
+											<div class="avatar text-center d-none d-sm-inline-block">
+												<img class="avatar-img rounded-circle" src="{{url_for('static',path='assets/images/avatar/02.jpg')}}" alt="">
+											</div>
+											<div class="ms-sm-3 d-flex">
+												<div>
+													<p class="small mb-2">Wish <b>Amanda Reed</b> a happy birthday (Nov 12)</p>
+													<button class="btn btn-sm btn-outline-light py-1 me-2">Say happy birthday 🎂</button>
+												</div>
+												<p class="small ms-3">2min</p>
+											</div>
+										</div>
+									</li>
+									
+									<li>
+										<a href="#" class="list-group-item list-group-item-action rounded d-flex border-0 mb-1 p-3">
+											<div class="avatar text-center d-none d-sm-inline-block">
+												<div class="avatar-img rounded-circle bg-success"><span class="text-white position-absolute top-50 start-50 translate-middle fw-bold">WB</span></div>
+											</div>
+											<div class="ms-sm-3">
+												<div class="d-flex">
+													<p class="small mb-2">Webestica has 15 like and 1 new activity</p>
+													<p class="small ms-3">1hr</p>
+												</div>
+											</div>
+										</a>
+									</li>
+									
+									<li>
+										<a href="#" class="list-group-item list-group-item-action rounded d-flex border-0 p-3 mb-1">
+											<div class="avatar text-center d-none d-sm-inline-block">
+												<img class="avatar-img rounded-circle" src="{{ url_for('static',path='assest/images/logo/12.svg') }}" alt="">
+											</div>
+											<div class="ms-sm-3 d-flex">
+												<p class="small mb-2"><b>Bootstrap in the news:</b> The search giant’s parent company, Alphabet, just joined an exclusive club of tech stocks.</p>
+												<p class="small ms-3">4hr</p>
+											</div>
+										</a>
+									</li>
+								</ul>
+							</div>
+							<div class="card-footer text-center">
+								<a href="#" class="btn btn-sm btn-primary-soft">See all incoming activity</a>
+							</div>
+						</div>
+					</div>
+				</li>
+				
+
+				<li class="nav-item ms-2 dropdown">
+					
+					<ul class="dropdown-menu dropdown-animation dropdown-menu-end pt-3 small me-md-n3" aria-labelledby="profileDropdown">
+						
+						<li class="px-3">
+							<div class="d-flex align-items-center position-relative">
+								
+								<div class="avatar me-3">
+									<img class="avatar-img rounded-circle" src="{{url_for('static',path='assets/vendor/flatpickr/dist/flatpickr.css')}}assets/images/avatar/07.jpg" alt="avatar">
+								</div>
+								<div>
+									<a class="h6 stretched-link" href="#">Lori Ferguson</a>
+									
+								</div>
+							</div>
+							<a class="dropdown-item btn btn-primary-soft btn-sm my-2 text-center" href="my-profile.html">View profile</a>
+						</li>
+						
+						<li><a class="dropdown-item" href="settings.html"><i class="bi bi-gear fa-fw me-2"></i>Settings &amp; Privacy</a></li>
+						<li> 
+							<a class="dropdown-item" href="https://support.webestica.com/" target="_blank">
+								<i class="fa-fw bi bi-life-preserver me-2"></i>Support
+							</a> 
+						</li>
+						<li> 
+							<a class="dropdown-item" href="docs/index.html" target="_blank">
+								<i class="fa-fw bi bi-card-text me-2"></i>Documentation
+							</a> 
+						</li>
+						<li class="dropdown-divider"></li>
+						<li><a class="dropdown-item bg-danger-soft-hover" href="sign-in-advance.html"><i class="bi bi-power fa-fw me-2"></i>Sign Out</a></li>
+						<li> <hr class="dropdown-divider"></li>
+						
+						<li>
+							<div class="modeswitch-item theme-icon-active d-flex justify-content-center gap-3 align-items-center p-2 pb-0">
+								<span>Mode:</span>
+								<button type="button" class="btn btn-modeswitch nav-link text-primary-hover mb-0 active" data-bs-theme-value="light" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Light">
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sun fa-fw mode-switch" viewBox="0 0 16 16">
+										<path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"></path>
+										<use href="#"></use>
+									</svg>
+								</button>
+								<button type="button" class="btn btn-modeswitch nav-link text-primary-hover mb-0" data-bs-theme-value="dark" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Dark">
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-moon-stars fa-fw mode-switch" viewBox="0 0 16 16">
+										<path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278zM4.858 1.311A7.269 7.269 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.316 7.316 0 0 0 5.205-2.162c-.337.042-.68.063-1.029.063-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286z"></path>
+										<path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"></path>
+										<use href="#"></use>
+									</svg>
+								</button>
+								<button type="button" class="btn btn-modeswitch nav-link text-primary-hover mb-0" data-bs-theme-value="auto" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Auto">
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-half fa-fw mode-switch" viewBox="0 0 16 16">
+										<path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"></path>
+										<use href="#"></use>
+									</svg>
+								</button>
+							</div>
+						</li> 
+						
+					</ul>
+				</li>
+				
+				
+			</ul>
+		
+		</div>
+	</nav>
+	
+</header> -->
+<!-- =======================
+Header END -->
+
+<!-- **************** MAIN CONTENT START **************** -->
+<main>
+	<div class="row" ></div>
+	
+	<!-- Container START -->
+	<div class="container-fluid mt-4">
+		<div class="row " >
+
+			<!-- Sidenav START -->
+			<div class="col-3 d-md-block d-none m-n1" >
+			
+
+
+				<!--				<div class="d-flex align-items-center d-lg-none">
+					<button class="border-0 bg-transparent" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSideNavbar" aria-controls="offcanvasSideNavbar">
+						<span class="btn btn-primary"><i class="fa-solid fa-sliders-h"></i></span>
+						<span cl ass="h6 mb-0 fw-bold d-lg-none ms-2">My profile</span>
+					</button>
+				</div>-->
+				
+				
+				
+				<nav class="navbar navbar-expand "> 
+					<div class="offcanvas offcanvas-start"  id="offcanvasSideNavbar">
+						<!--
+						<div class="offcanvas-header">
+							<button type="button" class="btn-close text-reset ms-auto" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+						</div>-->
+
+						<!-- Offcanvas body -->
+						
+						<div class="offcanvas-body d-block px-2 px-lg-0">
+							<!-- Card START -->
+							<div class="card overflow-hidden">
+								<!-- Cover image -->
+                                <div class="text-center mt-4"><p class="fw-bold fs-4" style="color: #CF2C79;">Useful Social</p></div>
+								
+									<!-- Card body START -->
+									<div class="card-body pt-0">
+										<!--<div class="text-center">
+										  
+										<div class="avatar avatar-lg  ">
+											<a href="#!"><img class="embed-responsive-item img-fluid" src={{image}}  alt=""></a>
+										</div>
+										
+										<div class="m-2">
+										<h5 class="m-3"> <a href="#!">{{username}}</a> </h5>
+										</div>
+										
+										
+
+										
+										
+									</div>-->
+
+									<!-- Divider -->
+									
+
+									<!-- Side Nav START -->
+									<ul class="nav nav-link-secondary flex-column fw-bold gap-2 min-vh-100">
+										<li class="nav-item">
+											<a class="nav-link" href="/post/test">
+												<img class="me-2 h-20px w-20px fa-fw img-fluid" src="{{url_for('static',path='assets/images/Group.png')}}" alt="">
+												<span class="text">Home</span>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="my-profile-connections.html">
+												<img class="me-2 h-20px w-20px fa-fw img-fluid" src="{{url_for('static',path='assets/images/Vector.jpg')}}" alt="">
+												<span>Search</span>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="/post/map">
+												<img class="me-2 h-20px w-20px fa-fw img-fluid" src="{{url_for('static',path='assets/images/location_on.png')}}" alt="">
+												<span>Map</span>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="events.html">
+												<img class="me-2 h-20px w-20px fa-fw img-fluid" src="{{url_for('static',path='assets/images/campaign.png')}}" alt="">
+												<span>Post</span>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="groups.html">
+												<img class="me-2 h-20px w-20px fa-fw img-fluid" src="{{url_for('static',path='assets/images/forum.png')}}" alt="">
+												<span>Community</span>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="/post/profile">
+												<img class="me-2 h-20px w-20px fa-fw img-fluid" src="{{image}}" alt="">
+												<span class="text-center">{{username}}</span>
+											</a>
+										</li>
+
+									</ul>
+
+									
+									<!-- Side Nav END -->
+								</div>
+								
+								
+								<!-- Card body END -->
+								<!-- Card footer -->
+								<div class="container my-5">
+									<div class="rounded-pill border text-center bg-transparent mx-auto mt-2" style="width: 232px; height:30px;">
+									  <p>Whitefield</p>
+									  
+									</div>
+								  </div>
+								<div class="card-footer text-center py-2">
+									<a class="btn btn-link btn-sm" style="color: palevioletred;" src="my-profile.html">View Profile </a>
+								</div>
+							</div>
+							<!-- Card END -->
+
+							<!-- Helper link START -->
+							
+							<!-- Helper link END -->
+							<!-- Copyright -->
+							
+						</div>
+					</div>
+				</nav>
+				<!-- Navbar END-->
+			</div>
+			<!-- Sidenav END -->
+		
+			
+			
+
+			
+			
+			
+			<nav class="navbar navbar-expand fixed-bottom bg-body-tertiary d-md-none text-center" style="background-color: white;">
+				<div class="container-fluid d-flex ">
+					<ul class="navbar-nav d-flex">
+						<div>
+						<li class="nav-item">
+							<a class="nav-link" href="/post/test">
+								<img class="me-2 h-20px w-20px fa-fw img-fluid" src="{{url_for('static',path='assets/images/Group.png')}}" alt="">
+								<span class="text">Home</span>
+							</a>
+						</li>
+					</div>
+					<div>
+						<li class="nav-item">
+							<a class="nav-link" href="/post/map">
+								<img class="me-2 h-20px w-20px fa-fw img-fluid" src="{{url_for('static',path='assets/images/location_on.png')}}" alt="">
+								<span>Map</span>
+							</a>
+						</li>
+					</div>
+					<div>
+						<li class="nav-item">
+							<a class="nav-link" href="events.html">
+								<img class="me-2 h-20px w-20px fa-fw img-fluid" src="{{url_for('static',path='assets/images/campaign.png')}}" alt="">
+								<span>Post</span>
+							</a>
+						</li>
+						</div>
+						<div>
+						<li class="nav-item">
+							<a class="nav-link" href="groups.html">
+								<img class="me-2 h-20px w-20px fa-fw img-fluid" src="{{url_for('static',path='assets/images/forum.png')}}" alt="">
+								<span>Community</span>
+							</a>
+						</li>
+						</div>
+						<div>
+						<li class="nav-item">
+							<a class="nav-link" href="/post/profile">
+								<img class="me-2 h-20px w-20px fa-fw img-fluid" src="{{image}}" alt="">
+								<span class="text-center">{{username}}</span>
+							</a>
+						</li>
+						</div>
+					</ul>
+				</div>
+			</nav>
+			
+				
+				  
+
+	<nav class="navbar fixed-top bg-body-tertiary  d-md-none bg-light" style="background-color:white; height: 20px; ">
+	<div class="container-fluid">
+		<div class="d-flex">
+	  <a class="navbar-brand" style="color:#CF2C79">Useful Social</a>
+	  <form class="d-flex align-items-center" role="search">
+		<input class="form-control me-2 align-items-center" type="search" placeholder="Search" aria-label="Search" style="height: 20px;">
+		<button class="btn " type="submit">Search</button>
+	  </form>
+		</div>
+	</div>
+  </nav>
+
+			  
+			<!-- Main content START -->
+			<div class=" col-md-6 vh-100">
+                <div class="text-center" style="background-color: white;">
+                    <h6>#{{hashtag}}</h6>
+                    <div class="d-flex justify-content-center my-2">
+                        <div class="mx-3 d-flex">
+                            
+                            <div><img src="{{url_for('static',path='assets/images/Group 290303.png')}}">
+                            </div>
+                            <div>3</div>
+                        </div>
+                        <div class="mx-3">
+                            <div>
+                            <img src="{{url_for('static',path='assets/images/Group 290505.jpg')}}">
+                            </div>
+                            <div>1</div>
+                        </div>
+                        <div class="mx-3">
+                            <div>
+                            <img src="{{url_for('static',path='assets/images/Group 290626.png')}}">
+                        </div>
+                            <div>3</div>
+                        </div>
+                    </div>
+                    <div class=" d-inline bg-success text-white">
+                        54 issues resolved in last 10 days
+                    </div>
+                    <div class="rounded-pill border text-center mx-auto my-4" style="border-color: #CF2C79; color: #CF2C79; width: 200px;">
+                        +Follow
+                    </div>
+                    <div>
+                        234 people following
+                    </div>
+
+                </div>
+
+                <div>
+                    {% for i in range(posts|length) %}
+            
+            
+            <div class="card text-wrap overflow-hidden ">
+                <!-- Card header START -->
+                <div class="card-header border-0 pb-0 text-wrap">
+                    <div class="d-flex align-items-center justify-content-between text-wrap">
+                        <div class="d-flex align-items-center text-wrap">
+                            <!-- Avatar -->
+                            <div class="avatar me-2">
+                                <img class="avatar-img img-fuid" style="height:40px; width: 40px;" src="{{ image_url[i] }}" alt=" Avatar">
+                            </div>
+                            <!-- Info -->
+                            <div class="flex-grow-1">
+                                <div class="nav nav-divider">
+                                    <h6 class="nav-item card-title mb-0 " style="color: #CF2C79;">{{ name[i]  }}</h6>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Card feed action dropdown START -->
+                        <div class="dropdown">
+                            <a href="#" class="text-secondary btn btn-secondary-soft-hover py-1 px-2" id="cardFeedAction" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-three-dots"></i>
+                            </a>
+                            <!-- Card feed action dropdown menu -->
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="cardFeedAction">
+                                <!-- Add your dropdown items here -->
+                            </ul>
+                        </div>
+                        <!-- Card feed action dropdown END -->
+                    </div>
+                </div>
+                <!-- Card header END -->
+                <!-- Card body START -->
+                <div class="card-body text-wrap border-0">
+                    <div class="card text-wrap border-0">
+                        <!-- Card body -->
+                        <div class="card-body">
+                            <div class="flex-column">
+                            <!-- Post text -->
+                            <div>
+                            <p class="mb-3 fw-medium">{{ posts[i].text }}</p>
+                        </div>
+                
+                            <!-- Hashtags -->
+                        <div>
+                            {% for hashtag in posts[i].hashtags %}
+                                <p class="fs-5" style="color: #CF2C79;">#{{ hashtag }}</p>
+                            {% endfor %}
+                        </div>
+                
+                            <!-- Media thumbnails -->
+                            <div>
+                            <div class="d-flex flex-wrap mb-3 justify-content-evenly align-items-center" >
+                                
+                                {% for j in range(media[i]|length) %}
+                                
+                                {% set list1 = (media[i][j][::-1].split('.')) %}
+                                {% if list1[0][::-1]=='jpg' %} 
+            
+            
+                                <div>
+                                    <img class="img-fluid mr-2"  src="{{ media[i][j] }}" alt="Media Thumbnail">
+                                </div>
+                                    {% endif %}{% if list1[0][::-1]=='mp4' %} 
+            
+            
+                                <div>
+                                    <video  autoplay muted width="40" height="160" controls>
+                                        <source src="{{  media[i][j] }}" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                
+                            <!-- Mentions -->
+                        {% if (posts[i].mentions|length)>0 %}
+                            <div class="my-3">
+                        
+            
+                                <span class="fw-semibold d-block w-100">Mentions(@)</span>
+                                <div class="d-flex d-inline flex-wrap mx-2" style="background-color: rgba(244, 247, 252, 0.80); ">
+                                    {% for mention in posts[i].mentions %}
+                                    
+                                            <div class="mx-2">{{ mention }}</div>
+                                        
+                                    {% endfor %}
+                                </div>
+                                
+                            
+                            </div>
+                            {% endif %}
+                            </div>
+                            
+                
+                            <!-- Report button -->
+                            <button type="button" class="btn btn-pink">I also want to report the same issue</button>
+                        </div>
+                
+                        <!-- Counts container -->
+                        
+                                <div class="d-flex justify-content-center">
+                            
+            
+                                <!-- Handshake Section -->
+                                <div class="mx-sm-2 mx-md-3 mx-lg-4">
+                                    <button class="btn bg-transparent d-flex" onclick="handleButtonClick('handshake')">
+                                        <img src="{{url_for('static', path='assets/images/handshake.png')}}" class="img-fluid mb-2" alt="Handshake">
+                                        <p class="mb-0">50</p>
+                                    </button>
+                                </div>
+                        
+                                <!-- Comment Section -->
+                                <div class="mx-sm-2 mx-md-3 mx-lg-5">
+                                    
+                                    <button class="btn bg-transparent d-flex" data-bs-toggle="collapse" data-bs-target="#collapseExample_{{i}}" aria-expanded="false" aria-controls="collapseExample" >
+                                        <img src="{{url_for('static', path='assets/images/comment.png')}}" class="img-fluid mb-2" alt="Comment">
+                                        <p class="mb-0">50</p>
+                                    </button>
+                                
+                                </div>
+                        
+                                <!-- Share Section -->
+                                <div class="mx-sm-2 mx-md-3 mx-lg-5">
+                                    <button class="btn bg-transparent d-flex" onclick="handleButtonClick('share')">
+                                        
+                                        <img src="{{url_for('static', path='assets/images/share.png')}}" class="img-fluid mb-2" alt="Share">
+                                        
+                                        <p class="mb-0">40</p>
+                                    
+                                    
+                                    </button>
+                                </div>
+                        
+                                <!-- Monitoring Section -->
+                                <div class="mx-sm-2 mx-md-3 mx-lg-5" >
+                                    <button class="btn bg-transparent d-flex" onclick="handleButtonClick('monitoring')">
+                                        <img src="{{url_for('static', path='assets/images/monitoring.png')}}" class="img-fluid mb-2" alt="Monitoring">
+                                        <p class="mb-0">23</p>
+                                    </button>
+                                </div>
+                        
+                                </div>
+                    </div>
+                </div>
+                
+                    
+                    <!-- Likes, Comments, and Share section -->
+                    
+                  
+                    
+             </div> 
+            {% endfor %}
+                    </div>
+				<!-- Story START -->
+        
+		
+
+				<!-- Share feed START -->
+				
+</div>
+
+				<!-- Card feed item END -->
+
+				<!-- Card feed item STAfmeRT -->
+				
+				<!-- Card feed item END -->
+
+				<!-- Card feed item START -->
+				
+			<!-- Main content END -->
+
+			<!-- Right sidebar START -->
+			
+			<div class="col-3 d-none d-md-block vh-100">
+				<div class="row ">
+					<!-- Card follow START -->
+					
+					<!-- Card follow START -->
+
+					<!-- Card News START -->
+					
+						<div class="card 100-vh">
+							<!-- Card header START -->
+							<div class="card-header pb-0 border-0">
+								<h5 class="card-title mb-0">Trending news in Whitefield</h5>
+							</div>
+							<!-- Card header END -->
+							<!-- Card body START -->
+							<div class="card-body">
+								<!-- News item -->
+								<div class="mb-3">
+									<h6 class="mb-0"><a href="blog-details.html">#Traffic isssues in varthur</a></h6>
+									<small>2hr</small>
+								</div>
+								<hr>
+								<div class="mb-3">
+									<h6 class="mb-0"><a href="blog-details.html">#Traffic issues in Varthur</a></h6>
+									<small>3hr</small>
+								</div>
+								<hr>
+								<div class="mb-3">
+									<h6 class="mb-0"><a href="blog-details.html">#Traffic issues in Varthur</a></h6>
+									<small>4hr</small>
+								</div>
+								<hr>
+								<!-- News item -->
+								<div class="mb-3">
+									<h6 class="mb-0"><a href="blog-details.html">#Traffic issues in Varthur</a></h6>
+									<small>6hr</small>
+								</div>
+								<!-- Load more comments -->
+								<a href="#!" role="button" class="btn btn-link btn-link-loader btn-sm text-secondary d-flex align-items-center" data-bs-toggle="button" aria-pressed="true">
+									<div class="spinner-dots me-2">
+										<span class="spinner-dot"></span>
+										<span class="spinner-dot"></span>
+										<span class="spinner-dot"></span>
+									</div>
+									View all latest news
+								</a>
+							</div>
+							<!-- Card body END -->
+						
+					</div>
+					<!-- Card News END -->
+				</div>
+				<div class="row ">
+					<!-- Card follow START -->
+					
+					<!-- Card follow START -->
+
+					<!-- Card News START -->
+					
+						<div class="card">
+							<!-- Card header START -->
+							<div class="card-header pb-0 border-0">
+								<h5 class="card-title mb-0">Top Mentions in Whitefield</h5>
+							</div>
+							<!-- Card header END -->
+							<!-- Card body START -->
+							<div class="card-body">
+								<!-- News item -->
+								{% for i in range(top_mentions|length) %}
+								<div class="mb-3">
+									<h6 class="mb-0"><a href="blog-details.html">@{{top_mentions[i]}}</a></h6>
+									
+								</div>
+								{% endfor %}
+								<!-- News item -->
+								
+								<!-- Load more comments -->
+								
+							</div>
+							<!-- Card body END -->
+						
+					</div>
+					<!-- Card News END -->
+				</div>
+                <div class="row ">
+					<!-- Card follow START -->
+					
+					<!-- Card follow START -->
+
+					<!-- Card News START -->
+					
+						<div class="card">
+							<!-- Card header START -->
+							<div class="card-header pb-0 border-0">
+								<h5 class="card-title mb-0">Top Mentions in Whitefield</h5>
+							</div>
+							<!-- Card header END -->
+							<!-- Card body START -->
+							<div class="card-body">
+								<!-- News item -->
+								{% for i in range(top_mentions|length) %}
+								<div class="mb-3">
+									<h6 class="mb-0"><a href="blog-details.html">@{{top_mentions[i]}}</a></h6>
+									
+								</div>
+								{% endfor %}
+								<!-- News item -->
+								
+								<!-- Load more comments -->
+								
+							</div>
+							<!-- Card body END -->
+						
+					</div>
+					<!-- Card News END -->
+				</div>
+			</div>
+			<!-- Right sidebar END -->
+
+		 <!-- Row END -->
+	</div>
+	<!-- Container END -->
+	
+</div>
+</main>
+<!-- **************** MAIN CONTENT END **************** -->
+
+<!-- Main Chat START -->
+
+<!-- Modal create Feed video END -->
+
+<!-- Modal create events START -->
+
+<!-- Modal create events END -->
+
+<!-- =======================
+JS libraries, plugins and custom scripts -->
+
+<!-- Bootstrap JS -->
+
+
+
+<!--<script src="{{url_for('static',path='assets/vendor/tiny-slider/dist/tiny-slider.js')}}"></script>
+<script src="{{url_for('static',path='assets/vendor/OverlayScrollbars-master/js/OverlayScrollbars.min.js')}}"></script>
+<script src="{{url_for('static',path='assets/vendor/choices.js/public/assets/scripts/choices.min.js')}}"></script>
+<script src="{{url_for('static',path='assets/vendor/glightbox-master/dist/js/glightbox.min.js')}}"></script>
+<script src="{{url_for('static',path='assets/vendor/flatpickr/dist/flatpickr.min.js')}}"></script>
+<script src="{{url_for('static',path='assets/vendor/plyr/plyr.js')}}"></script>
+<script src="{{url_for('static',path='assets/vendor/dropzone/dist/min/dropzone.min.js')}}"></script>
+<script src="{{url_for('static',path='assets/vendor/zuck.js/dist/zuck.min.js')}}"></script>
+<script src="{{url_for('static',path='assets/js/zuck-stories.js')}}"></script><div id="zuck-modal" class="with-cube with-effects" tabindex="1" style="display: none;"><div id="zuck-modal-content"></div></div><div id="zuck-modal" class="with-cube with-effects" tabindex="1" style="display: none;"><div id="zuck-modal-content"></div></div>-->
+
+<!--<script src="assets/js/functions.js"></script>-->
+</body>
+</html>

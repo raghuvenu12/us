@@ -363,17 +363,21 @@ Header END -->
 		<div class="row " >
 
 			<!-- Sidenav START -->
+			<!--<div class="d-flex align-items-center d-lg-none" style="background-image: url('/static/assets/images/Mask group.png');">
+				<button class="border-0 bg-transparent" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSideNavbar" aria-controls="offcanvasSideNavbar">
+					<span class="btn btn-primary"><i class="fa-solid fa-sliders-h"></i></span>
+					<span class="h6 mb-0 fw-bold d-lg-none ms-2">My profile</span>
+				</button>
+			</div>-->
+			<div class=" text-center text-dark" style="background-color: white; background-image: url('/static/assets/images/Mask group.png');"><img src="{{url_for('static',path='assets/images/campaign 2.png')}}"> <div class="w-100"> Leverage the power of Social to get started 		</div><div class="flex-grow-1">
+				<button type="button " class="btn  flex-fill text-dark my-2" data-bs-toggle="modal" data-bs-target="#postModal" style="background-color: #CF2C79;">Share your thoughts</button>
+			</div></div>
+			
 			<div class="col-3 d-md-block d-none m-n1" >
 			
 
 
-				<!--				<div class="d-flex align-items-center d-lg-none">
-					<button class="border-0 bg-transparent" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSideNavbar" aria-controls="offcanvasSideNavbar">
-						<span class="btn btn-primary"><i class="fa-solid fa-sliders-h"></i></span>
-						<span cl ass="h6 mb-0 fw-bold d-lg-none ms-2">My profile</span>
-					</button>
-				</div>-->
-				
+					
 				
 				
 				<nav class="navbar navbar-expand "> 
@@ -439,13 +443,13 @@ Header END -->
 											</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link" href="groups.html">
+											<a class="nav-link" href="/post/community">
 												<img class="me-2 h-20px w-20px fa-fw img-fluid" src="{{url_for('static',path='assets/images/forum.png')}}" alt="">
 												<span>Community</span>
 											</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link" href="groups.html">
+											<a class="nav-link" href="/post/profile">
 												<img class="me-2 h-20px w-20px fa-fw img-fluid" src="{{image}}" alt="">
 												<span class="text-center">{{username}}</span>
 											</a>
@@ -519,7 +523,7 @@ Header END -->
 						</div>
 						<div>
 						<li class="nav-item">
-							<a class="nav-link" href="groups.html">
+							<a class="nav-link" href="/post/community">
 								<img class="me-2 h-20px w-20px fa-fw img-fluid" src="{{url_for('static',path='assets/images/forum.png')}}" alt="">
 								<span>Community</span>
 							</a>
@@ -527,7 +531,7 @@ Header END -->
 						</div>
 						<div>
 						<li class="nav-item">
-							<a class="nav-link" href="groups.html">
+							<a class="nav-link" href="/post/profile">
 								<img class="me-2 h-20px w-20px fa-fw img-fluid" src="{{image}}" alt="">
 								<span class="text-center">{{username}}</span>
 							</a>
@@ -537,30 +541,7 @@ Header END -->
 				</div>
 			</nav>
 			
-				<!--<nav class="navbar navbar-expand-lg fixed-bottom bg-body-tertiary">
-					<div class="container-fluid">
-					  <a class="navbar-brand" href="#">Navbar</a>
-					  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-						<span class="navbar-toggler-icon"></span>
-					  </button>
-					  <div class="collapse navbar-collapse" id="navbarNav">
-						<ul class="navbar-nav">
-						  <li class="nav-item">
-							<a class="nav-link active" aria-current="page" href="#">Home</a>
-						  </li>
-						  <li class="nav-item">
-							<a class="nav-link" href="#">Features</a>
-						  </li>
-						  <li class="nav-item">
-							<a class="nav-link" href="#">Pricing</a>
-						  </li>
-						  <li class="nav-item">
-							<a class="nav-link disabled" aria-disabled="true">Disabled</a>
-						  </li>
-						</ul>
-					  </div>
-					</div>
-				  </nav>-->
+				
 				  
 
 	<nav class="navbar fixed-top bg-body-tertiary  d-md-none bg-light" style="background-color:white; height: 20px; ">
@@ -577,7 +558,7 @@ Header END -->
 
 			  
 			<!-- Main content START -->
-			<div class=" col-md-6 vh-100">
+			<div class=" col-md-6 vh-100" style="background-color: white;">
 
 				<!-- Story START -->
         
@@ -585,9 +566,7 @@ Header END -->
 		
 
 				<!-- Share feed START -->
-				<div class=" text-center text-dark" style="background-color: white;;"><img src="{{url_for('static',path='assets/images/campaign 2.png')}}"> <div class="w-100"> Leverage the power of Social to get started 		</div><div class="flex-grow-1">
-					<button type="button " class="btn  flex-fill text-dark my-2" data-bs-toggle="modal" data-bs-target="#postModal" style="background-color: #CF2C79;">Share your thoughts</button>
-				</div></div>
+				
 			
 				
 					<!-- Gray background div -->
@@ -637,12 +616,17 @@ Header END -->
 							 
 							  
 								<div class="mb-5">
-								  <input type="textarea" class="form-control" placeholder="Share your thoughts" required name="text">
+								  <input type="textarea" class="form-control border-0" placeholder="Share your thoughts" required name="text">
 								</div>
+							
 								<input type="hidden" id="latitude" name="latitude">
 								<input type="hidden" id="longitude" name="longitude">
+								<div id="previewContainer" class="mt-3"></div>
 							  
 							<br>
+							<div class="alert alert-warning" role="alert">
+							write as @companyname#complaint
+							  </div>
 							<hr>
 				  
 							<!-- Custom-styled button to trigger file input -->
@@ -665,6 +649,63 @@ Header END -->
 					  </div>
 					</div>
 				  </div>
+				 <!-- Add this HTML element to the modal body to contain multiple image previews -->
+
+
+<!-- Add this HTML element to the modal body to contain multiple previews -->
+<div id="previewContainer" class="mt-3"></div>
+
+<script>
+    // Add this JavaScript function to update the static preview
+    function updateStaticPreview() {
+        const input = document.getElementById('formFileMultiple');
+        const previewContainer = document.getElementById('previewContainer');
+        previewContainer.innerHTML = ''; // Clear previous previews
+
+        if (input.files && input.files.length > 0) {
+            for (let i = 0; i < input.files.length; i++) {
+                const reader = new FileReader();
+                const file = input.files[i];
+                const fileExtension = file.name.split('.').pop().toLowerCase();
+
+                if (['jpeg', 'jpg', 'png'].includes(fileExtension) && file.type.startsWith('image/')) {
+                    // Handle image files
+                    const previewImage = document.createElement('img');
+                    previewImage.classList.add('img-fluid', 'rounded', 'mr-2');
+                    previewImage.style.width = '100px'; // Set the width as needed
+                    previewImage.style.height = '100px'; // Set the height as needed
+
+                    reader.onload = function (e) {
+                        previewImage.src = e.target.result;
+                    };
+
+                    reader.readAsDataURL(file);
+                    previewContainer.appendChild(previewImage); // Append image preview
+                } else if (fileExtension === 'mp4' && file.type.startsWith('video/')) {
+                    // Handle video files
+                    const previewVideo = document.createElement('video');
+                    previewVideo.classList.add('img-fluid', 'rounded', 'mr-2');
+                    previewVideo.style.width = '100px'; // Set the width as needed
+                    previewVideo.style.height = '100px'; // Set the height as needed
+                    previewVideo.setAttribute('controls', ''); // Add controls for video playback
+
+                    reader.onload = function (e) {
+                        previewVideo.src = e.target.result;
+                    };
+
+                    reader.readAsDataURL(file);
+                    previewContainer.appendChild(previewVideo); // Append video preview
+                }
+            }
+        }
+    }
+
+    // Attach the 'change' event listener to trigger the function when files are selected
+    document.getElementById('formFileMultiple').addEventListener('change', updateStaticPreview);
+</script>
+
+
+				
 				<script>
 					function getUserLocationAndSubmit() {
             // Check if the Geolocation API is supported
@@ -712,25 +753,16 @@ Header END -->
 								<!-- Card body START -->
 								<div class="card-body">
 									<!-- News item -->
-									<div class="mb-3">
-										<h6 class="mb-0"><a href="blog-details.html">23</a></h6>
-										<small>2hr</small>
-									</div>
+									{% for i in range(top_hashtags|length) %}
+								<div class="mb-3">
+									<h6 class="mb-0"><a href="/post/community/{{top_hashtags[i]}}">{{top_hashtags[i]}}</a></h6>
+									<small>2hr</small>
+								</div>
+								<hr>
+								{% endfor %}
 									<!-- News item -->
-									<div class="mb-3">
-										<h6 class="mb-0"><a href="blog-details.html">45</a></h6>
-										<small>3hr</small>
-									</div>
-									<!-- News item -->
-									<div class="mb-3">
-										<h6 class="mb-0"><a href="blog-details.html">45</a></h6>
-										<small>4hr</small>
-									</div>
-									<!-- News item -->
-									<div class="mb-3">
-										<h6 class="mb-0"><a href="blog-details.html">12</a></h6>
-										<small>6hr</small>
-									</div>
+									
+									
 									<!-- Load more comments -->
 									<a href="#!" role="button" class="btn btn-link btn-link-loader btn-sm text-secondary d-flex align-items-center" data-bs-toggle="button" aria-pressed="true">
 										<div class="spinner-dots me-2">
@@ -787,7 +819,13 @@ Header END -->
 				<!-- Share feed END -->
 
 				<!-- Card feed item START -->
+				
 				{% for i in range(n) %}
+				{% if i==0 %}
+				<p>Recently Posted in Whitefield</p>
+				{% endif %}
+
+
 <div class="card text-wrap overflow-hidden ">
     <!-- Card header START -->
     <div class="card-header border-0 pb-0 text-wrap">
@@ -870,7 +908,7 @@ Header END -->
 			
 
 					<span class="fw-semibold d-block w-100">Mentions(@)</span>
-					<div class="d-flex d-inline-block flex-wrap mx-2" style="background-color: rgba(244, 247, 252, 0.80); ">
+					<div class="d-flex d-inline flex-wrap mx-2" style="background-color: rgba(244, 247, 252, 0.80); ">
 						{% for mention in post[i].mentions %}
 						
 								<div class="mx-2">{{ mention }}</div>
@@ -878,7 +916,7 @@ Header END -->
 						{% endfor %}
 					</div>
 					
-				
+				<div style="color: blue;">12 Replies from 3 service providers</div>
 				</div>
 				{% endif %}
 				</div>
@@ -903,7 +941,7 @@ Header END -->
 			
 					<!-- Comment Section -->
 					<div class="mx-sm-2 mx-md-3 mx-lg-5">
-						<a href="/post/comment/">
+						<a href="/post/comment/{{post[i].id}}">
 						<button class="btn bg-transparent d-flex" data-bs-toggle="collapse" data-bs-target="#collapseExample_{{i}}" aria-expanded="false" aria-controls="collapseExample" >
 							<img src="{{url_for('static', path='assets/images/comment.png')}}" class="img-fluid mb-2" alt="Comment">
 							<p class="mb-0">50</p>
@@ -937,58 +975,7 @@ Header END -->
 	
 		
         <!-- Likes, Comments, and Share section -->
-		<div id="collapseExample_{{i}}">
 		
-       
-       
-       
-		<ul class="nav nav-tabs" id="myTab" role="tablist">
-			<div class="d-flex">
-			<li class="nav-item" role="presentation">
-			  <button class="nav-link " id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane_{{i}}" type="button" role="tab" aria-controls="home-tab-pane" >Service Provide Comments</button>
-			</li>
-			<li class="nav-item" role="presentation">
-			  <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane_{{i}}" type="button" role="tab" aria-controls="profile-tab-pane" >Public Comments</button>
-			</li>
-		</div>
-			
-		  </ul>
-		  <div class="tab-content" id="myTabContent">
-			<div class="tab-pane  " id="home-tab-pane_{{i}}" role="tabpanel" aria-labelledby="home-tab" tabindex="0"></div>
-			<div class="tab-pane " id="profile-tab-pane_{{i}}" role="tabpanel" aria-labelledby="profile-tab" tabindex="0"><div class="d-flex mb-3 mx-2 collapse " id="comments">
-            
-				<div class="avatar avatar-xs me-2">
-					<a href="#!"> <img class="avatar-img rounded-circle" src="{{ image }}" alt=""> </a>
-				</div>
-			   
-				<form class="nav nav-item w-100 position-relative align-items-center" method="post" action="/post/{{ post[i].id }}/comment">
-					<input type="text" class="form-control mb-3" placeholder="Share your thoughts" name="comment">
-					<button class="nav-link bg-transparent position-absolute top-0 end-0  border-0 align-items-center" type="submit">
-						<i class="bi bi-send-fill"></i>
-					</button>
-				</form>
-			</div>        {% for j in range(comments[i]|length) %}
-			<div class="d-flex flex-row position-relative mb-2 mt-2 me-2 text-wrap align-items-center">
-				<div class="avatar avatar-xs m-2">
-					<a href="#!"><img class="avatar-img rounded-circle" src="{{ comment_image[i][j] }}" alt=""></a>
-				</div>
-				<div class="d-inline-block bg-light rounded-start-top-0 p-3 rounded">
-					<div class="d-flex justify-content-between">
-						<h6 class="mb-1"> <a href="#!"> {{ comment_username[i][j] }} </a></h6>
-						
-					</div>
-					<div class="flex-fill " style="max-width: 450px;">
-					<p class="small mb-0">{{ comments[i][j] }}</p>
-				</div>
-				</div>
-			</div>
-			
-			{% endfor %}</div>
-			
-		  </div>
-      
- 
-		</div>
       
         
  </div> 
@@ -997,7 +984,7 @@ Header END -->
 
 				<!-- Card feed item END -->
 
-				<!-- Card feed item START -->
+				<!-- Card feed item STAfmeRT -->
 				
 				<!-- Card feed item END -->
 
@@ -1024,26 +1011,15 @@ Header END -->
 							<!-- Card body START -->
 							<div class="card-body">
 								<!-- News item -->
+								{% for i in range(top_hashtags|length) %}
 								<div class="mb-3">
-									<h6 class="mb-0"><a href="blog-details.html">#Traffic isssues in varthur</a></h6>
+									<h6 class="mb-0"><a href="/post/community/{{top_hashtags[i]}}">{{top_hashtags[i]}}</a></h6>
 									<small>2hr</small>
 								</div>
 								<hr>
-								<div class="mb-3">
-									<h6 class="mb-0"><a href="blog-details.html">#Traffic issues in Varthur</a></h6>
-									<small>3hr</small>
-								</div>
-								<hr>
-								<div class="mb-3">
-									<h6 class="mb-0"><a href="blog-details.html">#Traffic issues in Varthur</a></h6>
-									<small>4hr</small>
-								</div>
-								<hr>
-								<!-- News item -->
-								<div class="mb-3">
-									<h6 class="mb-0"><a href="blog-details.html">#Traffic issues in Varthur</a></h6>
-									<small>6hr</small>
-								</div>
+								{% endfor %}
+								
+								
 								<!-- Load more comments -->
 								<a href="#!" role="button" class="btn btn-link btn-link-loader btn-sm text-secondary d-flex align-items-center" data-bs-toggle="button" aria-pressed="true">
 									<div class="spinner-dots me-2">

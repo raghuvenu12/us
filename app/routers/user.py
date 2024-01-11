@@ -11,6 +11,7 @@ from fastapi import (
     Response,
     File,
 )
+from tortoise.query_utils import Prefetch
 import secrets
 from typing import Annotated
 from fastapi_login import LoginManager
@@ -348,6 +349,56 @@ async def verify(response:Response,request: Request, id:int,otp: int = Form(...)
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,detail="Not found")
     
 
+@router.get("/post/profile")
+async def profile(request:Request,phone:str=Depends(manager)):
+    user_id = await User.get(phone=phone)
+    citizen = await Citizen.get(user_id=user_id.id).first()
+
+    username = citizen.username
+    image = citizen.image_url
+    posts=await Post.filter(user_id=user_id.id).order_by('-id')
+    media_url=[]
+    media=[]
+    for post in posts:
+        media_url=await Media.get(post_id=post.id)
+        media.append(media_url.media_thumbnail_url)
+
+    comment=await Comment.filter(user_id=user_id.id).all().order_by('-id')
+
+    
+
+
+    return templates.TemplateResponse("profile.html",{"request":request,"username":username,"image":image,"posts":posts,"media":media,"comment":comment})
+
+
+
+@router.get("/post/community/{hashtag}")
+async def community(request:Request,hashtag:str,phone:str=Depends(manager)):
+    user_id = await User.get(phone=phone)
+    citizen = await Citizen.get(user_id=user_id.id).first()
+
+    username = citizen.username
+    image = citizen.image_url
+    posts=await Post.all().order_by('-id')
+    media_url=[]
+    media=[]
+    post_hashtags=[]
+    name=[]
+    image_url=[]
+    for post in posts:
+        if f"#{hashtag}" in post.text:
+            citizen=await Citizen.filter(user_id=post.user_id).order_by('-id').first()
+            name.append(citizen.username)
+            image_url.append(citizen.image_url)
+
+
+            
+            post_hashtags.append(post)
+            media_url=await Media.get(post_id=post.id)
+            media.append(media_url.media_thumbnail_url)
+
+
+    return templates.TemplateResponse("community.html",{"request":request,"username":username,"image":image,"posts":post_hashtags,"media":media,"name":name,"image_url":image_url,"hashtag":hashtag})
 
 @router.get("/post/user_login")
 async def user_login(request: Request):
@@ -355,9 +406,20 @@ async def user_login(request: Request):
     return templates.TemplateResponse(
         "user_login.html", {"request": request}
     )
-@router.get("/post/comment")
-async def comment(request:Request) :
-    return templates.TemplateResponse("comment.html",{"request":request})
+@router.get("/post/comment/{id}")
+async def comment(request:Request,id:int) :
+    print(id)
+    media_with_post_citizen = await Media.filter(post_id=id).prefetch_related(
+    Prefetch('post', queryset=Post.all()),
+    Prefetch('Citizen', queryset=Citizen.all()),  # Adjust based on your model structure
+)
+    print(media_with_post_citizen[0].Citizen.image_url)
+
+    
+    comment=await Comment.filter(post_id=id).order_by('-id').limit(3).prefetch_related(
+        'post','citizen'
+    )
+    return templates.TemplateResponse("comment.html",{"request":request,"media_with_post":media_with_post_citizen,"comment":comment})
 
 @router.post("/post/user")
 async def get_user(
@@ -524,13 +586,22 @@ async def post(
 @router.post("/post/{id}/comment")
 async def comment(request: Request, id: int, phone: str=Depends(manager),comment: str = Form(...)):
     user_id = await User.get(phone=phone)
+    citizen=await Citizen.get(user_id=user_id.id)
     new_data = Comment(
-        text=comment, ip_address=request.client.host, post_id=id, user_id=user_id.id
+        text=comment, ip_address=request.client.host, post_id=id, user_id=user_id.id,citizen_id=citizen.id
     )
     await new_data.save()
-    target_url = f"/post/test"
-    response = RedirectResponse(url=target_url, status_code=303)
-    return response
+    media_with_post_citizen = await Media.filter(post_id=id).prefetch_related(
+    Prefetch('post', queryset=Post.all()),
+    Prefetch('Citizen', queryset=Citizen.all()),  # Adjust based on your model structure
+)
+    print(media_with_post_citizen[0].Citizen.image_url)
+
+    
+    comment=await Comment.filter(post_id=id).order_by('-id').limit(3).prefetch_related(
+        'post','citizen'
+    )
+    return templates.TemplateResponse("comment.html",{"request":request,"media_with_post":media_with_post_citizen,"comment":comment})
 
 
 @router.get("/post/test")
@@ -544,10 +615,8 @@ async def create(request: Request,phone:str=Depends(manager)):
     users = await User.all()
     all_citizen = await Citizen.all()
    
-    media_with_post = await Media.all().order_by('-id').limit(3).prefetch_related(
-        'post','Citizen'
-    )
-    print(media_with_post[0])
+   
+    
     #print(media_with_post[0].Citizen.username)
 
  
@@ -579,6 +648,11 @@ async def create(request: Request,phone:str=Depends(manager)):
 
             post_mentions.append(all_post[i].mentions[j])
     post_mentions=collections.Counter(post_mentions)
+    post_hashtags=[]
+    for i in range(len(all_post)):
+        for j in range(len(all_post[i].hashtags)):
+            post_hashtags.append(all_post[i].hashtags[j])
+    post_hashtags=collections.Counter(post_hashtags)
 
 
     for i in range(len(post)):
@@ -605,13 +679,16 @@ async def create(request: Request,phone:str=Depends(manager)):
     print(top_mentions)
     for i,j in post_mentions.items():
         top_mentions.append(i)
-
+    top_hashtags=[]
+    for i,j in post_hashtags.items():
+        top_hashtags.append(i)
     media = await Media.all().order_by("-id").limit(3)
     n = len(usernames)
 
     return templates.TemplateResponse(
         "index.html",
         {
+            "top_hashtags":top_hashtags,
             "top_mentions":top_mentions,
             "image": image,
             "request": request,

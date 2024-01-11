@@ -77,5 +77,6 @@ class Comment(Model):
     post = fields.ForeignKeyField('us.Post', null=False, )
     text = fields.CharField(max_length=256, null=False, )
     user = fields.ForeignKeyField('us.User', related_name="comment", null=False, )
+    citizen = fields.ForeignKeyField('us.Citizen', null=False, )
     ip_address = fields.CharField(max_length=64, null=True, )
     created_at = fields.DatetimeField(auto_now=True, )
